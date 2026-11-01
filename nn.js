@@ -122,7 +122,7 @@
         });
       }, { threshold: .1, rootMargin: '0px 0px -8% 0px' });
     }
-    $$('.reveal,[data-io],.split,.vh,.shead,.vhead', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
+    $$('.reveal,[data-io],.split,.vh,.shead,.vhead,.fwd', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
   }
 
   /* ---------- drawer, tooltip, toast ---------- */
@@ -136,7 +136,7 @@
   }
   function closeDrawer() {
     $('#drawer').classList.remove('on'); $('#scrim').classList.remove('on'); $('#drawer').setAttribute('aria-hidden', 'true');
-    $$('.node.sel,.pn.sel').forEach(function (n) { n.classList.remove('sel'); });
+    $$('.node.sel,.pn.sel,.ship.sel').forEach(function (n) { n.classList.remove('sel'); });
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
@@ -272,6 +272,34 @@
       });
       n.addEventListener('pointerleave', function () { $$('line[data-tmp]', svg).forEach(function (l) { l.remove(); }); });
     });
+  }
+
+  /* ---------- text and section motion ---------- */
+  function fadeWords(el) {
+    if (!el || el.dataset.fw) return; el.dataset.fw = '1'; el.classList.add('fwd');
+    var wi = 0, label = el.textContent;
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (ch) {
+        if (ch.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(function (tok) {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var s = document.createElement('span'); s.className = 'wd'; s.setAttribute('aria-hidden', 'true'); s.textContent = tok; s.style.setProperty('--wi', wi++); frag.appendChild(s);
+          });
+          node.replaceChild(frag, ch);
+        } else if (ch.nodeType === 1 && !/^(A|BUTTON|SVG)$/i.test(ch.tagName)) walk(ch);
+      });
+    })(el);
+    el.setAttribute('aria-label', label);
+  }
+  function richText(scope) {
+    $$('.lead,.quote', scope).forEach(function (el) { if (!el.closest('.hero')) { el.classList.remove('reveal'); fadeWords(el); } });
+    $$('.facts li,.limits li,.fw p,.warn,.prin,.steps4 .card,.month', scope).forEach(function (el, i) { if (!el.classList.contains('reveal')) { el.classList.add('reveal'); el.style.setProperty('--d', i % 4); } });
+  }
+  function waveDividers() {
+    var svg = '<div class="waves" aria-hidden="true"><svg viewBox="0 0 2880 90" preserveAspectRatio="none"><path class="c" d="M0,50 C240,10 480,90 720,50 C960,10 1200,90 1440,50 C1680,10 1920,90 2160,50 C2400,10 2640,90 2880,50 L2880,90 L0,90 Z"/><path class="a" d="M0,60 C200,30 440,90 720,60 C1000,30 1240,90 1440,60 C1640,30 1880,90 2160,60 C2440,30 2680,90 2880,60 L2880,90 L0,90 Z"/><path class="b" d="M0,70 C240,50 480,90 720,70 C960,50 1200,90 1440,70 C1680,50 1920,90 2160,70 C2400,50 2640,90 2880,70 L2880,90 L0,90 Z"/></svg></div>';
+    ['#bridge', '#clock', '#about', '#sources'].forEach(function (s) { var el = $(s); if (el) el.insertAdjacentHTML('beforebegin', svg); });
   }
 
   /* ===================================================== CURATION ===================================================== */
@@ -540,7 +568,7 @@
   function filterTier(t) {
     state.tier = (state.tier === t) ? '' : t;
     $$('.rung').forEach(function (r) { r.setAttribute('aria-pressed', String(r.dataset.tier === state.tier)); });
-    $$('.pn').forEach(function (n) { n.classList.toggle('dim', !!state.tier && n.dataset.tier !== state.tier); });
+    $$('.pn,.ship').forEach(function (n) { n.classList.toggle('dim', !!state.tier && n.dataset.tier !== state.tier); });
     var chip = $('#ptier'); if (chip) { $$('#ptier .chip').forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.tier === state.tier)); }); }
     if (window.__pdraw) window.__pdraw();
   }
@@ -615,7 +643,7 @@
     var h = '<nav class="sub" aria-label="Outreach sections"><ul>' + [['o-idea', 'The idea'], ['o-tiers', 'Tiers'], ['o-orbit', 'Orbit map'], ['o-first', 'First wave'], ['o-list', 'All 44'], ['o-mail', 'Email templates'], ['o-lad', 'Ladder'], ['o-det', 'Full detail']].map(function (a) { return '<li><a href="#' + a[0] + '" data-sec="' + a[0] + '">' + a[1] + '</a></li>'; }).join('') + '</ul></nav>';
     h += '<section class="sec tight" id="o-idea"><span class="eyebrow">What the vertical owns</span><h2 class="h2">Bring the outside <em>in</em>.</h2><p class="quote reveal">' + esc(PD.central[0]).replace(/^The central idea\.\s*/, '').replace('Earn the right to ask for recurring support only after the pilot works.', '<em>Earn the right to ask for recurring support only after the pilot works.</em>') + '</p><div class="grid g2" style="margin-top:1.6rem"><div class="card pad reveal"><h3 style="font-family:var(--serif);font-size:1.3rem">Why reachable partners, not famous ones</h3>' + ul(O.whyReachable) + '</div><div class="card pad reveal" style="--d:1"><h3 style="font-family:var(--serif);font-size:1.3rem">What the club can offer</h3>' + ul(O.offer) + '<h4 style="font-family:var(--serif);margin-top:1rem">What the club will not offer</h4><p>' + O.wontOffer.map(function (w) { return '<span class="badge">' + esc(w.replace(/\.$/, '')) + '</span> '; }).join('') + '</p></div></div></section>';
     h += '<section class="sec tight" id="o-tiers"><span class="eyebrow">The access ladder</span><h2 class="h2">Order by <em>speed of reply</em>, not prestige.</h2>' + ladderHtml() + '</section>';
-    h += '<section class="sec tight" id="o-orbit"><span class="eyebrow">The orbit map</span><h2 class="h2">Forty four rows around <em>one club</em>.</h2><p class="lead reveal">Closest ring is Tier 1, furthest is Tier 5. Green rings are the first wave. Hover to read, click to open a profile.</p><div class="card orbitwrap reveal">' + orbit() + '<div class="legend"><span><i></i>Partner row</span><span><i class="f"></i>First wave (Tier 1)</span><span>The sweep is decoration</span></div></div></section>';
+    h += '<section class="sec tight" id="o-orbit"><span class="eyebrow">The orbit map</span><h2 class="h2">Forty four rows around <em>one club</em>.</h2><p class="lead reveal">The orbit map now lives at the front of the page as the harbour: a lighthouse for the club and one ship for every partner row. Click a ship and it sails you to that partner.</p><p><a class="btn" href="#harbour">Sail to the harbour</a></p></section>';
     h += '<section class="sec tight" id="o-first"><span class="eyebrow">First wave</span><h2 class="h2">Start where the doors are <em>already open</em>.</h2>' + firstWave() + '</section>';
     h += '<section class="sec tight" id="o-list"><span class="eyebrow">Partner shortlist</span><h2 class="h2">All <em>forty four</em> rows.</h2>' + partnerGridShell() + '</section>';
     h += '<section class="sec tight" id="o-mail"><span class="eyebrow">Cold email templates</span><h2 class="h2">Five letters, <em>five purposes</em>.</h2><p class="lead reveal">A request for money and a request for time are not the same letter. Each template has a subject, a body, a follow-up and a copy button.</p>' + templatesHtml() + '</section>';
@@ -632,12 +660,130 @@
     $$('.pn', panel).forEach(function (n) { n.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); n.dispatchEvent(new MouseEvent('click', { bubbles: true })); } }); });
     partnersInit(); tplShow(D.templates.items[0].id);
   }
+  /* ===================================================== HARBOUR: lighthouse, ships, sailing scroll ===================================================== */
+  var SH = { ships: [], t0: 0, last: 0, beam: 0, cx: 600, cy: 330, sailing: false, raf: 0 };
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function harbourHtml() {
+    return '<div class="shead"><span class="num">I</span><span class="eyebrow">The harbour</span><h2 class="h2" id="harbourh">Forty four ships, <em>one lighthouse</em>.</h2>' +
+      '<p class="lead reveal">Each ship is one partner row from my outreach plan. The closer the ring, the faster I expect a reply. Green sails are the first wave. The lighthouse is the club, and nobody has been contacted yet. Hover a ship to read it. Click its number and it will sail you to its entry.</p></div>' +
+      '<div class="card sea reveal" id="sea">' + harbourSvg() + '<div class="legend"><span><i class="f"></i>First wave (Tier 1)</span><span><i></i>Other partner rows</span><span>The beam is decoration</span><span>Click a ship to sail to it</span></div></div>';
+  }
+  function harbourSvg() {
+    var cx = SH.cx, cy = SH.cy, R = [112, 166, 220, 272, 324], by = {}, rnd = rng(7);
+    D.partners.forEach(function (p) { (by[p.tierNum] = by[p.tierNum] || []).push(p); });
+    var s = '<svg viewBox="0 0 1200 660" role="group" aria-label="Harbour map: 44 partner rows as ships circling a lighthouse. Tier 1 sits closest, Tier 5 furthest."><defs>' +
+      '<radialGradient id="seag" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="var(--a2)" stop-opacity=".22"/><stop offset="1" stop-color="var(--a2)" stop-opacity="0"/></radialGradient>' +
+      '<linearGradient id="beamg" x1="0" x2="1"><stop offset="0" stop-color="#FFE9A8" stop-opacity=".85"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></linearGradient>' +
+      '<radialGradient id="lampg"><stop offset="0" stop-color="#FFF3C4"/><stop offset="1" stop-color="#FFD25E" stop-opacity="0"/></radialGradient></defs>';
+    s += '<ellipse cx="' + cx + '" cy="' + cy + '" rx="520" ry="330" fill="url(#seag)"/>';
+    R.forEach(function (r, i) { s += '<circle class="sring" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="animation-duration:' + (26 + i * 6) + 's"/><text class="ringlab" x="' + (cx + r * .707 + 6) + '" y="' + (cy - r * .707 - 4) + '">TIER ' + (i + 1) + '</text>'; });
+    for (var w = 0; w < 46; w++) { var a = rnd() * 6.283, rr = 60 + rnd() * 270; s += '<path class="foam" d="M0,0 q4,-4 8,0 t8,0" transform="translate(' + (cx + rr * Math.cos(a) * 1.5 - 8).toFixed(0) + ' ' + (cy + rr * Math.sin(a) * .98).toFixed(0) + ')" style="animation-delay:' + (-rnd() * 6).toFixed(1) + 's"/>'; }
+    s += '<g id="beam" style="transform-origin:' + cx + 'px ' + (cy - 34) + 'px"><path d="M' + cx + ',' + (cy - 34) + ' L' + (cx + 420) + ',' + (cy - 74) + ' L' + (cx + 420) + ',' + (cy + 8) + ' Z" fill="url(#beamg)"/><path d="M' + cx + ',' + (cy - 34) + ' L' + (cx - 420) + ',' + (cy - 74) + ' L' + (cx - 420) + ',' + (cy + 8) + ' Z" fill="url(#beamg)" opacity=".5"/></g>';
+    /* lighthouse */
+    s += '<g class="lh" transform="translate(' + cx + ' ' + cy + ')"><ellipse cx="0" cy="40" rx="62" ry="14" class="isle"/><ellipse cx="0" cy="36" rx="46" ry="9" class="isle2"/>' +
+      '<path d="M-17,34 L-11,-26 L11,-26 L17,34 Z" fill="#F4F1EA" stroke="#17202E" stroke-width="1.4"/>' +
+      '<path d="M-15.4,18 L-14,6 L14,6 L15.4,18 Z" fill="#B4232A"/><path d="M-13,-8 L-12,-18 L12,-18 L13,-8 Z" fill="#B4232A"/>' +
+      '<rect x="-17" y="-30" width="34" height="5" rx="1.5" fill="#17202E"/>' +
+      '<rect x="-11" y="-48" width="22" height="18" rx="2" fill="#FFE9A8" stroke="#17202E" stroke-width="1.4"/>' +
+      '<line x1="-3.6" y1="-48" x2="-3.6" y2="-30" stroke="#17202E" stroke-width="1"/><line x1="3.6" y1="-48" x2="3.6" y2="-30" stroke="#17202E" stroke-width="1"/>' +
+      '<circle class="lamp" cx="0" cy="-39" r="30" fill="url(#lampg)"/>' +
+      '<path d="M-14,-48 L0,-62 L14,-48 Z" fill="#17202E"/><circle cx="0" cy="-64" r="2.2" fill="#B4232A"/></g>';
+    Object.keys(by).forEach(function (t) {
+      var list = by[t], r = R[t - 1], off = t * 0.7, dir = t % 2 ? 1 : -1;
+      list.forEach(function (p, i) {
+        var a = off + i * 6.283 / list.length, fw = p.firstWave, sc = fw ? 1.2 : 1;
+        s += '<g class="ship' + (fw ? ' f' : '') + '" tabindex="0" role="button" data-p="' + p.id + '" data-tier="' + t + '" data-tip="' + esc('<b>' + p.name + '</b>Tier ' + p.tier + ' · ' + p.type) + '" aria-label="' + esc('Ship ' + p.id + ': ' + p.name + ', tier ' + p.tier) + '" data-r="' + r + '" data-a="' + a.toFixed(3) + '" data-dir="' + dir + '" data-sc="' + sc + '">' +
+          '<circle class="hit" r="22"/><g class="bob"><circle class="lit" r="20"/><g class="hullg"><path class="wake" d="M-16,9 q-8,2 -14,0 M-16,12 q-6,2 -11,0"/><path class="hull" d="M-14,4 L14,4 Q16,4 12,10 L-8,10 Q-13,9 -14,4 Z"/><line class="mast" x1="0" y1="4" x2="0" y2="-17"/><path class="flag" d="M0,-17 l7,2 l-7,2 Z"/></g>' +
+          '<path class="sail" d="M-9,3 L-8,-13 Q0,-17 8,-13 L9,3 Q0,6 -9,3 Z"/><text y="-3.5">' + p.id + '</text></g></g>';
+      });
+    });
+    return s + '</svg>';
+  }
+  function harbourPlace(g, a, r, bobT, ph, dirx) {
+    var x = SH.cx + r * Math.cos(a), y = SH.cy + r * Math.sin(a) * .9;
+    var by = Math.sin(bobT * 1.7 + ph) * 2.2, rot = Math.sin(bobT * 1.3 + ph) * 3.2;
+    g.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ')');
+    var bob = g._bob || (g._bob = g.querySelector('.bob')), hl = g._hl || (g._hl = g.querySelector('.hullg'));
+    var sc = g._sc || (g._sc = parseFloat(g.dataset.sc));
+    bob.setAttribute('transform', 'translate(0 ' + by.toFixed(2) + ') rotate(' + rot.toFixed(2) + ') scale(' + sc + ')');
+    if (g._flip !== dirx) { g._flip = dirx; hl.setAttribute('transform', 'scale(' + dirx + ' 1)'); }
+  }
+  function harbourInit() {
+    var svg = $('#sea svg'); if (!svg) return;
+    SH.ships = $$('.ship', svg).map(function (g, i) { return { g: g, r: +g.dataset.r, a: +g.dataset.a, dir: +g.dataset.dir, ph: i * 1.7, paused: false, lit: 0 }; });
+    SH.ships.forEach(function (s) {
+      s.sp = 15 / s.r * s.dir;
+      s.g.addEventListener('pointerenter', function () { s.paused = true; }); s.g.addEventListener('pointerleave', function () { s.paused = false; });
+      s.g.addEventListener('focus', function () { s.paused = true; }); s.g.addEventListener('blur', function () { s.paused = false; });
+      harbourPlace(s.g, s.a, s.r, 0, s.ph, s.dir > 0 ? 1 : -1);
+    });
+    svg.addEventListener('click', function (e) { var g = e.target.closest('.ship'); if (g) sailTo(+g.dataset.p, g); });
+    svg.addEventListener('keydown', function (e) { var g = e.target.closest && e.target.closest('.ship'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); sailTo(+g.dataset.p, g); } });
+    if (reduce) return;
+    var beam = $('#beam', svg), lamp = $('.lamp', svg), vis = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { vis = en[0].isIntersecting; }, { rootMargin: '120px' }).observe($('#sea'));
+    SH.t0 = performance.now(); SH.last = SH.t0;
+    (function loop(now) {
+      var dt = Math.min(.05, (now - SH.last) / 1000); SH.last = now; var T = (now - SH.t0) / 1000;
+      if (vis && !document.hidden) {
+        SH.beam = T * 0.55; beam.style.transform = 'rotate(' + (SH.beam * 57.2958).toFixed(2) + 'deg)';
+        lamp.style.opacity = (.75 + Math.sin(T * 3) * .25).toFixed(2);
+        var bw = SH.beam % 6.2832;
+        SH.ships.forEach(function (s) {
+          if (!s.paused && !s.gone) s.a += s.sp * dt;
+          harbourPlace(s.g, s.a, s.r, T, s.ph, s.sp > 0 ? 1 : -1);
+          var ang = Math.atan2(Math.sin(s.a) * .9, Math.cos(s.a)), d = Math.abs(((ang - bw + 9.4248) % 6.2832) - 3.1416); d = 3.1416 - d;
+          var d2 = Math.abs(((ang - bw + Math.PI + 9.4248) % 6.2832) - 3.1416); d2 = 3.1416 - d2;
+          var near = Math.min(d, d2), l = Math.max(0, 1 - near / .26);
+          if (Math.abs(l - s.lit) > .04) { s.lit = l; s.g.style.setProperty('--lit', l.toFixed(2)); }
+        });
+      }
+      SH.raf = requestAnimationFrame(loop);
+    })(performance.now());
+  }
+  /* the voyage: the ship leaves its ring and carries you down the page, floating on the sea, to its entry */
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function sailTo(id, shipEl) {
+    if (SH.sailing) return; SH.sailing = true;
+    var p = D.partners.filter(function (x) { return x.id === id; })[0];
+    var r0 = shipEl.getBoundingClientRect(), sx = r0.left + r0.width / 2, sy = r0.top + r0.height / 2;
+    var first = !!p.firstWave;
+    var sailor = document.createElement('div'); sailor.className = 'sailor' + (first ? ' f' : '');
+    sailor.innerHTML = '<svg viewBox="-34 -30 68 52" width="96" height="74" aria-hidden="true"><path class="wake" d="M-16,9 q-8,2 -14,0 M-16,12 q-6,2 -11,0"/><path class="hull" d="M-14,4 L14,4 Q16,4 12,10 L-8,10 Q-13,9 -14,4 Z"/><line class="mast" x1="0" y1="4" x2="0" y2="-17"/><path class="flag" d="M0,-17 l7,2 l-7,2 Z"/><path class="sail" d="M-9,3 L-8,-13 Q0,-17 8,-13 L9,3 Q0,6 -9,3 Z"/><text y="-3.5">' + id + '</text></svg><span class="trail"></span>';
+    document.body.appendChild(sailor);
+    var sea = document.createElement('div'); sea.className = 'seaband'; sea.setAttribute('aria-hidden', 'true');
+    sea.innerHTML = '<svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path class="w1" d="M0,60 C180,20 360,100 540,60 C720,20 900,100 1080,60 C1260,20 1440,100 1620,60 C1800,20 1980,100 2160,60 L2160,120 L0,120 Z"/><path class="w2" d="M0,76 C160,40 340,110 520,76 C700,42 880,110 1060,76 C1240,42 1420,110 1600,76 C1780,42 1960,110 2140,76 L2140,120 L0,120 Z"/></svg>';
+    document.body.appendChild(sea); requestAnimationFrame(function () { sea.classList.add('on'); });
+    shipEl.style.opacity = '.25'; shipEl._gone = true; var sh = SH.ships.filter(function (s) { return s.g === shipEl; })[0]; if (sh) sh.gone = true;
+    if (state.v !== 'outreach') setV('outreach', { force: false, noanim: true });
+    state.tier = ''; $$('.rung').forEach(function (r) { r.setAttribute('aria-pressed', 'false'); }); $$('.ship').forEach(function (n) { n.classList.remove('dim'); });
+    if (window.__pdraw) window.__pdraw();
+    function target() { return $('#pgrid .pcard[data-p="' + id + '"]') || $('#o-list'); }
+    var tg = target(), y0 = scrollY, t0 = performance.now();
+    function targetY() { var el = target(); return Math.max(0, el.getBoundingClientRect().top + scrollY - innerHeight * .32); }
+    var dist = Math.abs(targetY() - y0), dur = reduce ? 200 : Math.min(3800, Math.max(1800, dist * .55));
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / dur), e = ease(k), Ty = targetY();
+      window.scrollTo({ top: y0 + (Ty - y0) * e, behavior: 'instant' });
+      var el = target(), rc = el.getBoundingClientRect(), tx = rc.left + Math.min(rc.width / 2, 120), ty = rc.top + Math.min(rc.height / 2, 90);
+      var cruiseX = innerWidth * (innerWidth < 820 ? .5 : .62), cruiseY = innerHeight * .66 + Math.sin(now / 520) * 10;
+      var x, y, sc = 1, rot = Math.sin(now / 380) * 5;
+      if (k < .22) { var u = ease(k / .22); x = sx + (cruiseX - sx) * u; y = sy + (cruiseY - sy) * u; sc = 1 + u * .5; }
+      else if (k < .78) { x = cruiseX + Math.sin(now / 900) * 24; y = cruiseY; sc = 1.5; }
+      else { var v = ease((k - .78) / .22); x = cruiseX + (tx - cruiseX) * v; y = cruiseY + (ty - cruiseY) * v; sc = 1.5 - v * .5; }
+      sailor.style.transform = 'translate(' + (x - 48).toFixed(1) + 'px,' + (y - 37).toFixed(1) + 'px) scale(' + sc.toFixed(3) + ') rotate(' + rot.toFixed(1) + 'deg)';
+      if (k < 1) return requestAnimationFrame(step);
+      sailor.classList.add('dock');
+      var card = target(); if (card && card.classList) { card.classList.remove('arrive'); void card.offsetWidth; card.classList.add('arrive'); }
+      setTimeout(function () { sailor.remove(); sea.classList.remove('on'); setTimeout(function () { sea.remove(); }, 900); openDrawer('Partner ' + id, partnerDrawer(id)); shipEl.style.opacity = ''; if (sh) sh.gone = false; SH.sailing = false; }, reduce ? 0 : 650);
+    })(performance.now());
+  }
 
   /* ===================================================== SHARED ===================================================== */
   function codes(s, pre) { return (s.match(new RegExp(pre + '-\\d\\d', 'g')) || []).join(', '); }
   function bridgeHtml() {
     var I = D.partnersData.interlock;
-    var h = '<div class="shead"><span class="num">III</span><span class="eyebrow">Where the two meet</span><h2 class="h2" id="bridgeh">Every session has a <em>partner</em> behind it.</h2><p class="lead reveal">Curation needs outside judges, mentors, problem statements and prizes that only Outreach can obtain. Outreach needs recaps, demos and proof of delivery that only Curation creates. The interlock below is my own arrangement ("added in synthesis"). The independence rule holds: the core 24 sessions never depend on an outside partner. If a partner declines, the session runs as written.</p></div>';
+    var h = '<div class="shead"><span class="num">IV</span><span class="eyebrow">Where the two meet</span><h2 class="h2" id="bridgeh">Every session has a <em>partner</em> behind it.</h2><p class="lead reveal">Curation needs outside judges, mentors, problem statements and prizes that only Outreach can obtain. Outreach needs recaps, demos and proof of delivery that only Curation creates. The interlock below is my own arrangement ("added in synthesis"). The independence rule holds: the core 24 sessions never depend on an outside partner. If a partner declines, the session runs as written.</p></div>';
     h += '<div class="bcols" id="bcols"><svg class="bsvg" id="bsvg" aria-hidden="true"><defs><linearGradient id="bg2" x1="0" x2="1"><stop offset="0" stop-color="#0F8C80"/><stop offset="1" stop-color="#B4232A"/></linearGradient></defs></svg><div class="bcol l"><h3>Curation moment</h3></div><div class="bcol r"><h3>Outreach contribution</h3></div>';
     I.forEach(function (r, i) {
       h += '<div class="bi l reveal" data-r="' + i + '" style="--d:' + (i % 3) + '"><small>CURATION · ' + esc(codes(r.initiatives, 'V1') || 'V1') + '</small>' + esc(r.need) + '</div>' +
@@ -676,7 +822,7 @@
   }
   function lanesHtml() {
     var R = D.sessionsData.roadmap;
-    var h = '<div class="shead"><span class="num">IV</span><span class="eyebrow">One clock</span><h2 class="h2" id="clockh">Month by month: <em>two verticals, one calendar</em>.</h2><p class="lead reveal">The same twelve months, read both ways. Curation on the left, Outreach on the right, and the joint milestones between them.</p></div><div class="lanes">';
+    var h = '<div class="shead"><span class="num">V</span><span class="eyebrow">One clock</span><h2 class="h2" id="clockh">Month by month: <em>two verticals, one calendar</em>.</h2><p class="lead reveal">The same twelve months, read both ways. Curation on the left, Outreach on the right, and the joint milestones between them.</p></div><div class="lanes">';
     R.forEach(function (r, i) {
       var lab = /^Set-up/.test(r.period) ? 'SET' : 'M' + r.period.replace(/\D+/g, '');
       h += '<div class="lane reveal"><div class="box card cb"><b>Curation and Research</b>' + esc(r.curation) + '</div><div class="mid"><span>' + lab + '</span></div><div class="box card ob"><b>Outreach and External Relations</b>' + esc(r.outreach) + '</div>' + (r.joint && !/^[-—–]+$/.test(r.joint.trim()) ? '<div class="jt">Joint: ' + esc(r.joint) + '</div>' : '') + '</div>';
@@ -685,7 +831,7 @@
   }
   function aboutHtml() {
     var A = D.site.about;
-    var h = '<div class="shead"><span class="num">V</span><span class="eyebrow">About this submission</span><h2 class="h2" id="abouth">Who I am, and <em>what to trust</em>.</h2></div>';
+    var h = '<div class="shead"><span class="num">VI</span><span class="eyebrow">About this submission</span><h2 class="h2" id="abouth">Who I am, and <em>what to trust</em>.</h2></div>';
     h += '<div class="facts"><div class="card reveal"><h3>Who I am</h3><p>' + esc(A.who) + '</p><p><span class="badge acc">Status</span> <b>' + esc(A.status) + '</b></p></div>';
     h += '<div class="card reveal" style="--d:1"><h3>Reported, not re-verified</h3>' + ul(A.reported) + '</div><div class="card reveal" style="--d:2"><h3>My view or assumption</h3>' + ul(A.mine) + '</div></div>';
     h += '<div class="grid g2" style="margin-top:1.1rem"><div class="limits reveal"><h3>Open items</h3>' + ul(A.open) + '</div><div class="limits reveal" style="--d:1"><h3>Limits of this site</h3>' + ul(D.site.home.limits.concat(A.limits)) + '</div></div>';
@@ -694,7 +840,7 @@
     return h;
   }
   function sourcesHtml() {
-    var h = '<div class="shead"><span class="num">VI</span><span class="eyebrow">Sources</span><h2 class="h2" id="sourcesh">Everything the document <em>names</em>.</h2></div><div class="warn small">' + esc(D.sources.note) + '</div>';
+    var h = '<div class="shead"><span class="num">VII</span><span class="eyebrow">Sources</span><h2 class="h2" id="sourcesh">Everything the document <em>names</em>.</h2></div><div class="warn small">' + esc(D.sources.note) + '</div>';
     D.sources.groups.forEach(function (g, i) {
       h += acc(esc(g.name), table(['Source', 'What I took from it', 'Link'], g.items.map(function (x) { return [esc(x.title), esc(x.used), x.url ? linkify(x.url) : miss()]; })), i === 0);
     });
@@ -740,7 +886,7 @@
       $('#veyebrow').textContent = HEAD[v][0]; var vt = $('#vtitle'); vt.classList.remove('in', 'vh'); vt.dataset.split = ''; vt.innerHTML = HEAD[v][1]; splitWords(vt, 'vh'); requestAnimationFrame(function () { requestAnimationFrame(function () { vt.classList.add('in'); }); });
       $('#vlead').textContent = HEAD[v][2];
       var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = cssv('--bg');
-      setTimeout(netColor, 80); fxText($('#vp-' + v)); observe($('#vp-' + v));
+      setTimeout(netColor, 80); fxText($('#vp-' + v)); richText($('#vp-' + v)); observe($('#vp-' + v));
       try { history.replaceState(null, '', '#' + v); } catch (e) { /* ignore */ }
     }
     if (document.startViewTransition && !reduce && !o.noanim) {
@@ -772,9 +918,9 @@
     $('#footTxt').textContent = D.site.footer;
     heroInit(); forkInit();
     $('#vpanels').innerHTML = '<div class="vpanel" id="vp-curation" data-v="curation">' + curationPanel() + '</div><div class="vpanel" id="vp-outreach" data-v="outreach" hidden>' + outreachPanel() + '</div>';
-    $('#bridge').innerHTML = bridgeHtml(); $('#clock').innerHTML = lanesHtml(); $('#about').innerHTML = aboutHtml(); $('#sources').innerHTML = sourcesHtml();
+    $('#harbour').innerHTML = harbourHtml(); $('#bridge').innerHTML = bridgeHtml(); $('#clock').innerHTML = lanesHtml(); $('#about').innerHTML = aboutHtml(); $('#sources').innerHTML = sourcesHtml();
     $('#bridge').classList.add('bridge');
-    curationInit($('#vp-curation')); outreachInit($('#vp-outreach')); bridgeInit();
+    harbourInit(); curationInit($('#vp-curation')); outreachInit($('#vp-outreach')); bridgeInit();
 
     $$('[data-go]').forEach(function (b) { b.addEventListener('click', function (e) { setV(b.dataset.go, { x: e.clientX, y: e.clientY, scroll: true, force: false }); }); });
     $$('.switch button').forEach(function (b) {
@@ -797,7 +943,8 @@
     if (h === 'outreach') setV('outreach', { force: true, noanim: true });
     else { fxText($('#vp-curation')); observe($('#vp-curation')); }
     var vt0 = $('#vtitle'); splitWords(vt0, 'vh'); requestAnimationFrame(function () { vt0.classList.add('in'); });
-    fxText($('#bridge')); fxText($('#clock')); fxText($('#about')); fxText($('#sources')); fxText($('#fork'));
+    fxText($('#harbour')); fxText($('#bridge')); fxText($('#clock')); fxText($('#about')); fxText($('#sources')); fxText($('#fork'));
+    waveDividers(); richText(document);
     observe(document); netColor(); startNet(); startGlow(); onScroll(); planetTick(); starsInit(); depthInit(); motifs(); constellationLinks(); addEventListener('resize', planetTick); var pb = $('#planet'); pb.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }); updateSub(); typePrompt();
     document.body.classList.add('ready');
     window.__nn = { ready: true };
