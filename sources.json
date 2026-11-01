@@ -1,0 +1,115 @@
+{
+ "note": "The consolidated document I built this site from contains no web links. So no link is shown here. Every entry below is a source the document names, as reported. Add the URL in data/sources.json once it is checked.",
+ "groups": [
+  {
+   "name": "Evidence base behind the format choices (V1-07)",
+   "items": [
+    {
+     "title": "Freeman et al., 2014",
+     "used": "Active learning",
+     "url": null
+    },
+    {
+     "title": "Dunlosky et al., 2013",
+     "used": "Spaced practice and self-testing",
+     "url": null
+    },
+    {
+     "title": "Fiorella and Mayer, 2013",
+     "used": "Learning by teaching",
+     "url": null
+    },
+    {
+     "title": "Digital Education Council, 2024",
+     "used": "Student AI use survey",
+     "url": null
+    },
+    {
+     "title": "Long and Magerko, 2020",
+     "used": "AI literacy competencies",
+     "url": null
+    },
+    {
+     "title": "Kapur, 2016",
+     "used": "Productive failure",
+     "url": null
+    },
+    {
+     "title": "Dell'Acqua and others",
+     "used": "The \"jagged frontier\" field experiment with consultants",
+     "url": null
+    },
+    {
+     "title": "India's data protection law and its 2025 Rules",
+     "used": "Session 14 (dates re-checked the week before)",
+     "url": null
+    }
+   ]
+  },
+  {
+   "name": "Pages and programmes named in the Outreach vertical (as reported, not re-verified)",
+   "items": [
+    {
+     "title": "IIM Sirmaur clubs and committees pages",
+     "used": "Descriptions of campus bodies (V2-07). Read on 1 November 2026 per the document; some pages carry old dates.",
+     "url": null
+    },
+    {
+     "title": "Unstop: host-with-Unstop route and Igniters Club programme",
+     "used": "Platform route (V2-09)",
+     "url": null
+    },
+    {
+     "title": "Sarvam AI: Campus and Champions programmes",
+     "used": "Campus session; Champions City Lead track only after evidence (V2-09)",
+     "url": null
+    },
+    {
+     "title": "StockGro: campus partnership page",
+     "used": "Campus event with synthetic data (V2-09)",
+     "url": null
+    },
+    {
+     "title": "Krutrim: past cloud credit offers",
+     "used": "Credits (V2-09)",
+     "url": null
+    },
+    {
+     "title": "Mu Sigma: Mureka contest",
+     "used": "Example of a B-school case contest (V2-05)",
+     "url": null
+    },
+    {
+     "title": "Futurense: AI Clinic and Leadership Council",
+     "used": "Enterprise problem statements (V2-05)",
+     "url": null
+    },
+    {
+     "title": "Partner contact research, dated 31 October 2026",
+     "used": "Contact routes (V2-01). Some routes came from 2024 notices and need re-checking.",
+     "url": null
+    }
+   ]
+  },
+  {
+   "name": "Material named in the Curation vertical",
+   "items": [
+    {
+     "title": "Public Kaggle dataset (IPL)",
+     "used": "Optional bank session: IPL prediction challenge (V1-09)",
+     "url": null
+    },
+    {
+     "title": "NIRF and placement data",
+     "used": "Example messy file for Session 7",
+     "url": null
+    },
+    {
+     "title": "The college's academic-integrity policy",
+     "used": "Quoted on a slide in Session 6",
+     "url": null
+    }
+   ]
+  }
+ ]
+}

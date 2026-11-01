@@ -1,0 +1,3593 @@
+{
+ "tiers": [
+  {
+   "tier": "1",
+   "name": "Open",
+   "meaning": "Internal or personal route: campus bodies, alumni cell, professional bodies with a direct, disclosed introduction",
+   "order": "Week 1; the first events are planned around these only"
+  },
+  {
+   "tier": "2",
+   "name": "Published route",
+   "meaning": "The partner publishes an application form, programme page or club inbox that anyone may use",
+   "order": "Week 2"
+  },
+  {
+   "tier": "3",
+   "name": "Warm link",
+   "meaning": "An existing institutional connection, but no direct contact (for example the institute's edtech partner, a returning mentor)",
+   "order": "Weeks 2 to 3, usually via the faculty advisor or programme office"
+  },
+  {
+   "tier": "4",
+   "name": "Cold but reachable",
+   "meaning": "A published partnership route exists but there is no relationship",
+   "order": "Same fortnight as tier 3; nothing is built on the assumption of a reply"
+  },
+  {
+   "tier": "5",
+   "name": "Stretch",
+   "meaning": "High-value but low-probability executives, founders or large firms",
+   "order": "After a pilot has produced evidence; skip if no warm path"
+  }
+ ],
+ "partners": [
+  {
+   "id": 1,
+   "name": "IIM Sirmaur Alumni Relations Cell",
+   "type": "Campus, alumni",
+   "purpose": "Alumni mentors and speakers; list of alumni in AI and analytics roles for 20-minute Friday talks",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Alumni",
+   "firstWave": true,
+   "named": [
+    "V2-06"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Alumni mentor",
+   "viewNote": "The alumni cell ranks first on access. Alumni serve on career panels, as a fallback for any cancelled guest and as Build Day mentors (V2-06).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 2,
+   "name": "ICAI AI Committee (faculty pool)",
+   "type": "Professional body",
+   "purpose": "One faculty member for a 30-minute session on AI in finance practice",
+   "tier": "1*",
+   "tierNum": 1,
+   "disclose": true,
+   "template": "Expert",
+   "firstWave": true,
+   "named": [
+    "V2-10"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Expert session",
+   "viewNote": "A committee with a trained pool of faculty gives a roster across the year rather than one evening. Finance bodies fit the annual-report, money, ethics and back-office sessions (V2-10). I report a personal connection to this body; it must be disclosed in the first line. The body has no relationship with the club today.",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 3,
+   "name": "Bombay Chartered Accountants' Society, Technology Initiatives Committee",
+   "type": "Professional body",
+   "purpose": "Two sessions a year (AI for a young finance professional; AI and ethics) and a speaker for the annual-report session",
+   "tier": "1*",
+   "tierNum": 1,
+   "disclose": true,
+   "template": "Expert",
+   "firstWave": true,
+   "named": [
+    "V2-10"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Expert session",
+   "viewNote": "Finance and commerce bodies fit the annual-report, money, ethics and back-office sessions (V2-10). I report a personal connection to this body; it must be disclosed in the first line. The body has no relationship with the club today.",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 4,
+   "name": "Quizzar (quizzing club)",
+   "type": "Campus club",
+   "purpose": "Scoring and microphone for Session 4",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Runs scoring and the microphone for the guessing game in Session 4 (V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 5,
+   "name": "Datonics (IT and analytics club)",
+   "type": "Campus club",
+   "purpose": "Dataset suggestion and reviewer for Sessions 7 and 10",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Suggests a dataset and reads what pairs produce in Sessions 7 and 10 (V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 6,
+   "name": "Finserve (finance club)",
+   "type": "Campus club",
+   "purpose": "Checks the EMI calculator before Session 18",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "A Finserve member checks the EMI calculator before it is shown in Session 18 (V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 7,
+   "name": "Markaizen and the Media Cell",
+   "type": "Campus club and cell",
+   "purpose": "Campaign feedback; approval before posting (Session 21)",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Gives feedback on the campaign; the Media Cell approves anything before it is posted (Session 21, V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 8,
+   "name": "Training and Development Cell",
+   "type": "Campus cell",
+   "purpose": "CV vetting and mock interviews (Career Lab)",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Vets CVs and mock interviews in the Career Lab (V2-07, V1-13).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 9,
+   "name": "Entrepreneurship and Incubation Cell",
+   "type": "Campus cell",
+   "purpose": "Mentors and judges (Sell It); jury for startup-style events",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Provides mentors or judges for the Sell It track and for startup-style events at Neural Fest (V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 10,
+   "name": "Industrial Relations and Sponsorship Committee",
+   "type": "Campus committee",
+   "purpose": "Gatekeeper for company approaches; corporate relationships",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-02",
+    "V2-07",
+    "V2-09",
+    "V2-14"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Owns corporate relations. Any company approach for Neural Fest goes to it first (V2-07, V2-02).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 11,
+   "name": "The Dialectical Society",
+   "type": "Campus club",
+   "purpose": "Structure and moderate AI on Trial (Session 16)",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Structures cases, moderates and trains moderators for AI on Trial in Session 16 (V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 12,
+   "name": "Media and Communications Committee",
+   "type": "Campus committee",
+   "purpose": "Co-run the AI x Media creative event",
+   "tier": "1",
+   "tierNum": 1,
+   "disclose": false,
+   "template": "Co-delivery",
+   "firstWave": true,
+   "named": [
+    "V2-07"
+   ],
+   "categoryInitiative": null,
+   "valueRow": null,
+   "viewNote": "Co-runs the AI-powered campaign event (V2-07).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 13,
+   "name": "Unstop",
+   "type": "Platform",
+   "purpose": "Host the challenge or Neural Fest registration; club programme for student clubs",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Co-host / platform",
+   "firstWave": false,
+   "named": [
+    "V2-01",
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Co-host or platform",
+   "viewNote": "The document names Unstop's host-with-Unstop route and its Igniters Club programme as published routes (V2-09). Unstop appears in several target lists, so only one person should approach it (V2-01).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 14,
+   "name": "GDG Chandigarh",
+   "type": "Peer developer community",
+   "purpose": "Volunteer mentor for a 60-minute beginners session, then a joint mini challenge",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Co-host",
+   "firstWave": false,
+   "named": [
+    "V2-08"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Peer-club collaboration",
+   "viewNote": "A peer club whose own page invites collaboration and publishes a club contact, as the document reports (V2-08).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 15,
+   "name": "Sarvam AI",
+   "type": "AI company",
+   "purpose": "Campus session with demos, build-along and credits; Champions City Lead track for approved event costs (after evidence); a pilot concept using an Indian-language model for a business workflow",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Co-host / community",
+   "firstWave": false,
+   "named": [
+    "V2-01",
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The document names Sarvam's Campus and Champions programmes. The Champions City Lead track is for approved event costs and only after the club has run two events (V2-09).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 16,
+   "name": "StockGro",
+   "type": "Platform",
+   "purpose": "Campus event: AI and financial-literacy simulation with synthetic data (not investment advice)",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Campus event sponsor",
+   "firstWave": false,
+   "named": [
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The document names StockGro's campus partnership page as a published route (V2-09). Use synthetic data; do not imply real-money trading or tips (templates table).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 17,
+   "name": "LEAP, AI Club at Plaksha",
+   "type": "Peer club",
+   "purpose": "Two-hour virtual cross-campus build session",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Peer club",
+   "firstWave": false,
+   "named": [
+    "V2-08"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Peer-club collaboration",
+   "viewNote": "A peer club whose own page invites collaboration and publishes a club contact, as the document reports (V2-08).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 18,
+   "name": "Kreyato AI",
+   "type": "AI workflow and case platform",
+   "purpose": "Platform access for competing teams; contribution to a prize pool (scale to the club's record)",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Sponsor / platform",
+   "firstWave": false,
+   "named": [
+    "V2-14"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The document gives an example ask of platform access for all competing teams and a prize contribution. An ask that promises 200 or more competing teams is unrealistic for a first event and should be scaled to the club's record (V2-14, added in synthesis).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 19,
+   "name": "100xEngineers",
+   "type": "AI education and engineering",
+   "purpose": "90-minute build-along; cross-campus venture pairing",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Workshop / collaboration",
+   "firstWave": false,
+   "named": [
+    "V2-08"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Peer-club collaboration",
+   "viewNote": "Named for a 90-minute build-along and cross-campus venture pairing (V2-08).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 20,
+   "name": "Composio",
+   "type": "Agent tooling",
+   "purpose": "45 to 60-minute session on agents and human-approved workflows, with a small sandbox demo",
+   "tier": "2",
+   "tierNum": 2,
+   "disclose": false,
+   "template": "Workshop",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-05",
+   "valueRow": "Co-host or platform",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 21,
+   "name": "Futurense Technologies",
+   "type": "Edtech; the institute's partner for the AI-native MBA",
+   "purpose": "One BMS pilot session on an agentic AI workflow; AI Clinic enterprise problem statements; possible sponsorship of a launch session (via the institute's programme office)",
+   "tier": "3",
+   "tierNum": 3,
+   "disclose": false,
+   "template": "Warm institutional / sponsor",
+   "firstWave": false,
+   "named": [
+    "V2-01",
+    "V2-05",
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The institute's edtech partner for the AI-native MBA. Futurense, Sarvam AI and Unstop each appear in several target lists, so one person should approach each (V2-01). Route via the faculty advisor or programme office. Do not say the partner already sponsors the club.",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 22,
+   "name": "Basant Prabhat Gupta (AIVidya)",
+   "type": "Mentor",
+   "purpose": "One 45-minute AI-governance case clinic; returning speaker",
+   "tier": "3",
+   "tierNum": 3,
+   "disclose": false,
+   "template": "Case clinic",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Live project or mentorship",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 23,
+   "name": "IIT Mandi iHub and HCI Foundation",
+   "type": "Innovation hub",
+   "purpose": "Co-host a design challenge; incubation visit",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Co-host",
+   "firstWave": false,
+   "named": [
+    "V2-08"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Co-host or platform",
+   "viewNote": "Named for a joint design challenge (V2-08).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 24,
+   "name": "Prof. Varun Dutt, IIT Mandi",
+   "type": "Academic",
+   "purpose": "30-minute online talk on how people decide with AI",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Expert",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-10",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 25,
+   "name": "Analytics India Magazine",
+   "type": "Media",
+   "purpose": "Editorial coverage; student explainer; speaker referral",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Media",
+   "firstWave": false,
+   "named": [
+    "V2-11"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Media",
+   "viewNote": "Writes about Indian AI daily and has a published community or partnership route, as the document reports. Write one finished piece first (V2-11).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 26,
+   "name": "Krutrim AI",
+   "type": "AI company",
+   "purpose": "Cloud credits; hackathon infrastructure support",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Sponsor",
+   "firstWave": false,
+   "named": [
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The document notes Krutrim's past cloud credit offers and a record of sponsoring student events (V2-09).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 27,
+   "name": "Fetch.ai Innovation Lab",
+   "type": "Agentic-AI company, education arm",
+   "purpose": "Event sponsorship and case-competition support",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Sponsor",
+   "firstWave": false,
+   "named": [
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The document notes a record of sponsoring student events (V2-09).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 28,
+   "name": "InterviewBuddy",
+   "type": "Interview-preparation startup",
+   "purpose": "Event sponsorship (resource partner); Career Lab",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Sponsor",
+   "firstWave": false,
+   "named": [
+    "V2-09"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Sponsorship (cash or in kind)",
+   "viewNote": "The document notes a record of sponsoring student events (V2-09).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 29,
+   "name": "Mu Sigma",
+   "type": "Analytics and decision sciences",
+   "purpose": "Case-contest collaboration",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Collaboration",
+   "firstWave": false,
+   "named": [
+    "V2-05"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Live project or mentorship",
+   "viewNote": "The document names Mu Sigma's Mureka contest as an example of a company that runs B-school contests (V2-05).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 30,
+   "name": "Automation Anywhere",
+   "type": "Process automation",
+   "purpose": "Platform access and automation certification for academic use",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Collaboration",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-05",
+   "valueRow": "Live project or mentorship",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 31,
+   "name": "IIM Shillong, bITeSys (business and technology club)",
+   "type": "Peer IIM club",
+   "purpose": "Joint inter-IIM AI event or ideation contest",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Collaboration",
+   "firstWave": false,
+   "named": [
+    "V2-08"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Peer-club collaboration",
+   "viewNote": "A fellow IIM is a lighter collaboration than a company (V2-08).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 32,
+   "name": "DSG and E-Cell, IIT Roorkee",
+   "type": "Student bodies",
+   "purpose": "Co-host sprint; cross-campus venture pairing",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Co-host",
+   "firstWave": false,
+   "named": [
+    "V2-08"
+   ],
+   "categoryInitiative": null,
+   "valueRow": "Peer-club collaboration",
+   "viewNote": "Named for a co-hosted sprint and cross-campus venture pairing (V2-08).",
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 33,
+   "name": "Yellow.ai",
+   "type": "AI company",
+   "purpose": "Live project and mentorship via product and university-relations teams",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Live project",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-05",
+   "valueRow": "Live project or mentorship",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 34,
+   "name": "LimeChat",
+   "type": "AI company",
+   "purpose": "Live project and mentorship",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Live project",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-05",
+   "valueRow": "Live project or mentorship",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 35,
+   "name": "Open Theory Labs",
+   "type": "AI product studio",
+   "purpose": "Mentor on applied AI systems, agents and LLM applications",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Mentor",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-05",
+   "valueRow": "Live project or mentorship",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 36,
+   "name": "XE Labs",
+   "type": "Agentic AI and automation",
+   "purpose": "Mentor and product-building guidance",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Mentor",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-05",
+   "valueRow": "Live project or mentorship",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 37,
+   "name": "Yatin Batra",
+   "type": "Speaker or mentor",
+   "purpose": "LLM workflows; a session on Google AI Studio",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Expert",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 38,
+   "name": "Prof. Arpan Kumar Kar; Prof. Sawan Rathi; Prof. Saji K. Mathew; Dr. Prathosh A. P.; Dr. Aman Pathak; Dr. Amit Kumar Jaiswal",
+   "type": "Academics (affiliations as implied by contact domains: IIT Delhi, IIT Bombay, IIT Madras, IISc, IIT Jodhpur; one unstated)",
+   "purpose": "Speaker pool across enterprise AI, innovation management, human-AI collaboration, generative models, analytics and agents",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Expert",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-10",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": "Affiliations are as implied by contact domains in the working notes (IIT Delhi, IIT Bombay, IIT Madras, IISc, IIT Jodhpur; one unstated). Six people are grouped in this one row of the document.",
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 39,
+   "name": "Jaspreet Bindra; Sidu Ponnappa (Realfast.ai)",
+   "type": "Expert speakers",
+   "purpose": "Fireside chats",
+   "tier": "4",
+   "tierNum": 4,
+   "disclose": false,
+   "template": "Expert / fireside",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": "Two named individuals are grouped in this row.",
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 40,
+   "name": "Vaibhav Sisinty (GrowthSchool); Ansh Mehra (Cutting Edge School)",
+   "type": "AI educators and trainers",
+   "purpose": "Expert sessions on AI tools, agents and careers for non-technical audiences",
+   "tier": "5",
+   "tierNum": 5,
+   "disclose": false,
+   "template": "Expert",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": "Two named individuals are grouped in this row.",
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 41,
+   "name": "Sravanth Aluru (Avataar.ai)",
+   "type": "Founder",
+   "purpose": "Banker-turned-founder talk on AI product and business strategy",
+   "tier": "5",
+   "tierNum": 5,
+   "disclose": false,
+   "template": "Expert",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 42,
+   "name": "Varun Mayya",
+   "type": "Founder and creator",
+   "purpose": "Fireside chat",
+   "tier": "5",
+   "tierNum": 5,
+   "disclose": false,
+   "template": "Expert / fireside",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Expert session",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 43,
+   "name": "ElevenLabs India (two named speakers)",
+   "type": "AI company",
+   "purpose": "45-minute virtual session on voice agents in Indian customer workflows",
+   "tier": "5",
+   "tierNum": 5,
+   "disclose": false,
+   "template": "Executive speaker",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Executive thought leadership",
+   "viewNote": null,
+   "flag": "Two named speakers are grouped in this row; the document does not name them.",
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  },
+  {
+   "id": 44,
+   "name": "Fractal Analytics",
+   "type": "Analytics firm",
+   "purpose": "30 to 40-minute talk from an AI or decision-intelligence leader via the official contact route",
+   "tier": "5",
+   "tierNum": 5,
+   "disclose": false,
+   "template": "Executive speaker",
+   "firstWave": false,
+   "named": [],
+   "categoryInitiative": "V2-04",
+   "valueRow": "Executive thought leadership",
+   "viewNote": null,
+   "flag": null,
+   "website": null,
+   "description": null,
+   "contactPerson": null,
+   "email": null,
+   "phone": null,
+   "contactPage": null,
+   "sources": null
+  }
+ ],
+ "firstWave": {
+  "1": {
+   "why": "The alumni cell ranks first on access. Alumni can serve on career panels, fill in for any cancelled guest and mentor on Build Day (V2-06).",
+   "propose": "A list of alumni in AI and analytics roles for 20-minute Friday talks.",
+   "next": "Approach the Cell through the faculty advisor, build a list of ten alumni, then send the alumnus letter after the introduction.",
+   "timing": "Month 0 approach; Week 1 send (Tier 1)."
+  },
+  "2": {
+   "why": "A trained pool of faculty gives a roster across the year rather than one evening (V2-10).",
+   "propose": "One faculty member for a 30-minute session on AI in finance practice.",
+   "next": "Faculty advisor approves the first two bodies; send the expert-session letter asking for one faculty member from a pool, not an institutional tie-up. Disclose the personal connection in the first line.",
+   "timing": "Month 0 approval, Month 1 letter (V2-10); Tier 1 is Week 1."
+  },
+  "3": {
+   "why": "Finance and commerce bodies fit the annual-report, money, ethics and back-office sessions (V2-10).",
+   "propose": "Two sessions a year (AI for a young finance professional; AI and ethics) and a speaker for the annual-report session.",
+   "next": "Same route as the ICAI committee: advisor approval, then the expert-session letter. Disclose the personal connection in the first line.",
+   "timing": "Month 0 approval, Month 1 letter (V2-10); Tier 1 is Week 1."
+  },
+  "4": {
+   "why": "A quizzing club can run scoring and the microphone for the guessing game. A first-year club gets further by asking existing bodies than by starting a rival (V2-07).",
+   "propose": "Scoring and the microphone for Session 4.",
+   "next": "A short note via the faculty advisor stating one session, the body's exact role and what the club brings. Nothing is agreed until the body replies.",
+   "timing": "3 weeks of lead time before Session 4 (Month 2)."
+  },
+  "5": {
+   "why": "The IT and analytics club is the natural body to suggest a dataset and read what pairs produce (V2-07).",
+   "propose": "A dataset suggestion and a reviewer for Sessions 7 and 10.",
+   "next": "Short note via the faculty advisor, one session, exact role.",
+   "timing": "4 weeks of lead time (Months 4 to 5)."
+  },
+  "6": {
+   "why": "The finance club can check the money content before it is shown (V2-07).",
+   "propose": "A member checks the EMI calculator before Session 18.",
+   "next": "Short note via the faculty advisor, one session, exact role.",
+   "timing": "4 weeks of lead time (Month 9)."
+  },
+  "7": {
+   "why": "Marketing feedback and Media Cell approval keep the campaign session honest (V2-07).",
+   "propose": "Campaign feedback and approval before posting (Session 21).",
+   "next": "Short note via the faculty advisor; nothing is posted before the Media Cell has seen it.",
+   "timing": "4 weeks of lead time (Month 11)."
+  },
+  "8": {
+   "why": "The cell vets CVs against the checklist used on campus (V1-13).",
+   "propose": "CV vetting and mock interviews for the Career Lab.",
+   "next": "Agree a slot and ask for a volunteer and their checklist.",
+   "timing": "6 weeks of lead time (Career Lab, Terms 3 and 4)."
+  },
+  "9": {
+   "why": "The cell can supply mentors and judges for non-coders and startup-style events (V2-07).",
+   "propose": "Mentors and judges for the Sell It track; a jury for startup-style events.",
+   "next": "Short note via the faculty advisor, stating the exact role.",
+   "timing": "Ahead of Neural Fest (12-week lead time)."
+  },
+  "10": {
+   "why": "It owns corporate relations, so every company approach must pass through it (V2-02, V2-07, V2-14).",
+   "propose": "Gatekeeper for company approaches and corporate relationships.",
+   "next": "Route every company approach for Neural Fest through it first.",
+   "timing": "Before any company is contacted."
+  },
+  "11": {
+   "why": "The society can structure the cases and moderate the debate (V2-07).",
+   "propose": "Structure and moderate AI on Trial (Session 16).",
+   "next": "Short note via the faculty advisor, one session, exact role.",
+   "timing": "6 weeks of lead time (Month 8)."
+  },
+  "12": {
+   "why": "The committee can co-run a media and creative event (V2-07).",
+   "propose": "Co-run the AI x Media creative event.",
+   "next": "Short note via the faculty advisor, one session, exact role.",
+   "timing": "Not stated in the document."
+  }
+ },
+ "ladder": [
+  {
+   "stage": "Pilot",
+   "looks": "One session, one challenge or one clinic with a clear owner and output",
+   "entry": "Partner replies to a small, specific ask"
+  },
+  {
+   "stage": "Repeat",
+   "looks": "A second event or a recurring slot (monthly guest, annual workshop)",
+   "entry": "Pilot delivered and reported; partner willing to repeat"
+  },
+  {
+   "stage": "Programme",
+   "looks": "A standing role: platform partner for Neural Fest, a mentor programme, a labelled challenge series",
+   "entry": "Two successful events and written confirmation of roles"
+  },
+  {
+   "stage": "Strategic",
+   "looks": "Joint projects, internships, co-branded content",
+   "entry": "Only after sustained delivery; never promised in a first email"
+  }
+ ],
+ "first30": [
+  {
+   "week": "Week 0",
+   "actions": "Faculty advisor approves the first ten targets and pitch pack; Partnerships Manager verifies routes; first one-page event note",
+   "output": "Approved pack"
+  },
+  {
+   "week": "Week 1",
+   "actions": "Send tier-1 messages: Alumni Cell via advisor; one professional body; two or three campus bodies; one peer club",
+   "output": "Ledger shows sent counts"
+  },
+  {
+   "week": "Week 2",
+   "actions": "Send tier-2 messages (platform listing; peer developer community; published campus programmes); hold a cross-club planning call",
+   "output": "First replies"
+  },
+  {
+   "week": "Weeks 3 to 4",
+   "actions": "Approach three speaker and mentor targets; convert one pilot to a confirmed date or a clear decline; publish nothing about a partner before approval",
+   "output": "One confirmed pilot or decline logged"
+  }
+ ],
+ "quarterly": [
+  "Month 1 to 3: tier-1 and tier-2 contacts; first guest session; recap content engine live; first partner report.",
+  "Month 4 to 6: Neural Exchange monthly; industry judge for Sessions 10 and 12; two outside teams at Session 12; media piece written.",
+  "Month 7 to 9: co-delivery sessions; sponsorship and platform asks for Build Day and Neural Fest; speaker pipeline refreshed.",
+  "Month 10 to 12: Neural Fest outreach (T minus 12 weeks); partner reports; annual review; handover."
+ ],
+ "value": [
+  {
+   "purpose": "Sponsorship (cash or in kind)",
+   "leads": "The event and who will be in the room",
+   "offer": "Named thanks, short report with photographs and anonymous feedback; demo or workshop slot; honest product feedback from users; no data and no exclusivity",
+   "ask": "One small specific item: two mentors, tool credits or a prize"
+  },
+  {
+   "purpose": "Expert session",
+   "leads": "Why this person and nobody else",
+   "offer": "Logistics handled; questions in advance; feedback after; an engaged audience of future managers",
+   "ask": "Thirty minutes on a narrow topic"
+  },
+  {
+   "purpose": "Co-host or platform",
+   "leads": "A shared idea",
+   "offer": "Equal credit; format co-designed; own registrations; recap",
+   "ask": "A fifteen-minute call, one mentor, or listing the event"
+  },
+  {
+   "purpose": "Media",
+   "leads": "A reader we both have",
+   "offer": "Student-written pieces; the editor stays in control; no ad space asked",
+   "ask": "A pointer to one practitioner and coverage of one event"
+  },
+  {
+   "purpose": "Alumni mentor",
+   "leads": "A shared campus",
+   "offer": "A warm audience that will turn up",
+   "ask": "Twenty minutes of honest advice"
+  },
+  {
+   "purpose": "Live project or mentorship",
+   "leads": "A defined, small project",
+   "offer": "Structured student findings; product stress-testing; audit pods at no cost",
+   "ask": "A real problem statement and one mentor"
+  },
+  {
+   "purpose": "Peer-club collaboration",
+   "leads": "Shared ownership of a build or challenge",
+   "offer": "Joint brief; both clubs recruit and document",
+   "ask": "A two-hour joint session"
+  },
+  {
+   "purpose": "Executive thought leadership",
+   "leads": "A specific, narrow topic",
+   "offer": "A 30 to 40-minute moderated conversation; a short briefing note",
+   "ask": "A speaker from the right team, not a chief executive"
+  }
+ ],
+ "templateLibrary": [
+  {
+   "template": "Sponsor (cash or in kind)",
+   "use": "Support for one event",
+   "route": "Programme desk or institute introduction",
+   "getRight": "One specific ask; no invented figure"
+  },
+  {
+   "template": "Expert session",
+   "use": "One talk",
+   "route": "The person, not the institution",
+   "getRight": "Name the topic yourself"
+  },
+  {
+   "template": "Co-host or platform",
+   "use": "Joint beginners challenge or listing",
+   "route": "Chapter organiser or partnerships address",
+   "getRight": "Start smaller (one mentor) if a full event is too much"
+  },
+  {
+   "template": "Media partner",
+   "use": "Student explainer and event coverage",
+   "route": "Editorial or community team",
+   "getRight": "Write the piece first"
+  },
+  {
+   "template": "Alumni mentor",
+   "use": "Twenty-minute talk",
+   "route": "Alumni cell first, then individual",
+   "getRight": "Take the introduction before writing"
+  },
+  {
+   "template": "Community programme application",
+   "use": "Funded event costs from a community programme",
+   "route": "The programme's official application",
+   "getRight": "Only after evidence of community execution"
+  },
+  {
+   "template": "Campus event sponsorship",
+   "use": "Educational simulation with a finance or platform brand",
+   "route": "The partner's campus page",
+   "getRight": "Do not imply real-money trading or tips; use synthetic data"
+  },
+  {
+   "template": "Warm institutional extension",
+   "use": "Build on an existing institute link",
+   "route": "Official company contact, asking it to route",
+   "getRight": "Do not say the partner already sponsors the club"
+  },
+  {
+   "template": "Hands-on workshop",
+   "use": "A build-along",
+   "route": "Published partnership inbox or founder profile",
+   "getRight": "Specify what participants will make and verify"
+  },
+  {
+   "template": "Peer-club collaboration",
+   "use": "Joint build session",
+   "route": "Club email on its collaboration page",
+   "getRight": "Shared ownership, not a sponsorship bet"
+  },
+  {
+   "template": "Executive thought leadership",
+   "use": "A leader's talk",
+   "route": "Official contact page; ask to route",
+   "getRight": "Treat as a stretch; do not guess an executive email"
+  },
+  {
+   "template": "Returning mentor case clinic",
+   "use": "One focused clinic",
+   "route": "Published personal contact",
+   "getRight": "One clinic first; no standing advisory board promise"
+  },
+  {
+   "template": "Collaboration pilot",
+   "use": "Joint competition, workshop or inter-IIM event",
+   "route": "Partnerships contact",
+   "getRight": "Offer a smaller pilot"
+  },
+  {
+   "template": "Live project / fireside",
+   "use": "Partner problem or founder conversation",
+   "route": "Verified contact via the pitch selector",
+   "getRight": "Lead with partner benefit"
+  }
+ ],
+ "interlock": [
+  {
+   "need": "Session 4 Human or AI? Game Night",
+   "contribution": "Quizzar runs scoring and microphone",
+   "initiatives": "V1-04, V2-07",
+   "lead": "3 weeks"
+  },
+  {
+   "need": "Sessions 7 and 10 data and case work",
+   "contribution": "Datonics suggests a dataset and reviews output; an industry guest joins Session 10 by video as judge",
+   "initiatives": "V1-01, V2-07, V2-04",
+   "lead": "4 weeks"
+  },
+  {
+   "need": "Session 12 Zero Rupee Consultant",
+   "contribution": "A senior or faculty judge; two outside teams online; optional industry observer",
+   "initiatives": "V1-09, V2-08",
+   "lead": "6 weeks"
+  },
+  {
+   "need": "Session 14 data rights",
+   "contribution": "Guest or advisor with data-protection knowledge; dates re-checked",
+   "initiatives": "V1-07, V2-10",
+   "lead": "4 weeks"
+  },
+  {
+   "need": "Session 16 AI on Trial",
+   "contribution": "The Dialectical Society structures the case and moderates",
+   "initiatives": "V1-09, V2-07",
+   "lead": "6 weeks"
+  },
+  {
+   "need": "Session 18 Where the Money Goes",
+   "contribution": "A Finserve member vets the calculator; an ICAI or BCAS speaker for the annual-report session earlier",
+   "initiatives": "V2-07, V2-10",
+   "lead": "4 weeks"
+  },
+  {
+   "need": "Session 21 Marketing Team of One",
+   "contribution": "Markaizen feedback; Media Cell approval before posting",
+   "initiatives": "V2-07, V2-12",
+   "lead": "4 weeks"
+  },
+  {
+   "need": "Career Lab",
+   "contribution": "Training and Development Cell volunteer; alumni panel; partner info session",
+   "initiatives": "V1-13, V2-06, V2-07",
+   "lead": "6 weeks"
+  },
+  {
+   "need": "Session 23 Build Day",
+   "contribution": "Mentors from seniors and alumni, judges, prizes and tool credits, space for sponsor demos",
+   "initiatives": "V1-10, V2-06, V2-09",
+   "lead": "8 weeks"
+  },
+  {
+   "need": "Session 24 Neural Fest",
+   "contribution": "Outside teams, industry judges, problem setters, platform listing, media, approvals",
+   "initiatives": "V1-11, V2-08, V2-14",
+   "lead": "12 weeks"
+  },
+  {
+   "need": "Monthly guest slot (from Month 3)",
+   "contribution": "Speaker pipeline, brief, thank-you and report",
+   "initiatives": "V2-04, V2-15",
+   "lead": "6 weeks per guest"
+  },
+  {
+   "need": "Content for partners",
+   "contribution": "Recaps, Field Guide excerpts, demos, student questions",
+   "initiatives": "V1-06, V2-12",
+   "lead": "Weekly"
+  },
+  {
+   "need": "Partner problem statements",
+   "contribution": "Company briefs converted to cases and projects",
+   "initiatives": "V2-05, V1-08, V1-09",
+   "lead": "6 weeks"
+  }
+ ],
+ "coordination": [
+  "Weekly 30-minute sync of the two leads and the Programme Coordinator: this week's sessions, next three weeks' needs from each side, pipeline changes.",
+  "Shared calendar and ledger showing every session, its outside dependencies and their status; one pipeline ledger (V2-02) read by both verticals.",
+  "Monthly joint review of the dashboard in Section 4.6.",
+  "One approval path: Faculty Advisor for targets, events and wording; Media Cell for anything posted under the institute's name; Industrial Relations and Sponsorship Committee for companies.",
+  "Independence rule: the core 24 sessions never depend on an external partner. If a partner declines or is silent, the session runs as written."
+ ],
+ "roles": [
+  {
+   "role": "Faculty Advisor",
+   "vertical": "Both",
+   "duty": "Approves targets, events, wording and public demos; signs the code of practice; copied on external mail",
+   "initiatives": "V1-15, V2-02"
+  },
+  {
+   "role": "Programme Coordinator",
+   "vertical": "Both",
+   "duty": "Calendar, rooms, shared sheets, weekly sync, handover pack",
+   "initiatives": "V1-01, V1-16"
+  },
+  {
+   "role": "Curation Lead",
+   "vertical": "1",
+   "duty": "Owns the curriculum, blueprint, levels and quality of sessions",
+   "initiatives": "V1-01 to V1-03"
+  },
+  {
+   "role": "Play Lead and Community Lead",
+   "vertical": "1",
+   "duty": "Play sessions and bank; Duo Swap, points, awards, pods",
+   "initiatives": "V1-04, V1-05"
+  },
+  {
+   "role": "Content and Field Guide Editor; Radar Editor and checkers",
+   "vertical": "1",
+   "duty": "Field Guide, recaps, takeaways; monthly Radar; tool vetting; research standard",
+   "initiatives": "V1-03, V1-06, V1-07"
+  },
+  {
+   "role": "Projects Lead; Case Lead",
+   "vertical": "1",
+   "duty": "Problem Board, ladder, Build Day, competitions, Neural Fest build side",
+   "initiatives": "V1-08 to V1-11"
+  },
+  {
+   "role": "Maker Track Lead; Careers Lead",
+   "vertical": "1",
+   "duty": "Advanced labs; CV, panel, portfolio",
+   "initiatives": "V1-12, V1-13"
+  },
+  {
+   "role": "Quality Lead",
+   "vertical": "1",
+   "duty": "Slips, counts, mid-year review, code of practice, continuity plan",
+   "initiatives": "V1-14 to V1-16"
+  },
+  {
+   "role": "Session hosts, co-hosts, floaters, note-takers, mentors",
+   "vertical": "1",
+   "duty": "Run sessions to the blueprint; unblock participants",
+   "initiatives": "V1-02"
+  },
+  {
+   "role": "Outreach Lead",
+   "vertical": "2",
+   "duty": "Owns the pipeline, approvals and sequence; weekly sync",
+   "initiatives": "V2-01 to V2-03"
+  },
+  {
+   "role": "Partnerships Manager; Pipeline Keeper",
+   "vertical": "2",
+   "duty": "Portfolio, ledger, templates, verification, reports",
+   "initiatives": "V2-01, V2-02, V2-15"
+  },
+  {
+   "role": "Speaker Liaison; Academic Liaison; Industry Partnerships Lead",
+   "vertical": "2",
+   "duty": "Neural Exchange; professional bodies and academics; live projects",
+   "initiatives": "V2-04, V2-05, V2-10"
+  },
+  {
+   "role": "Alumni Liaison; Campus Liaison",
+   "vertical": "2",
+   "duty": "Alumni network; campus bodies; inter-college clubs",
+   "initiatives": "V2-06 to V2-08"
+  },
+  {
+   "role": "Sponsorship Lead; Event Outreach Lead",
+   "vertical": "2",
+   "duty": "Platforms, credits, prizes; Neural Fest and Demo Day outreach",
+   "initiatives": "V2-09, V2-14"
+  },
+  {
+   "role": "Media Lead; Social and Content Lead; Awareness Lead",
+   "vertical": "2",
+   "duty": "Media partner; channels and content engine; awareness campaigns",
+   "initiatives": "V2-11 to V2-13"
+  }
+ ],
+ "matrix": [
+  [
+   "Activity",
+   "Curation Lead",
+   "Outreach Lead",
+   "Prog. Coordinator",
+   "Faculty Advisor",
+   "Hosts"
+  ],
+  [
+   "Annual calendar",
+   "A",
+   "C",
+   "R",
+   "C",
+   "I"
+  ],
+  [
+   "Session run-sheet and test-run",
+   "A",
+   "I",
+   "I",
+   "I",
+   "R"
+  ],
+  [
+   "Target approval and first send",
+   "C",
+   "A/R",
+   "I",
+   "A",
+   "—"
+  ],
+  [
+   "Guest session",
+   "C",
+   "A",
+   "R",
+   "I",
+   "R"
+  ],
+  [
+   "Case competition (Session 12)",
+   "A/R",
+   "C (judges)",
+   "I",
+   "I",
+   "R"
+  ],
+  [
+   "Neural Fest",
+   "R (build)",
+   "R (outreach)",
+   "A",
+   "A (approval)",
+   "C"
+  ],
+  [
+   "Public post under club name",
+   "C",
+   "C",
+   "I",
+   "I",
+   "—"
+  ],
+  [
+   "Mid-year review",
+   "A/R",
+   "C",
+   "R",
+   "C",
+   "C"
+  ],
+  [
+   "Handover pack",
+   "A",
+   "A",
+   "R",
+   "C",
+   "I"
+  ]
+ ],
+ "indicators": [
+  {
+   "indicator": "Pipeline",
+   "target": "Targets contacted, replies, meetings held, pilots agreed",
+   "tracked": "Pipeline ledger"
+  },
+  {
+   "indicator": "Delivery",
+   "target": "Attendance against RSVP, completion of planned activity, participant feedback, demo or workshop output",
+   "tracked": "Session record"
+  },
+  {
+   "indicator": "Partner value",
+   "target": "Approved content reach, voluntary product trials, useful product feedback, willingness to repeat",
+   "tracked": "Partner report"
+  },
+  {
+   "indicator": "Approval compliance",
+   "target": "100% of first messages approved by the faculty advisor",
+   "tracked": "Ledger flag"
+  },
+  {
+   "indicator": "Follow-through",
+   "target": "100% of interactions closed out within five days",
+   "tracked": "Ledger date"
+  },
+  {
+   "indicator": "Reply discipline",
+   "target": "Exactly one follow-up per contact; zero bulk copies",
+   "tracked": "Ledger audit"
+  },
+  {
+   "indicator": "Contact hygiene",
+   "target": "Zero guessed or unverified addresses sent",
+   "tracked": "Source-page column"
+  },
+  {
+   "indicator": "Content cadence",
+   "target": "Recap within 24 hours; weekly Did-you-know; monthly Radar",
+   "tracked": "Content calendar"
+  },
+  {
+   "indicator": "Reach",
+   "target": "Outside registrations for Neural Fest; media pieces; referrals",
+   "tracked": "Registration data"
+  }
+ ],
+ "outcomes": [
+  "At least ten partners contacted by the end of Month 1 and at least three confirmed collaborations or sessions by Month 6.",
+  "A guest, alumnus or practitioner session in most months from Month 3.",
+  "A confirmed platform or credit partner and at least three judges and one problem setter for Neural Fest.",
+  "A public record (recaps, projects, one or two media pieces) that makes later pitches stronger.",
+  "Documented partner relationships that survive a change of committee."
+ ],
+ "objectives": [
+  "Build a verified, tiered pipeline of partners matched to specific asks, and work it in a disciplined order.",
+  "Bring an outside voice or judge into the club roughly every month, always with a hands-on moment.",
+  "Secure the resources the curation programme needs: judges, problem statements, mentors, platform access, prizes.",
+  "Build campus, alumni and peer-club relationships that deliver value without money.",
+  "Make the club visible: consistent recaps, a content engine and a few well-chosen media relationships.",
+  "Run every contact with integrity: faculty-advisor approval, verified contacts, honest claims, one follow-up, a thank-you and a report."
+ ],
+ "central": [
+  "The central idea. The Neural Network should not sell itself as a college club looking for logos. It should offer partners a well-scoped way to meet curious management students, test a business use case, teach a practical skill or build a responsible student community. The strongest first move is a small pilot with a clear owner and output. Earn the right to ask for recurring support only after the pilot works.",
+  "The positioning. The club's edge is a management lens: students who work out how an AI tool makes money, fits into an enterprise workflow or scales across tier-2 markets. Pitch the cohort's management perspective. Do not promise campus footfall, internships, attendee data or exclusivity."
+ ],
+ "initiatives": [
+  {
+   "id": "V2-01",
+   "title": "Partner Intelligence and Target Portfolio",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Maintain one verified, tiered list of every partner, speaker and collaborator proposed, each matched to a specific ask and a template.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Internal (committee and Outreach team); the list directs all external contact.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "The outreach plan names about forty external targets and the curation plan names more (campus clubs, committees, guests). Without a single list, the same organisation (Futurense, Sarvam AI and Unstop each appear in several target lists) would be approached several times by different people.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Test each name against four questions: Is there a visible reason to engage? Is there a published channel? Does the club have something specific to offer? Is the ask small? Order by speed of reply, not by prestige. Skip global giants whose outreach dies in a PR inbox.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Internal only. Each row records access tier, purpose, ask, contact route and its source page, confidence, fallback, template and two separate ratings: priority (how much the partner matters) and chance of a first yes.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Week 0: merge the lists in Section 3.6 and remove duplicates.",
+       "li": true
+      },
+      {
+       "t": "Re-check every named person's current role, the programme's current terms and the contact route on the organisation's own page. Some routes came from 2024 notices and need re-checking; the contact research is dated 31 October 2026.",
+       "li": true
+      },
+      {
+       "t": "Keep contact details only where the organisation or person publishes them; never guess an address.",
+       "li": true
+      },
+      {
+       "t": "Mark conflicts of interest and personal connections for disclosure.",
+       "li": true
+      },
+      {
+       "t": "Review monthly: promote, demote or drop.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Shared sheet, a named keeper, access to partners' own sites.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Partnerships Manager (owner); Pipeline Keeper; Faculty Advisor reviews tier-one targets.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "A single source of truth and a sequenced attack order.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Notes on every touch are kept in the pipeline ledger (V2-02).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Share of rows with a verified contact route and source page; duplicates avoided; targets contacted against plan.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Now"
+   }
+  },
+  {
+   "id": "V2-02",
+   "title": "Outreach Operating System: pipeline, approvals and contact hygiene",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Run every external contact through one disciplined process so that it is fast, honest and tracked.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Internal; indirectly every partner.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Good execution beats a long list: an owner, a rhythm and a next action for every conversation. A visible ledger supports this.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Not applicable (internal process); target selection is in V2-01.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "First email under 150 words, one specific ask, personalised with one verified detail; one follow-up after four to seven working days, then stop; one person per organisation and no bulk copies; do not attach the year plan, send a one-page note on a single event; LinkedIn contextual request only where a public profile exists, not repeated messages across channels.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Six stages: (1) Prepare: a one-page concept note, approved date range, event owner, expected participants, delivery format, estimated budget, what the partner is asked to provide. (2) Prioritise: days 1 to 2, start with the clearest routes. (3) Contact: days 2 to 4, official route first. (4) Follow up: once, after four to five business days. (5) Confirm: speaker, date, format, consent to record, promotional approvals, API or demo access, budget, travel and cancellation terms, in writing. (6) Close the loop: within five days send thanks, attendance and feedback summary, approved photos or links, outcomes and one specific next-step proposal.",
+       "li": false
+      },
+      {
+       "t": "Approvals: the faculty advisor approves the target, event and wording and is copied on every mail; nothing goes out on institute letterhead without approval; any company approach for a festival goes through the Industrial Relations and Sponsorship Committee first.",
+       "li": false
+      },
+      {
+       "t": "Contact hygiene: no guessed emails, no wrong desk (sales, technical support or hiring addresses are not partnership contacts), no unearned promises (no guaranteed sign-ups, attendance, internships, funding or product adoption), refresh role and programme status before sending, disclose personal introductions and connections in the first line.",
+       "li": false
+      },
+      {
+       "t": "Pipeline ledger: a tracker of total, sent, in talks and locked, with status and next-step notes for every target.",
+       "li": false
+      },
+      {
+       "t": "First 30 days: week 1 build the pack; week 2 create momentum; weeks 3 to 4 convert one pilot.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Pipeline sheet, one-page event notes, approval email template, shared inbox or team address.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Outreach Lead (owner); Pipeline Keeper; Faculty Advisor.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Fewer wasted messages, no avoidable embarrassments, every conversation with a next action.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "The ledger holds the history so that a change of committee does not break relationships.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Pipeline counts (targets contacted, replies, meetings, pilots agreed); share of messages approved before sending (target 100%); close-the-loop completed within five days (target 100%).",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Now"
+   }
+  },
+  {
+   "id": "V2-03",
+   "title": "Pitch Playbook and Template Library",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Give the team a ready, honest pitch for each purpose, built around what the partner gains.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Internal; indirectly all partners.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "A request for money and a request for time are different letters. Nine purpose-built drafts, further templates and four categories with a selector are consolidated here, which avoids a new letter for every email.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Select the template by purpose, then fill from the partner's own recent, checked activity (a talk, event or page).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Message anatomy (consolidated): (1) one checked, specific first line about them; (2) who we are in one line; (3) one specific ask only; (4) what the partner gains, framed as a possible outcome not a promise; (5) what we handle: link, room, questions in advance, moderation, recap; (6) a small first step: fifteen-minute call, one mentor, or a ten-minute recorded answer to three questions; (7) cc the faculty advisor. Keep under about 150 words.",
+       "li": false
+      },
+      {
+       "t": "Templates (see Section 3.5): sponsor in cash or kind; expert session; co-host or platform; media partner; alumni mentor; community programme application and campus event sponsorship, workshop, peer-club collaboration, executive routing; returning mentor case clinic; sponsorship tiers with an offer of demo slots and honest product feedback; speaker, mentor, sponsor and collaborator templates.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Store templates in one place with a \"before sending\" caution for each.",
+       "li": true
+      },
+      {
+       "t": "Fill every bracket; never send with an invented number in a first email.",
+       "li": true
+      },
+      {
+       "t": "Offer only what the club controls. Replace any claim that cannot be backed by evidence, for example a stated audience size or a promise to bring a fixed number of teams, until the club has a record to cite.",
+       "li": true
+      },
+      {
+       "t": "Write one finished piece before approaching media.",
+       "li": true
+      },
+      {
+       "t": "Log each version used.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Template files; one-page concept note template; Field Guide excerpts and recap samples as proof of work.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Partnerships Manager; Social and Content Lead for supporting material; Faculty Advisor for approval.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Consistent, credible pitches and a higher reply rate.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Each reply and each decline is recorded and its reason noted for the next approach.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Reply rate by template; share of messages passing the \"before sending\" check; time from draft to approval.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Now"
+   }
+  },
+  {
+   "id": "V2-04",
+   "title": "Neural Exchange: Expert and Industry Speaker Series",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Bring one practitioner, academic or alumnus to the club roughly every month, in a format that is hands-on and not a product pitch.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "AI startup founders, engineers and researchers, product managers, consultants, content creators, ethics professionals, finance and marketing professionals; IIT, IIM and IISc academics; named expert prospects.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Speakers are a common proposal, but a calendar dependent on outsiders stops when they do, so speakers are a bonus layered on a core that can run without them.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Match speakers to a narrow topic that the speaker actually works on and that fits a session (name the topic yourself; never ask a busy person to think of one). Use the partner portfolio (Section 3.6) and ask alumni and faculty for introductions.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Expert session template: a 30-minute online talk with ten minutes for questions, questions sent in advance, club handles link, room and recap; fallback of a ten-minute recorded reply to three student questions. For founders, a zero-prep fireside: no slide deck, a 45-minute moderated Q and A based on their recent posts. For an executive: 20 minutes of moderated discussion, 15 of demonstration, 10 of student questions.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Month 1 to 2: shortlist ten speakers.",
+       "li": true
+      },
+      {
+       "t": "From Month 2: one-page pitch to each, personalised.",
+       "li": true
+      },
+      {
+       "t": "Two weeks before: one-page guest brief: audience is mixed beginners, no product pitches, one hands-on moment, 20-minute talk plus 15 of questions, slides shared three days before.",
+       "li": true
+      },
+      {
+       "t": "One week before: collect eight student questions; test audio and video; assign a host and timekeeper.",
+       "li": true
+      },
+      {
+       "t": "Within three days after: send thanks, photos and feedback; ask about mentors, internships or a repeat session; log what the partner offered.",
+       "li": true
+      },
+      {
+       "t": "Fallback: alumni, seniors, faculty or local practitioners fill the slot in the same format.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Video platform, moderator, question form, recording consent, one-page brief.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Speaker Liaison (Outreach); Session Host; Curation Lead for topic fit.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "A guest in about eight to ten months of the year; live demonstrations; referrals to further speakers.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Thank-you within three days, a feedback summary, an invitation to the next Demo Day, and one specific next step.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Guest sessions held; average rating; referrals gained; share of guest slots filled by the original target versus fallback.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "Medium",
+    "effort": "Medium",
+    "priority": "Next (first guest Month 3)"
+   }
+  },
+  {
+   "id": "V2-05",
+   "title": "Industry Challenge and Live Projects Programme",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Source real problem statements, mentors and judges from companies so that projects and case events have genuine stakes.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Startups and operators with product-adoption needs; analytics and automation firms; edtech partners; platforms that run case competitions.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Live projects with mentorship, a project ladder with industry judges, companies with a record of B-school case contests and enterprise problem statements, and a clinic or case-challenge model all fit here.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Look for companies that run B-school contests or need management-student feedback (Mu Sigma's Mureka contest; Futurense AI Clinic and Leadership Council; automation vendors with academic MoUs; workflow platforms that value product adoption; finance and platform firms).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Lead with a defined, small project: a one-session clinic, a case challenge, a three-week student pod. Value exchange: students stress-test a product or audit a funnel and send structured findings. Keep the scope small (one workshop, one challenge) before any recurring ask.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Choose two partner problem statements per term.",
+       "li": true
+      },
+      {
+       "t": "Convert each into a case pack (V1-09) or a Rung 3 project brief (V1-08).",
+       "li": true
+      },
+      {
+       "t": "Agree a deliverable format and publication permission in writing.",
+       "li": true
+      },
+      {
+       "t": "Provide a mentor from the partner for the Build Day or Demo Day if possible.",
+       "li": true
+      },
+      {
+       "t": "Return a short findings report within five days of delivery.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "One-page project brief, partner contact, student pods, mentors, report template.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Industry Partnerships Lead; Projects Lead; Case Lead.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Real problems, feedback for partners and strong portfolio pieces.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Report back what students found, invite the partner to judge, and ask whether a second round is useful.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Partner problem statements adopted; projects with a partner mentor; partner satisfaction; repeat requests.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "Medium",
+    "feasibility": "Medium",
+    "effort": "Medium",
+    "priority": "Next"
+   }
+  },
+  {
+   "id": "V2-06",
+   "title": "Alumni Mentor Network",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Use the institute's alumni as the warmest and cheapest source of speakers, mentors and judges.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "IIM Sirmaur alumni working in AI, analytics, finance and technology roles; the Alumni Relations Cell.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "The alumni cell ranks first on access; alumni serve on career panels, as a fallback for any cancelled guest and as Build Day mentors; template T5 is built for this.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Ask the Alumni Relations Cell, through the faculty advisor, for a list of alumni in AI and analytics roles; then search professional networks and ask the cell to vet.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Introduction first through the cell, then the alumnus letter: twenty minutes, how AI comes into your working day, what you would learn first in our place, one mistake to avoid; online on a weekday evening or a Friday.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Month 0: approach the cell through the faculty advisor.",
+       "li": true
+      },
+      {
+       "t": "Build a list of ten alumni; send the T5 letter after the introduction.",
+       "li": true
+      },
+      {
+       "t": "Schedule Friday talks and one careers panel.",
+       "li": true
+      },
+      {
+       "t": "Invite alumni as Build Day mentors and Demo Day judges.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Faculty advisor's introduction; alumni database access via the cell; video link.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Alumni Liaison (owner); Faculty Advisor.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Warm, reliable guests and mentors; a network that returns each year.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Annual \"year in review\" note to alumni; invitations to Demo Day; a thank-you after each contribution.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Alumni contacted and replying; sessions or mentorships delivered; alumni returning.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Now"
+   }
+  },
+  {
+   "id": "V2-07",
+   "title": "Campus Co-Delivery Partnerships",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Run selected sessions with the clubs and committees that already do parts of this work better than a new club could.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Quizzar (quizzing), Datonics (IT and analytics), Finserve (finance), Markaizen (marketing), the Media Cell, the Training and Development Cell, the Entrepreneurship and Incubation Cell, the Industrial Relations and Sponsorship Committee; The Dialectical Society and the Media and Communications Committee.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "A first year with a good idea gets further by asking existing bodies than by starting a rival, and none of the seven proposed sessions depends on a partner (if a body declines the session runs as written). Each joint event has a clear division of roles.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Read each body's own description on the institute's clubs and committees pages (this was done on 1 November 2026; some pages carry old dates, so confirm every line before writing).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "A short note via the faculty advisor, stating one session, the exact role of the body and what the club brings. Nothing is agreed until the body replies.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Role map: Quizzar runs scoring and the microphone for the guessing game (Session 4); Datonics suggests a dataset and reads what pairs produce (Sessions 7 and 10); Finserve checks the EMI calculator before it is shown (Session 18); Markaizen gives feedback on the campaign and the Media Cell approves anything before it is posted (Session 21); the T and D Cell vets CVs and mock interviews (Career Lab); the E&I Cell provides mentors or judges for the Sell It track and for startup-style events (Neural Fest); the Industrial Relations and Sponsorship Committee owns corporate relations, so any company approach for Neural Fest goes to it first; The Dialectical Society structures cases, moderates and trains moderators for AI on Trial (Session 16); the Media and Communications Committee co-runs the AI-powered campaign event.",
+       "li": false
+      },
+      {
+       "t": "Approvals: the faculty advisor approves each request and is copied on every message.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Faculty advisor's sign-off; one-page session note per body.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Campus Liaison (owner); Faculty Advisor; Curation Lead.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Better-run sessions, shared audiences and credibility inside the institute.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Credit the body in the recap; invite its members to Build Day and Demo Day; ask what it wants from the club.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Number of co-delivered sessions held; satisfaction of the partner body; share of sessions that ran as written when a body declined.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Now"
+   }
+  },
+  {
+   "id": "V2-08",
+   "title": "Inter-College and Peer-Club Collaborations",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Run joint activities with peer clubs and neighbouring institutes, starting with online, low-cost formats.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "LEAP AI Club at Plaksha; GDG Chandigarh; the IIT Mandi iHub; DSG and E-Cell at IIT Roorkee; 100xEngineers; IIM Shillong's business-technology club; other IIMs and nearby colleges including one with no club like this.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Peers say yes faster than companies. A fellow IIM is a lighter collaboration than a company. Cross-campus venture pairing, with technical builders and go-to-market and finance leads in mixed teams, is one route; including a college with no AI club is another.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Pick peer clubs whose own page invites collaboration and publishes a club contact (for example LEAP and GDG chapters). Approach clubs directly first and use an institutional contact only as a fallback.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "A two-hour virtual cross-campus build session with mixed teams choosing a business problem, building a lightweight demo and presenting it; both clubs shape the brief, recruit participants and document the best outputs. Or a 60-minute online beginners session with one volunteer mentor followed by a joint mini challenge. Or a joint design challenge (IIT Mandi iHub).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Month 1 to 2: send the peer-club letter to two or three clubs.",
+       "li": true
+      },
+      {
+       "t": "Month 3 to 4: hold the first joint session; document outputs.",
+       "li": true
+      },
+      {
+       "t": "Month 6: open Session 12 to two outside teams online.",
+       "li": true
+      },
+      {
+       "t": "Month 11: invite outside teams to Think It and Sell It at Neural Fest (V1-11).",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Video link, joint brief, shared recap, judges from both sides.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Campus Liaison for inter-IIM clubs; Partnerships Manager; Projects Lead.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Wider reach, new mentors and a stronger Neural Fest field.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Share the recap and each side's credit; propose the next joint event only after the first works.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Joint sessions held; outside teams at Session 12 and Neural Fest; repeat collaboration.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "Medium",
+    "feasibility": "Medium",
+    "effort": "Low",
+    "priority": "Next"
+   }
+  },
+  {
+   "id": "V2-09",
+   "title": "Platform, Credits and Sponsorship Programme",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Obtain platform access, tool credits, event hosting and, where sensible, prizes, in exchange for real value to the partner.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Student platforms (Unstop and similar), AI companies with campus programmes (Sarvam AI, Krutrim, Fetch.ai Innovation Lab), financial-literacy and interview-preparation platforms (StockGro, InterviewBuddy), and the institute's edtech partner (Futurense).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "The clearest routes are published programmes: Unstop's host-with-Unstop route and Igniters Club programme, Sarvam's Campus and Champions programmes, StockGro's campus partnership page, Krutrim's past cloud credit offers.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Prefer partners with a published campus programme or a record of sponsoring student events (track records exist for Krutrim, Fetch.ai Innovation Lab, InterviewBuddy, StockGro and Unstop).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Pitch product adoption and real usage, not banner space: participants use the partner's platform on real business problems and send structured feedback. Offer in return a named thank-you on the page and at the event, a short post-event report with photographs and anonymous feedback, and an honest user perspective. Make one specific, small ask, such as two mentors, tool credits or a prize. Never promise attendee data or exclusivity. Pilot first: a one-event concept with a clear owner and output. Apply for community programmes such as Sarvam Champions only after the club has run two events and has evidence of community execution.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Prepare the one-page event note and an itemised budget.",
+       "li": true
+      },
+      {
+       "t": "Send to the publisher's official route.",
+       "li": true
+      },
+      {
+       "t": "Offer a tiered recognition menu: partner tier on event material, short demo or workshop slot, participant access, report.",
+       "li": true
+      },
+      {
+       "t": "After approval, confirm in writing: deliverables, branding use and approvals, timelines.",
+       "li": true
+      },
+      {
+       "t": "Deliver, then close the loop (V2-15).",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Event note, budget, partner logo-use approval, registration page, report template.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Sponsorship Lead (owner); Partnerships Manager; Faculty Advisor; Industrial Relations and Sponsorship Committee where required.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Platform listing for Neural Fest, tool credits for Build Day participants, prizes and mentors.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Quarterly update; invitation to judge; renewal conversation after the second event.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Partners approached; in-kind or cash support secured; partner renewals; conversion from pilot to recurring.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "Medium",
+    "feasibility": "Medium",
+    "effort": "Medium",
+    "priority": "Next"
+   }
+  },
+  {
+   "id": "V2-10",
+   "title": "Professional Bodies and Academic Speaker Network",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Build a roster of faculty and professional-body speakers who can give short, narrow talks across the year, instead of relying on one willing professor.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "The ICAI AI Committee faculty pool and the Bombay Chartered Accountants' Society Technology Initiatives Committee; IIT, IISc and other academics proposed for the curriculum; named individual speakers.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "A committee with a trained pool of faculty gives the club a roster across the year rather than one evening, and finance and commerce bodies fit the annual-report, money, ethics and back-office sessions. Five academics have work that matches themes in the curriculum.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Read what the speaker actually works on and propose something narrow drawn from it: for a finance body, how a finance professional uses these tools in a working day; for a decision-making researcher, why we trust a confident answer; for the academics on the list, generative models, enterprise AI, human-AI collaboration, technology adoption and AI digital agents.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Write to the person, never the institution. Open with one checked reference to their work and name the topic. Offer a 30-minute online talk, ten minutes of questions, a feedback note, and a fallback of a ten-minute recorded reply. Where the proposer has a personal connection to a body, say so in the first line (this is required; neither body has a relationship with the club today). Use the faculty advisor on institute letterhead where the route is institutional.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Month 0: faculty advisor approves the first two bodies and three academics.",
+       "li": true
+      },
+      {
+       "t": "Month 1: send the expert-session letter; ask for one faculty member from a pool, not an institutional tie-up.",
+       "li": true
+      },
+      {
+       "t": "Month 2 to 3: schedule one session aligned to Sessions 9, 14 or 18.",
+       "li": true
+      },
+      {
+       "t": "Re-check office-bearers and committee pages before writing (office bearers change every year).",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Expert-session template, video link, question form, faculty advisor letter.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Academic Liaison (owner); Faculty Advisor; Speaker Liaison.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "A roster of expert speakers and credibility with professional bodies.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Thank-you and student-feedback note; invite to Demo Day; offer to co-host a webinar once a track record exists.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Talks delivered; speakers per body; repeat engagements; faculty feedback.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "Medium",
+    "feasibility": "Medium",
+    "effort": "Low",
+    "priority": "Next"
+   }
+  },
+  {
+   "id": "V2-11",
+   "title": "Media and Content Partnerships",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Win editorial reach, not advertising, through a small number of media relationships that value student explainers.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Analytics India Magazine; the institute's own Media Cell; podcasts and other outlets cited by speakers.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Paid media costs are out of reach, so the club asks for editorial and community support. An editor can judge a finished piece but not a promise.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Choose outlets that already write about Indian AI daily and have a published community or partnership route.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Media template: propose student-written pieces on how students actually use tools for study, money and internships; offer a student-written Demo Day recap or an interview with a club member; no payment; the editor decides what is published; ask for a pointer to one practitioner who enjoys talking to beginners. Write one eight-hundred-word piece first so the email is an offer, not a request.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Month 3 to 5: write the first recap or explainer, approved by the Media Cell.",
+       "li": true
+      },
+      {
+       "t": "Month 5: send the media letter with two paragraphs of concept and three sample headlines.",
+       "li": true
+      },
+      {
+       "t": "Month 9 to 12: pitch the Neural Fest story.",
+       "li": true
+      },
+      {
+       "t": "Respect the one follow-up rule.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "One finished piece, sample headlines, Media Cell approval.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Media Lead; Social and Content Lead; Faculty Advisor.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "One or two published pieces; a speaker referral; Neural Fest coverage.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Send follow-up recaps and offer exclusives only when real; credit the outlet.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Pieces published; referrals; reach of published pieces.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "Low to medium",
+    "feasibility": "Medium",
+    "effort": "Low",
+    "priority": "Later (after first piece written)"
+   }
+  },
+  {
+   "id": "V2-12",
+   "title": "Digital Presence and Content Engine",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Turn every session into reusable, consent-cleared content that builds the club's identity and demonstrates its work to partners.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Students, prospective members and partners who check the club's presence before replying to a pitch.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "A monthly session can create value beyond its hour; branding work is listed (colour, type, tone, an AI myths-busted carousel, a profile grid of nine posts that read together); and partners are more likely to respond to a club with a visible track record. The branding files referred to were not available when this plan was prepared.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Not stakeholder-specific; the audience is defined by channel: Instagram for students (reels, carousels), LinkedIn for partners and alumni (recaps, projects), a club page or Field Guide public section for resources.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Content types: short screen recordings of a tool or concept; reels and short clips (before-and-after prompt comparisons, quick explanations, challenge highlights); carousel posts (key takeaways, common mistakes, definitions, step-by-step explainers); a session recap with useful prompts, links and resources. Fixed series: weekly Did-you-know; AI Radar monthly; AI myths busted; family safety card; AI Wrapped awards post. Tone: no jargon, no hype, no promising what a tool cannot do.",
+       "li": false
+      },
+      {
+       "t": "Rules: only pre-approved demonstrations and outputs are captured; no private participant conversations, personal data or identifiable outputs without permission; use demo accounts and fictional examples; the featured member must agree before anything is made about them.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Before each session: tick which activities may be recorded.",
+       "li": true
+      },
+      {
+       "t": "During: capture only approved items.",
+       "li": true
+      },
+      {
+       "t": "Within 24 hours: post the session recap (prompts, links, resources).",
+       "li": true
+      },
+      {
+       "t": "Within the week: edit approved clips into one carousel and one reel.",
+       "li": true
+      },
+      {
+       "t": "Anything under the institute's name goes to the Media Cell first.",
+       "li": true
+      },
+      {
+       "t": "Pick a visual identity once the branding materials are reviewed (colour pairs with published contrast, three fonts, one icon set, an eight-point grid are the specifics offered in the branding contents index).",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Free design tools, a consent form, a content calendar, a Media Cell contact.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Social and Content Lead (owner); Content and Field Guide Editor; Media Lead.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "A coherent, consent-clean public presence and a library of proof for partner pitches.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Tag and credit partners and guests (with approval); send partners the recap link.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Recap posted within 24 hours for every session; content engagement and reach; share of public content with consent on file.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low to medium",
+    "priority": "Now"
+   }
+  },
+  {
+   "id": "V2-13",
+   "title": "AI Awareness Campaigns",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Use the club's learning to protect and educate the wider campus and nearby communities.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "All IIM Sirmaur students; families (through the safety card); nearby colleges with no AI club.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "A family safety card on deepfakes and UPI scams is a deliverable of Session 15, and a myths-busted carousel is a piece of content. A Mythbusters event, a Deepfake Detective event and a Fact-versus-Fiction page are also options. These are naturally public.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Campus groups through the Media Cell; nearby colleges via faculty advisor; student communities.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Short, visual, forwardable items: the family safety card, a myths-busted carousel, a verify-it checklist, a labelling debate summary. Invite one nearby college with no such club to a session ([Added in synthesis]: a shared online session).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "After Session 15: publish the safety card.",
+       "li": true
+      },
+      {
+       "t": "After Session 5: publish the three-step check.",
+       "li": true
+      },
+      {
+       "t": "Once a term, an open campus session on a public-interest topic (deepfakes, scams, data rights).",
+       "li": true
+      },
+      {
+       "t": "Invite the nearby college to one open session.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Design tools; Media Cell approval; consent.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Awareness Lead; Social and Content Lead.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "A public-interest profile and goodwill beyond the club.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Credit contributors; follow up with the invited college.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Campaign pieces published; shares and forwards; outside attendees at open sessions.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "Medium",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Next"
+   }
+  },
+  {
+   "id": "V2-14",
+   "title": "Neural Fest and Demo Day Outreach",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Fill Neural Fest and Demo Day with outside teams, judges, problem setters, platforms and media, without over-promising.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "IIT Mandi, NIT Hamirpur, the Chandigarh colleges, the other IIMs and one nearby college with no club; industry judges and problem setters; a platform for registration; a media partner.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Neural Fest is the only item in the plan that could outgrow the club, and it needs approval, a room and a date. Industry judges sit on Demo Day. Platform and sponsor routes are proposed.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Use V2-01 and V2-08. Route every company through the Industrial Relations and Sponsorship Committee first.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Industry comes in as judges and problem setters, not banner sponsors, in year one; a company that writes a problem statement has a reason to send people. Offer outside teams an online route for Think It and Sell It against the same rubric with no travel funding. Ask platforms to list the event and host registration. Pitch prize-pool or credit support only with a defined benefit (an example ask to Kreyato AI is platform access for all competing teams and a prize contribution; an ask of that scale, with a promise of 200 or more competing teams, is unrealistic for a first event and should be scaled to the club's record; [Added in synthesis]).",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "T minus 12 weeks: approval, room, date; open the partner list.",
+       "li": true
+      },
+      {
+       "t": "T minus 8: invitations to outside clubs; problem-setter asks; platform listing.",
+       "li": true
+      },
+      {
+       "t": "T minus 4: registration opens; two mentoring evenings.",
+       "li": true
+      },
+      {
+       "t": "T minus 2: judges confirmed; media pitch.",
+       "li": true
+      },
+      {
+       "t": "T minus 0: event.",
+       "li": true
+      },
+      {
+       "t": "T plus 5 days: thank-yous, results, recap and report to partners (V2-15).",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Event note, rubric, registration page, judge brief, partner pack.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Event Outreach Lead; Projects Lead; Faculty Advisor; IRS Committee.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Outside participation across tracks, at least three judges and one problem setter, a media piece.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Invite judges and problem setters to the next Demo Day; give outside clubs an invitation to co-host next year.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Outside registrations; judges and problem setters confirmed; platform listing secured; media pieces; partner satisfaction.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "Low to medium",
+    "effort": "Medium",
+    "priority": "Later"
+   }
+  },
+  {
+   "id": "V2-15",
+   "title": "Partner Stewardship and Impact Reporting",
+   "fields": [
+    {
+     "label": "Primary objective",
+     "items": [
+      {
+       "t": "Turn one-off interactions into lasting relationships by always closing the loop and showing partners what their contribution achieved.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Target external audience",
+     "items": [
+      {
+       "t": "Every partner, speaker, mentor and sponsor who has engaged.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Why the initiative matters",
+     "items": [
+      {
+       "t": "Closing the loop within five days is a core stage; sponsors are promised a named thank-you and a short report; and a log records what each company offered. A reputation for follow-through makes later asks easier.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How stakeholders are identified",
+     "items": [
+      {
+       "t": "Everyone logged in the pipeline ledger who has given time, content or money.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Outreach and communication strategy",
+     "items": [
+      {
+       "t": "Within five days: thanks, attendance against RSVP, an anonymous feedback summary, approved photos or links, outcomes and one specific next-step proposal. For sponsors: a short report with photographs, participation numbers, projects built and honest product feedback. Publish no partner logo without written approval.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Step-by-step implementation",
+     "items": [
+      {
+       "t": "Template the report; fill it within five days.",
+       "li": true
+      },
+      {
+       "t": "Log what each partner offered and what they received.",
+       "li": true
+      },
+      {
+       "t": "Measure partner value: approved content reach, voluntary product trials, useful product feedback and willingness to repeat.",
+       "li": true
+      },
+      {
+       "t": "Hold an annual partner review in Month 11; retire inactive relationships.",
+       "li": true
+      },
+      {
+       "t": "Hand the ledger to the next team in the handover pack.",
+       "li": true
+      }
+     ]
+    },
+    {
+     "label": "Required resources",
+     "items": [
+      {
+       "t": "Report template, ledger, photos with consent.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Responsible team members",
+     "items": [
+      {
+       "t": "Partnerships Manager; Pipeline Keeper; Social and Content Lead.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Expected outcomes",
+     "items": [
+      {
+       "t": "Higher repeat rate; partners who refer the club onward.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "How relationships are maintained",
+     "items": [
+      {
+       "t": "Quarterly short update; invitation to Demo Day; recognition on the club page with approval.",
+       "li": false
+      }
+     ]
+    },
+    {
+     "label": "Success measurement",
+     "items": [
+      {
+       "t": "Reports sent within five days (target 100%); repeat and referral rate; partner-reported satisfaction.",
+       "li": false
+      }
+     ]
+    }
+   ],
+   "rating": {
+    "impact": "High",
+    "feasibility": "High",
+    "effort": "Low",
+    "priority": "Now"
+   }
+  }
+ ]
+}

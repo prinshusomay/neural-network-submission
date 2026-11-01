@@ -1,0 +1,67 @@
+{
+ "warning": "Do not send any of these until my role in the club is confirmed and a faculty advisor agrees. Nobody has been contacted. Fill every bracket; never send with an invented number in a first email.",
+ "rules": [
+  "First email under about 150 words, one specific ask, personalised with one checked detail.",
+  "One follow-up after four to seven working days, then stop.",
+  "One person per organisation; no bulk copies; no guessed email addresses.",
+  "The faculty advisor approves the target, event and wording and is copied on every mail.",
+  "Offer only what the club controls. Do not promise attendee data, exclusivity, internships, funding or fixed audience numbers."
+ ],
+ "items": [
+  {
+   "id": "expert",
+   "name": "Expert speaker",
+   "useFor": "One 30-minute online talk",
+   "route": "The person, not the institution",
+   "getRight": "Name the topic yourself",
+   "source": "Skeleton taken from the document (Section 3.5.3). Only the role line is changed to the placeholder.",
+   "subject": "Request for a 30-minute online talk for IIM Sirmaur students: [narrow topic]",
+   "body": "Dear [Title and Name],\n\nI read [specific talk, paper or project, checked], and one idea has stayed with me: [idea, in your words]. I am [Name], [your confirmed role in the club] at The Neural Network, the AI club at IIM Sirmaur for students starting from zero.\n\nWould you give a 30-minute online talk on [topic], with ten minutes for questions? Our audience is management students from commerce, science and arts backgrounds, so no technical background is needed. We will handle the link, the questions in advance and a short note of feedback. If a talk is hard to fit in, a ten-minute recorded reply to three student questions would also mean a great deal.\n\nThank you, [Name] | cc: [Faculty advisor]",
+   "followUp": "Subject: Re: [original subject]\n\nHello [Name],\n\nOne gentle follow-up on my note of [date] about [the ask]. If it is not a fit right now, that is completely fine, and thank you for reading.\n\n[Name] | cc: [Faculty advisor]"
+  },
+  {
+   "id": "cohost",
+   "name": "Co-host or joint challenge",
+   "useFor": "A joint beginners challenge, a workshop or a platform listing",
+   "route": "Chapter organiser or partnerships address",
+   "getRight": "Start smaller (one mentor) if a full event is too much",
+   "source": "Skeleton taken from the document (Section 3.5.3). Only the role line is changed to the placeholder.",
+   "subject": "A joint beginners AI challenge with IIM Sirmaur students?",
+   "body": "Hello [Name],\n\nI am [Name], [your confirmed role in the club] at The Neural Network, the AI club at IIM Sirmaur. I saw [specific event or programme, checked] and it gave me an idea. Could our two groups try one small thing together: an online challenge of 60 to 90 minutes for beginners, where our students bring business problems and yours bring the technical side? We would write the problem together, each nominate one judge and share credit equally. We handle our own registrations and publish a recap. Could we have a fifteen-minute call, or begin even smaller with one volunteer mentor for one session?\n\nThanks, [Name] | cc: [Faculty advisor]",
+   "followUp": "Subject: Re: [original subject]\n\nHello [Name],\n\nOne gentle follow-up on my note of [date] about [the ask]. If it is not a fit right now, that is completely fine, and thank you for reading.\n\n[Name] | cc: [Faculty advisor]"
+  },
+  {
+   "id": "sponsor",
+   "name": "Sponsorship (cash or in kind)",
+   "useFor": "Support for one event",
+   "route": "Programme desk or institute introduction",
+   "getRight": "One specific ask; no invented figure",
+   "source": "Drafted by me from the message anatomy (V2-03) and the sponsorship row of Section 3.5.1. The document does not hold this letter. Review before use.",
+   "subject": "A small ask for one IIM Sirmaur student AI event: [two mentors / tool credits / a prize]",
+   "body": "Hello [Name],\n\nI saw [specific programme or event of theirs, checked], and it gave me an idea. I am [Name], [your confirmed role in the club] at The Neural Network, the AI club at IIM Sirmaur for students starting from zero.\n\nWe are planning [one event, date range, format]. Could you support it with [one specific item: two mentors, tool credits or a prize]? In return we would give a named thank-you on the page and at the event, and a short report with photographs and anonymous feedback. If students use your platform, we would also send honest user feedback. We do not offer attendee data or exclusivity.\n\nA one-page note on the event is attached.\n\nThank you, [Name] | cc: [Faculty advisor]",
+   "followUp": "Subject: Re: [original subject]\n\nHello [Name],\n\nOne gentle follow-up on my note of [date] about [the ask]. If it is not a fit right now, that is completely fine, and thank you for reading.\n\n[Name] | cc: [Faculty advisor]"
+  },
+  {
+   "id": "project",
+   "name": "Industry partnership: live project",
+   "useFor": "A small defined project or clinic with a company",
+   "route": "Verified contact via the pitch selector",
+   "getRight": "Lead with partner benefit",
+   "source": "Drafted by me from V2-05 and the live-project row of Section 3.5.1. The document does not hold this letter. Review before use.",
+   "subject": "A small live project for IIM Sirmaur students: [one-session clinic / case challenge / three-week pod]",
+   "body": "Hello [Name],\n\nI saw [specific product, programme or post of theirs, checked]. I am [Name], [your confirmed role in the club] at The Neural Network, the AI club at IIM Sirmaur for students starting from zero.\n\nCould our students try one small project for you: [a one-session clinic, a case challenge or a three-week student pod] where they stress-test [product or funnel] and send you structured findings within five days? We would need one real problem statement and, if possible, one mentor. We would agree the deliverable format, and whether anything can be published, in writing first.\n\nThank you, [Name] | cc: [Faculty advisor]",
+   "followUp": "Subject: Re: [original subject]\n\nHello [Name],\n\nOne gentle follow-up on my note of [date] about [the ask]. If it is not a fit right now, that is completely fine, and thank you for reading.\n\n[Name] | cc: [Faculty advisor]"
+  },
+  {
+   "id": "mentor",
+   "name": "Mentorship: alumni mentor",
+   "useFor": "A 20-minute talk or mentoring",
+   "route": "Alumni cell first, then the individual",
+   "getRight": "Take the introduction before writing",
+   "source": "Drafted by me from V2-06. The document gives the contents of the letter (twenty minutes, how AI comes into your working day, what you would learn first in our place, one mistake to avoid, online on a weekday evening or a Friday), not the wording. Review before use.",
+   "subject": "Twenty minutes for IIM Sirmaur students, [a weekday evening or a Friday]?",
+   "body": "Dear [Name],\n\n[The Alumni Relations Cell suggested I write. / Introduced by: name]. I am [Name], [your confirmed role in the club] at The Neural Network, the AI club at IIM Sirmaur.\n\nWould you give us twenty minutes online on [a weekday evening or a Friday]? We would love to hear how AI comes into your working day, what you would learn first if you were in our place, and one mistake to avoid. Our audience is management students starting from zero, so no technical background is needed. We handle the link and the questions in advance.\n\nThank you, [Name] | cc: [Faculty advisor]",
+   "followUp": "Subject: Re: [original subject]\n\nHello [Name],\n\nOne gentle follow-up on my note of [date] about [the ask]. If it is not a fit right now, that is completely fine, and thank you for reading.\n\n[Name] | cc: [Faculty advisor]"
+  }
+ ]
+}
