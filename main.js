@@ -8,7 +8,7 @@
   var cache = {};
   function load(name) {
     if (!cache[name]) {
-      cache[name] = fetch(ROOT + 'data/' + name + '.json').then(function (r) {
+      cache[name] = fetch(name + '.json').then(function (r) {
         if (!r.ok) throw new Error('Could not load ' + name + '.json');
         return r.json();
       });
@@ -32,7 +32,16 @@
     var parts = [p.email, p.phone, p.contactPage].filter(Boolean);
     return parts.length ? parts.map(linkify).join('<br>') : miss();
   }
-  function href(p) { return ROOT + p; }
+  function flat(p) {
+    var h = '', i = p.search(/[#?]/);
+    if (i >= 0) { h = p.slice(i); p = p.slice(0, i); }
+    var m = p.match(/^(curation|outreach|about)\/(.+)$/);
+    if (!m) return p + h;
+    var sec = m[1], name = m[2];
+    if (name === 'index.html') return (sec === 'about' ? 'about' : sec) + '.html' + h;
+    return ({ curation: 'cur-', outreach: 'out-', about: 'about-' })[sec] + name + h;
+  }
+  function href(p) { return flat(p); }
   function a(p, text) { return '<a href="' + href(p) + '">' + esc(text) + '</a>'; }
   function ul(items) { return '<ul>' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>'; }
   function ol(items) { return '<ol>' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ol>'; }
