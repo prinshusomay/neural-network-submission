@@ -1,75 +1,87 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="indigo" data-v="curation">
+<html lang="en" data-theme="paper" data-v="curation">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Neural Network: Year Programme 2026-27 | Applicant submission by Prinshu Somay</title>
 <meta name="description" content="Round 2 recruitment submission by Prinshu Somay for The Neural Network, the AI club at IIM Sirmaur. One programme, two verticals: Curation and Research, and Outreach and External Relations. Not an official club site.">
-<meta name="theme-color" content="#0A0A2E">
+<meta name="theme-color" content="#FCFCFA">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="https://prinshusomay.github.io/assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://prinshusomay.github.io/assets/fonts/libre-franklin-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="nn.css">
 </head>
 <body>
-<div class="loader" aria-hidden="true"><div><img src="logo.png" alt=""><i></i><p>The Neural Network</p></div></div>
-<noscript><style>.loader{display:none}</style></noscript>
 <a class="skip" href="#stage">Skip to the programme</a>
 <canvas id="net" aria-hidden="true"></canvas>
-<div class="blobs" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
-<div class="cursor" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"></div>
+<div class="dockline" aria-hidden="true"></div>
+<button type="button" class="planet" id="planet" aria-label="The Neural Network logo planet. Click to go back to the top">
+  <span class="atmo"></span>
+  <span class="ring r1"><span class="sq"><span class="sp"><i class="sat c"></i></span></span></span>
+  <span class="ball"><img src="logo.png" alt="" width="512" height="512"><span class="shade"></span></span>
+  <span class="ring r2"><span class="sq"><span class="sp"><i class="sat o"></i></span></span></span>
+  <span class="ring r3"><span class="sq"><span class="sp"><i class="sat w"></i></span></span></span>
+</button>
 
 <div class="status" role="status"><b>Applicant submission for Round 2 recruitment.</b> Not an official club site.</div>
 <header class="topbar">
   <div class="wrap in">
-    <a class="brand" href="#top" aria-label="The Neural Network, back to top"><img class="mark" src="logo.png" width="40" height="40" alt="The Neural Network logo"><div><span>The Neural Network</span><small>Applicant submission</small></div></a>
+    <a class="brand" href="#top" aria-label="The Neural Network, back to top"><img class="mark" src="logo.png" width="36" height="36" alt="The Neural Network logo"><div><b>The Neural Network</b><i>Applicant submission</i></div></a>
     <div class="switch" role="group" aria-label="Switch vertical">
       <i class="ind" aria-hidden="true"></i>
       <button type="button" data-v="curation" aria-pressed="true"><span class="full">Curation &amp; Research</span><span class="short">Curation</span></button>
       <button type="button" data-v="outreach" aria-pressed="false"><span class="full">Outreach &amp; External Relations</span><span class="short">Outreach</span></button>
     </div>
-    <div class="tools">
-      <div class="themes" role="radiogroup" aria-label="Colour theme">
-        <button type="button" role="radio" data-t="indigo" aria-checked="true" aria-label="Indigo theme" title="Indigo"></button>
-        <button type="button" role="radio" data-t="ink" aria-checked="false" aria-label="Ink theme" title="Ink"></button>
-        <button type="button" role="radio" data-t="day" aria-checked="false" aria-label="Day theme" title="Day"></button>
-      </div>
+    <div class="themes" role="radiogroup" aria-label="Colour theme">
+      <button type="button" role="radio" data-t="paper" aria-checked="true" aria-label="Paper theme" title="Paper"></button>
+      <button type="button" role="radio" data-t="midnight" aria-checked="false" aria-label="Midnight theme" title="Midnight"></button>
+      <button type="button" role="radio" data-t="aurora" aria-checked="false" aria-label="Aurora theme" title="Aurora"></button>
     </div>
   </div>
 </header>
 
+<nav class="rail" aria-label="Page index">
+  <a href="#fork">I<span>Fork</span></a>
+  <a href="#stage">II<span>Programme</span></a>
+  <a href="#bridge">III<span>Bridge</span></a>
+  <a href="#clock">IV<span>One clock</span></a>
+  <a href="#about">V<span>About</span></a>
+  <a href="#sources">VI<span>Sources</span></a>
+</nav>
+
 <main id="top">
   <section class="hero wrap" aria-labelledby="hname">
-    <div class="herologo" aria-hidden="true"><div class="orb o2"><i></i></div><div class="orb"><i></i></div><div class="orb o3"><i></i></div><img src="logo.png" alt=""></div>
-    <svg class="floaty" data-speed=".16" style="left:44%;top:12%" width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><path d="M27 4 L50 46 L4 46 Z" fill="none" stroke="var(--a2)" stroke-width="2.5" stroke-linejoin="round"/></svg>
-    <svg class="floaty" data-speed=".28" style="left:6%;top:70%" width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><path d="M23 4 V42 M4 23 H42" stroke="var(--a1)" stroke-width="4" stroke-linecap="round"/></svg>
-    <svg class="floaty" data-speed=".1" style="left:58%;top:78%" width="70" height="70" viewBox="0 0 70 70" aria-hidden="true"><circle cx="35" cy="35" r="28" fill="none" stroke="var(--a3)" stroke-width="3"/><circle cx="35" cy="35" r="8" fill="var(--play)"/></svg>
-    <span class="chip"><i></i><span id="chipText">Applicant, Round 2 recruitment. Not a member of the club.</span></span>
+    <div class="planet-slot" id="slot" aria-hidden="true"></div>
+    <span class="kicker">IIM Sirmaur, AI club, Round 2 recruitment</span>
     <h1 class="name" id="hname"><span class="row">The Neural</span><span class="row two">Network</span></h1>
     <p class="tagline">From Zero to Shipped. A year programme in two verticals.</p>
-    <p class="heroP" id="heroP"></p>
-    <div class="cta">
-      <button type="button" class="btn" data-go="curation">Explore Curation &amp; Research <span class="arrow">→</span></button>
-      <button type="button" class="btn c2" data-go="outreach">Explore Outreach &amp; External Relations <span class="arrow">→</span></button>
-      <a class="btn ghost" href="#bridge">See how they connect</a>
+    <div class="prompt" aria-label="Summary">
+      <div class="line"><b>&gt;</b><span id="typed"></span><span class="caret" aria-hidden="true"></span></div>
+      <div class="bar">
+        <button type="button" class="pill" data-go="curation">Curation &amp; Research</button>
+        <button type="button" class="pill" data-go="outreach">Outreach &amp; External Relations</button>
+        <a class="pill" href="#bridge">How they connect</a>
+        <span class="grow"></span>
+        <span class="live"><i></i> Applicant, not a member</span>
+        <button type="button" class="round" data-go-fork aria-label="Scroll to the fork">↓</button>
+      </div>
     </div>
-    <div class="scrollcue"><i></i> Scroll</div>
   </section>
-  <div class="tickerwrap" aria-hidden="true"><div class="ticker"><div class="track" id="ticker"></div></div></div>
+  <div class="tickerwrap" aria-hidden="true"><div class="ticker" id="ticker"></div></div>
 
   <section class="fork wrap" id="fork" aria-labelledby="forkh">
-    <span class="eyebrow">The one fork</span>
+    <div class="shead"><span class="num">I</span><span class="eyebrow">The one fork</span>
     <h2 class="h2" id="forkh">Two verticals. <em>One programme.</em></h2>
-    <p class="lead reveal">The rest of this page is a single story. Choose a side here, or use the switch at the top at any time. Everything below the fork changes colour and content. Everything after it is shared.</p>
+    <p class="lead reveal">Choose a side here, or use the switch at the top at any time. Everything below the fork changes with your choice. The last four sections are shared.</p></div>
     <div class="forkgrid reveal" id="forkgrid"></div>
-    <p class="forknote">Hover to open a side. Click to enter it.</p>
   </section>
 
   <section class="stage" id="stage" aria-live="polite">
-    <div class="wrap vhead"><span class="eyebrow" id="veyebrow"></span><div class="big" id="vtitle"></div><p class="lead" id="vlead"></p></div>
+    <div class="wrap vhead"><span class="num" style="display:block;font-family:var(--serif);font-style:italic;color:var(--herring);font-size:1.25rem">II</span><span class="eyebrow" id="veyebrow"></span><div class="big" id="vtitle"></div><p class="lead" id="vlead"></p></div>
     <div class="wrap vpanels" id="vpanels"></div>
   </section>
 
@@ -82,7 +94,7 @@
 <footer>
   <div class="wrap row">
     <p id="footTxt"></p>
-    <p class="small"><a href="#top">Back to top</a> · <a href="#sources">Sources</a> · <a href="#about">About this submission</a></p>
+    <p class="small"><a href="#top">Back to top</a> | <a href="#sources">Sources</a> | <a href="#about">About this submission</a></p>
   </div>
 </footer>
 

@@ -39,14 +39,14 @@
     h = (h || '').trim().replace('#', '');
     if (h.length === 3) h = h.split('').map(function (c) { return c + c; }).join('');
     var n = parseInt(h, 16);
-    return isNaN(n) ? '61,214,198' : ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255);
+    return isNaN(n) ? '15,140,128' : ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255);
   }
   function cssv(n) { return getComputedStyle(root).getPropertyValue(n).trim(); }
 
   var D = {}, state = { v: 'curation', tier: '', deck: '1' };
 
   /* ---------- ambient: living network, cursor glow, progress ---------- */
-  var netCol = '61,214,198';
+  var netCol = '15,140,128';
   function netColor() { netCol = hexRgb(cssv('--a1')); }
   function startNet() {
     var c = $('#net');
@@ -61,7 +61,7 @@
     }
     function frame() {
       ctx.clearRect(0, 0, W, H);
-      var paper = root.dataset.theme === 'day', base = paper ? .28 : .5, i, j, p, q, dx, dy, d, a;
+      var paper = root.dataset.theme === 'paper', base = paper ? .3 : .5, i, j, p, q, dx, dy, d, a;
       for (i = 0; i < pts.length; i++) {
         p = pts[i]; p.x += p.vx; p.y += p.vy;
         if (p.x < -20) p.x = W + 20; if (p.x > W + 20) p.x = -20; if (p.y < -20) p.y = H + 20; if (p.y > H + 20) p.y = -20;
@@ -81,28 +81,12 @@
     document.addEventListener('visibilitychange', function () { if (document.hidden) cancelAnimationFrame(raf); else { cancelAnimationFrame(raf); frame(); } });
     size(); frame();
   }
-  function startPointer() {
-    var cur = $('.cursor');
-    if (!fine || reduce) return;
-    document.body.classList.add('has-pointer');
-    var tx = 0, ty = 0, cx = 0, cy = 0;
-    addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; }, { passive: true });
-    (function loop() { cx += (tx - cx) * .12; cy += (ty - cy) * .12; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(loop); })();
+  function startGlow() {
     document.addEventListener('pointermove', function (e) {
       var card = e.target.closest && e.target.closest('.card');
       if (card) { var r = card.getBoundingClientRect(); card.style.setProperty('--mx', (e.clientX - r.left) + 'px'); card.style.setProperty('--my', (e.clientY - r.top) + 'px'); }
-      var t = e.target.closest && e.target.closest('.tilt');
-      if (t) { var b = t.getBoundingClientRect(), px = (e.clientX - b.left) / b.width - .5, py = (e.clientY - b.top) / b.height - .5; t.style.transform = 'perspective(900px) rotateX(' + (-py * 5).toFixed(2) + 'deg) rotateY(' + (px * 6).toFixed(2) + 'deg) translateZ(0)'; }
     }, { passive: true });
-    document.addEventListener('pointerout', function (e) { var t = e.target.closest && e.target.closest('.tilt'); if (t && !t.contains(e.relatedTarget)) t.style.transform = ''; });
   }
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('.btn');
-    if (!b || reduce) return;
-    var r = b.getBoundingClientRect(), s = Math.max(r.width, r.height), i = document.createElement('i');
-    i.className = 'ripple'; i.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + (e.clientX - r.left - s / 2) + 'px;top:' + (e.clientY - r.top - s / 2) + 'px';
-    b.appendChild(i); setTimeout(function () { i.remove(); }, 750);
-  });
   var scrollTick = false;
   function onScroll() {
     if (scrollTick) return; scrollTick = true;
@@ -112,8 +96,7 @@
       document.querySelector('.progress').style.setProperty('--p', h > 0 ? (scrollY / h).toFixed(4) : 0);
       var ln = $('.lanes');
       if (ln) { var r = ln.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .75 - r.top) / r.height)); ln.style.setProperty('--lp', p.toFixed(3)); }
-      document.querySelector('.blob.b2').style.transform = 'translateY(' + (scrollY * .06) + 'px)';
-      fxTick();
+      fxTick(); planetTick();
     });
   }
   addEventListener('scroll', onScroll, { passive: true });
@@ -137,7 +120,7 @@
           if (el.classList.contains('bridge')) drawBridge();
           io.unobserve(el);
         });
-      }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: .1, rootMargin: '0px 0px -8% 0px' });
     }
     $$('.reveal,[data-io],.split,.vh', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
   }
@@ -190,8 +173,7 @@
     var t = e.target.closest && e.target.closest('[data-tip]');
     if (t) showTip(t.getAttribute('data-tip'), e.clientX, e.clientY); else if (tip && tip.classList.contains('on')) hideTip();
   }, { passive: true });
-
-  /* ============ motion toolkit: split text, scroll scrub, big background words, pinned roadmap, parallax ============ */
+  /* ============ calm motion: word reveal, rail ============ */
   function splitWords(el, cls) {
     if (!el) return;
     el.dataset.split = '1'; el.classList.add(cls || 'split');
@@ -213,70 +195,39 @@
     }
     walk(el); el.setAttribute('aria-label', label);
   }
-  function scrubify(el) {
-    if (!el || el.dataset.scrub || el.children.length) return;
-    el.dataset.scrub = '1'; el.classList.add('scrub');
-    var words = [], txt = el.textContent; el.textContent = '';
-    txt.split(/\s+/).forEach(function (t) { if (!t) return; var s = document.createElement('span'); s.className = 'sw'; s.textContent = t + ' '; el.appendChild(s); words.push(s); });
-    el._w = words;
+  function railTick() {
+    var cur = '';
+    $$('.rail a').forEach(function (a) { var s = $(a.getAttribute('href')); if (s && s.getBoundingClientRect().top < innerHeight * .45) cur = a.getAttribute('href'); });
+    $$('.rail a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === cur); });
   }
-  function fxTick() {
-    var vh = innerHeight, i;
-    $$('.scrub').forEach(function (el) {
-      if (!el.offsetParent) return;
-      var r = el.getBoundingClientRect(); if (r.bottom < -60 || r.top > vh + 60) return;
-      var p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.42 + r.height * 0.9))), n = el._w.length, k = Math.round(p * n * 1.04);
-      for (i = 0; i < n; i++) { var on = i < k; if (el._w[i]._on !== on) { el._w[i]._on = on; el._w[i].classList.toggle('lit', on); } }
-    });
-    $$('.bgword').forEach(function (el) {
-      var sec = el.closest('section,.vhead'); if (!sec || !sec.offsetParent) return;
-      var r = sec.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return;
-      var p = (vh - r.top) / (vh + r.height);
-      el.style.setProperty('--bx', (innerWidth * 0.08 - p * innerWidth * 0.62).toFixed(1) + 'px');
-    });
-    var pin = $('.hpin');
-    if (pin && pin.offsetParent && innerWidth > 900) {
-      var r2 = pin.getBoundingClientRect(), st = pin.firstElementChild, total = r2.height - st.offsetHeight, p2 = Math.min(1, Math.max(0, -(r2.top - 64) / Math.max(1, total)));
-      pin.style.setProperty('--hx', (-p2 * (pin._dist || 0)).toFixed(1) + 'px'); pin.style.setProperty('--hp', p2.toFixed(4));
-    }
-    if (scrollY < vh * 1.6) $$('.floaty').forEach(function (el) { var sp = parseFloat(el.dataset.speed || '.1'); el.style.transform = 'translate3d(0,' + (-scrollY * sp).toFixed(1) + 'px,0) rotate(' + (scrollY * sp * .25).toFixed(1) + 'deg)'; });
-  }
-  function measurePin() {
-    var pin = $('.hpin'); if (!pin) return;
-    if (innerWidth <= 900) { pin.style.removeProperty('--hh'); pin._dist = 0; return; }
-    var track = $('.htrack', pin), dist = Math.max(0, track.scrollWidth - innerWidth + 24);
-    pin._dist = dist; pin.style.setProperty('--hh', (dist + innerHeight - 64 + 140) + 'px');
-  }
-  function fxPointer() {
-    if (!fine || reduce) return;
-    var ring = document.createElement('div'), dot = document.createElement('div');
-    ring.className = 'cring'; dot.className = 'cdot'; document.body.appendChild(ring); document.body.appendChild(dot);
-    var rx = -100, ry = -100, tx = -100, ty = -100;
-    addEventListener('pointermove', function (e) {
-      tx = e.clientX; ty = e.clientY; dot.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
-      var t = e.target.closest && e.target.closest('a,button,.card,.node,.pn,input,textarea,summary,[role="button"],label');
-      document.body.classList.toggle('hover-int', !!t);
-    }, { passive: true });
-    (function loop() { rx += (tx - rx) * .17; ry += (ty - ry) * .17; ring.style.transform = 'translate(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px)'; requestAnimationFrame(loop); })();
-    document.addEventListener('pointermove', function (e) {
-      var b = e.target.closest && e.target.closest('.btn');
-      if (b) { var r = b.getBoundingClientRect(); b.classList.add('mag'); b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * .3).toFixed(1) + 'px)'; }
-    }, { passive: true });
-    document.addEventListener('pointerout', function (e) { var b = e.target.closest && e.target.closest('.btn'); if (b && !b.contains(e.relatedTarget)) b.style.transform = ''; });
-    /* hero title: letters swell and lift near the cursor */
-    var hero = $('.hero'), letters = $$('.name .l');
-    if (hero) hero.addEventListener('pointermove', function (e) {
-      letters.forEach(function (l) {
-        var r = l.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), k = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / 190);
-        l.style.fontVariationSettings = '"wght" ' + Math.round(560 + 240 * k) + ',"wdth" ' + Math.round(80 + 20 * k);
-        l.style.translate = '0 ' + (-k * 14).toFixed(1) + 'px';
-      });
-    }, { passive: true });
-    if (hero) hero.addEventListener('pointerleave', function () { letters.forEach(function (l) { l.style.fontVariationSettings = ''; l.style.translate = ''; }); });
-  }
+  function fxTick() { railTick(); }
   function fxText(scope) {
     $$('.h2', scope).forEach(function (h) { if (!h.dataset.split) splitWords(h); });
-    $$('.lead', scope).forEach(function (p) { if (!p.closest('.hero')) scrubify(p); });
+  }
+  function typePrompt() {
+    var el = $('#typed'); if (!el) return;
+    var lines = ['Curation & Research: 24 sessions, from zero to shipped.', 'Outreach & External Relations: 44 reachable partners, asked honestly.', 'One programme. Two verticals. Nobody contacted yet.'];
+    if (reduce) { el.textContent = lines[0]; return; }
+    var li = 0, ci = 0, dir = 1;
+    (function tick() {
+      var t = lines[li];
+      if (dir > 0) { ci++; el.textContent = t.slice(0, ci); if (ci >= t.length) { dir = -1; return setTimeout(tick, 2200); } }
+      else { ci -= 2; if (ci <= 0) { ci = 0; dir = 1; li = (li + 1) % lines.length; el.textContent = ''; return setTimeout(tick, 350); } el.textContent = t.slice(0, ci); }
+      setTimeout(tick, dir > 0 ? 28 : 12);
+    })();
+  }
+  /* ---------- planet: sits in the hero, then docks to the right edge and rides the scroll like a dial ---------- */
+  function planetTick() {
+    var pl = $('#planet'), slot = $('#slot'); if (!pl || !slot) return;
+    var S = 320, vw = innerWidth, vh = innerHeight, small = vw < 820;
+    var r = slot.getBoundingClientRect(), sx = r.left + r.width / 2, sy = r.top + r.height / 2, ss = r.width / S * 1.0;
+    var t = Math.min(1, Math.max(0, scrollY / (vh * .55))), e = 1 - Math.pow(1 - t, 3);
+    var ds = (small ? 44 : 64) / S, dx = vw - (small ? 26 : 46), maxS = Math.max(1, document.documentElement.scrollHeight - vh);
+    var top = small ? 150 : 130, span = vh - top - (small ? 80 : 110), dy = top + (scrollY / maxS) * span;
+    var x = sx + (dx - sx) * e, y = sy + (dy - sy) * e, s = ss + (ds - ss) * e;
+    pl.style.transform = 'translate(' + (x - S / 2).toFixed(1) + 'px,' + (y - S / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ') rotate(' + (scrollY * .08).toFixed(1) + 'deg)';
+    pl.style.zIndex = t > .5 ? 55 : 5;
+    var dl = $('.dockline'); if (dl) { dl.classList.toggle('on', t > .9); dl.style.right = (vw - dx) + 'px'; dl.style.top = top + 'px'; dl.style.bottom = (vh - top - span) + 'px'; }
   }
 
   /* ===================================================== CURATION ===================================================== */
@@ -310,13 +261,13 @@
     }).join('') + '</div>';
   }
   function monthsHtml() {
-    var S = D.sessions, h = '<div class="hpin" id="hpin"><div class="hsticky"><div class="hhead"><span class="eyebrow">Scroll sideways through the year</span></div><div class="htrack">';
+    var S = D.sessions, h = '<div class="months reveal">';
     for (var m = 1; m <= 12; m++) {
-      var ss = S.filter(function (s) { return s.month === m; });
-      h += '<div class="card hcard"><div class="mo">' + (m < 10 ? '0' + m : m) + '</div><h4>Month ' + m + '</h4><div class="term">' + esc(ss[0].term + ' ' + ss[0].termName) + '</div>' +
-        ss.map(function (s) { return '<button type="button" class="sess' + (s.fun ? ' play' : '') + '" data-n="' + s.n + '"><b>S' + s.n + '</b>' + esc(shortTitle(s.title)) + (s.fun ? ' ✦' : '') + '</button>'; }).join('') + '</div>';
+      var ss = S.filter(function (x) { return x.month === m; });
+      h += '<div class="month"><h4>Month ' + m + '</h4><div class="term">' + esc(ss[0].term + ' ' + ss[0].termName) + '</div>' +
+        ss.map(function (x) { return '<button type="button" class="sess' + (x.fun ? ' play' : '') + '" data-n="' + x.n + '"><b>S' + x.n + '</b>' + esc(shortTitle(x.title)) + (x.fun ? ' ✦' : '') + '</button>'; }).join('') + '</div>';
     }
-    return h + '</div><div class="hbar" aria-hidden="true"><i></i></div></div></div>';
+    return h + '</div>';
   }
   function calendarShell() {
     return '<div class="filters"><input type="search" id="cq" placeholder="Search title, activity or tool" aria-label="Search sessions">' +
@@ -335,7 +286,7 @@
       });
       $('#ccount').textContent = 'Showing ' + rows.length + ' of 24 sessions';
       $('#calgrid').innerHTML = rows.map(function (s, i) {
-        return '<button type="button" class="card srow tilt' + (s.fun ? ' play' : '') + '" data-n="' + s.n + '"><span class="n">' + s.n + '</span><h4>' + esc(s.title) + '</h4><div class="meta"><span class="badge' + (s.fun ? ' play' : '') + '">' + esc(s.type + (s.funKind ? ' · ' + s.funKind : '')) + '</span><span class="badge">' + esc(lvlName(s.level)) + '</span><span class="badge">Month ' + s.month + '</span></div><p>' + esc(s.what) + '</p><span class="more">Open details →</span></button>';
+        return '<button type="button" class="card srow' + (s.fun ? ' play' : '') + '" data-n="' + s.n + '"><span class="n">' + s.n + '</span><h4>' + esc(s.title) + '</h4><div class="meta"><span class="badge' + (s.fun ? ' play' : '') + '">' + esc(s.type + (s.funKind ? ' · ' + s.funKind : '')) + '</span><span class="badge">' + esc(lvlName(s.level)) + '</span><span class="badge">Month ' + s.month + '</span></div><p>' + esc(s.what) + '</p><span class="more">Open details →</span></button>';
       }).join('') || '<p class="muted">No session matches. Clear a filter.</p>';
     }
     $('#cq').addEventListener('input', function (e) { fq = e.target.value.trim().toLowerCase(); draw(); });
@@ -427,7 +378,7 @@
   }
   function principles() {
     return '<div class="grid g4">' + D.site.curationOverview.principles.map(function (p, i) {
-      return '<div class="card prin tilt reveal" style="--d:' + (i % 4) + '"><b>' + esc(p.id) + '</b><h4>' + esc(p.principle) + '</h4><p>' + esc(p.means) + '</p></div>';
+      return '<div class="card prin reveal" style="--d:' + (i % 4) + '"><b>' + esc(p.id) + '</b><h4>' + esc(p.principle) + '</h4><p>' + esc(p.means) + '</p></div>';
     }).join('') + '</div>';
   }
   function initiativeBlock(x) {
@@ -642,8 +593,8 @@
   function codes(s, pre) { return (s.match(new RegExp(pre + '-\\d\\d', 'g')) || []).join(', '); }
   function bridgeHtml() {
     var I = D.partnersData.interlock;
-    var h = '<span class="eyebrow">Where the two meet</span><h2 class="h2" id="bridgeh">Every session has a <em>partner</em> behind it.</h2><p class="lead reveal">Curation needs outside judges, mentors, problem statements and prizes that only Outreach can obtain. Outreach needs recaps, demos and proof of delivery that only Curation creates. The interlock below is my own arrangement ("added in synthesis"). The independence rule holds: the core 24 sessions never depend on an outside partner. If a partner declines, the session runs as written.</p>';
-    h += '<div class="bcols" id="bcols"><svg class="bsvg" id="bsvg" aria-hidden="true"><defs><linearGradient id="bg2" x1="0" x2="1"><stop offset="0" stop-color="#6C7BFF"/><stop offset="1" stop-color="#FF4FAE"/></linearGradient></defs></svg><div class="bcol l"><h3>Curation moment</h3></div><div class="bcol r"><h3>Outreach contribution</h3></div>';
+    var h = '<div class="shead"><span class="num">III</span><span class="eyebrow">Where the two meet</span><h2 class="h2" id="bridgeh">Every session has a <em>partner</em> behind it.</h2><p class="lead reveal">Curation needs outside judges, mentors, problem statements and prizes that only Outreach can obtain. Outreach needs recaps, demos and proof of delivery that only Curation creates. The interlock below is my own arrangement ("added in synthesis"). The independence rule holds: the core 24 sessions never depend on an outside partner. If a partner declines, the session runs as written.</p></div>';
+    h += '<div class="bcols" id="bcols"><svg class="bsvg" id="bsvg" aria-hidden="true"><defs><linearGradient id="bg2" x1="0" x2="1"><stop offset="0" stop-color="#0F8C80"/><stop offset="1" stop-color="#B4232A"/></linearGradient></defs></svg><div class="bcol l"><h3>Curation moment</h3></div><div class="bcol r"><h3>Outreach contribution</h3></div>';
     I.forEach(function (r, i) {
       h += '<div class="bi l reveal" data-r="' + i + '" style="--d:' + (i % 3) + '"><small>CURATION · ' + esc(codes(r.initiatives, 'V1') || 'V1') + '</small>' + esc(r.need) + '</div>' +
         '<div class="bi r reveal" data-r="' + i + '" style="--d:' + (i % 3) + '"><small>OUTREACH · ' + esc(codes(r.initiatives, 'V2') || 'V2') + ' · lead time ' + esc(r.lead) + '</small>' + esc(r.contribution) + '</div>';
@@ -662,7 +613,7 @@
       var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       p.setAttribute('d', 'M' + x1 + ',' + y1 + ' C' + mx + ',' + y1 + ' ' + mx + ',' + y2 + ' ' + x2 + ',' + y2); p.dataset.r = i; p.id = 'bp' + i; svg.appendChild(p);
       if (!reduce) {
-        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('r', 3.4); c.setAttribute('fill', i % 2 ? '#FF4FAE' : '#1EE5FF'); c.setAttribute('opacity', '.9');
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('r', 3.4); c.setAttribute('fill', i % 2 ? '#B4232A' : '#0F8C80'); c.setAttribute('opacity', '.9');
         var am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion'); am.setAttribute('dur', (5 + (i % 4)) + 's'); am.setAttribute('repeatCount', 'indefinite'); am.setAttribute('begin', (i * .4) + 's');
         var mp = document.createElementNS('http://www.w3.org/2000/svg', 'mpath'); mp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#bp' + i); mp.setAttribute('href', '#bp' + i);
         am.appendChild(mp); c.appendChild(am); svg.appendChild(c);
@@ -681,7 +632,7 @@
   }
   function lanesHtml() {
     var R = D.sessionsData.roadmap;
-    var h = '<span class="eyebrow">One clock</span><h2 class="h2" id="clockh">Month by month: <em>two verticals, one calendar</em>.</h2><p class="lead reveal">The same twelve months, read both ways. Curation on the left, Outreach on the right, and the joint milestones between them.</p><div class="lanes">';
+    var h = '<div class="shead"><span class="num">IV</span><span class="eyebrow">One clock</span><h2 class="h2" id="clockh">Month by month: <em>two verticals, one calendar</em>.</h2><p class="lead reveal">The same twelve months, read both ways. Curation on the left, Outreach on the right, and the joint milestones between them.</p></div><div class="lanes">';
     R.forEach(function (r, i) {
       var lab = /^Set-up/.test(r.period) ? 'SET' : 'M' + r.period.replace(/\D+/g, '');
       h += '<div class="lane reveal"><div class="box card cb"><b>Curation and Research</b>' + esc(r.curation) + '</div><div class="mid"><span>' + lab + '</span></div><div class="box card ob"><b>Outreach and External Relations</b>' + esc(r.outreach) + '</div>' + (r.joint && !/^[-—–]+$/.test(r.joint.trim()) ? '<div class="jt">Joint: ' + esc(r.joint) + '</div>' : '') + '</div>';
@@ -690,7 +641,7 @@
   }
   function aboutHtml() {
     var A = D.site.about;
-    var h = '<span class="eyebrow">About this submission</span><h2 class="h2" id="abouth">Who I am, and <em>what to trust</em>.</h2>';
+    var h = '<div class="shead"><span class="num">V</span><span class="eyebrow">About this submission</span><h2 class="h2" id="abouth">Who I am, and <em>what to trust</em>.</h2></div>';
     h += '<div class="facts"><div class="card reveal"><h3>Who I am</h3><p>' + esc(A.who) + '</p><p><span class="badge acc">Status</span> <b>' + esc(A.status) + '</b></p></div>';
     h += '<div class="card reveal" style="--d:1"><h3>Reported, not re-verified</h3>' + ul(A.reported) + '</div><div class="card reveal" style="--d:2"><h3>My view or assumption</h3>' + ul(A.mine) + '</div></div>';
     h += '<div class="grid g2" style="margin-top:1.1rem"><div class="limits reveal"><h3>Open items</h3>' + ul(A.open) + '</div><div class="limits reveal" style="--d:1"><h3>Limits of this site</h3>' + ul(D.site.home.limits.concat(A.limits)) + '</div></div>';
@@ -699,7 +650,7 @@
     return h;
   }
   function sourcesHtml() {
-    var h = '<span class="eyebrow">Sources</span><h2 class="h2" id="sourcesh">Everything the document <em>names</em>.</h2><div class="warn small">' + esc(D.sources.note) + '</div>';
+    var h = '<div class="shead"><span class="num">VI</span><span class="eyebrow">Sources</span><h2 class="h2" id="sourcesh">Everything the document <em>names</em>.</h2></div><div class="warn small">' + esc(D.sources.note) + '</div>';
     D.sources.groups.forEach(function (g, i) {
       h += acc(esc(g.name), table(['Source', 'What I took from it', 'Link'], g.items.map(function (x) { return [esc(x.title), esc(x.used), x.url ? linkify(x.url) : miss()]; })), i === 0);
     });
@@ -708,6 +659,7 @@
 
   /* ---------- hero, ticker, fork ---------- */
   function heroInit() {
+    var dn = $('[data-go-fork]'); if (dn) dn.addEventListener('click', function () { $('#fork').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
     var i = 0, h = $('#hname');
     $$('.row', h).forEach(function (row) {
       var txt = row.textContent; row.textContent = ''; row.setAttribute('aria-hidden', 'true');
@@ -718,7 +670,6 @@
       });
     });
     h.setAttribute('aria-label', 'The Neural Network');
-    $('#heroP').textContent = D.site.home.purpose;
     var T = [['24', 'sessions'], ['4', 'terms'], ['6', 'play sessions', 'g'], ['44', 'partner rows'], ['5', 'access tiers'], ['12', 'first wave partners'], ['31', 'initiatives'], ['0', 'organisations contacted'], ['0', 'emails guessed']];
     var one = T.map(function (t) { return '<span class="' + (t[2] || '') + '"><b>' + t[0] + '</b>' + t[1] + '</span>'; }).join('');
     $('#ticker').innerHTML = one + one;
@@ -727,7 +678,6 @@
     var S = D.sessions.length, P = D.partners.length, ini = D.sessionsData.initiatives.length, ini2 = D.partnersData.initiatives.length;
     $('#forkgrid').innerHTML =
       '<button type="button" class="pane c" data-go="curation"><div><span class="no">Vertical 01</span><h3><span>Curation</span><br>&amp; Research</h3><p>What members learn and make: a 24-session year that starts from zero and ends with something shipped.</p></div><div><div class="stats"><div><b>' + S + '</b><small>sessions</small></div><div><b>6</b><small>play sessions</small></div><div><b>' + ini + '</b><small>initiatives</small></div></div><span class="enter">Enter this side <i>→</i></span></div></button>' +
-      '<i class="splitline" aria-hidden="true"></i>' +
       '<button type="button" class="pane o" data-go="outreach"><div><span class="no">Vertical 02</span><h3><span>Outreach</span><br>&amp; External Relations</h3><p>Who the club works with and how it asks: reachable partners, honest pitches, pilots before promises.</p></div><div><div class="stats"><div><b>' + P + '</b><small>partner rows</small></div><div><b>5</b><small>access tiers</small></div><div><b>' + ini2 + '</b><small>initiatives</small></div></div><span class="enter">Enter this side <i>→</i></span></div></button>';
   }
 
@@ -744,9 +694,9 @@
       $$('.vpanel').forEach(function (p) { p.hidden = p.dataset.v !== v; });
       $$('.switch button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === v)); });
       $('#veyebrow').textContent = HEAD[v][0]; var vt = $('#vtitle'); vt.classList.remove('in', 'vh'); vt.dataset.split = ''; vt.innerHTML = HEAD[v][1]; splitWords(vt, 'vh'); requestAnimationFrame(function () { requestAnimationFrame(function () { vt.classList.add('in'); }); });
-      $('#vlead').textContent = HEAD[v][2]; var bw = $('#vbg'); if (bw) bw.textContent = v === 'curation' ? 'CURATION' : 'OUTREACH';
+      $('#vlead').textContent = HEAD[v][2];
       var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = cssv('--bg');
-      netColor(); observe($('#vp-' + v));
+      setTimeout(netColor, 80); fxText($('#vp-' + v)); observe($('#vp-' + v));
       try { history.replaceState(null, '', '#' + v); } catch (e) { /* ignore */ }
     }
     if (document.startViewTransition && !reduce && !o.noanim) {
@@ -798,18 +748,13 @@
     addEventListener('scroll', function () { requestAnimationFrame(updateSub); }, { passive: true });
     addEventListener('resize', function () { drawBridge(); });
 
-    var saved = store('nn-theme'); if (saved) { saved = { midnight: 'indigo', aurora: 'ink', paper: 'day' }[saved] || saved; if (/^(indigo|ink|day)$/.test(saved)) applyTheme(saved); }
+    var saved = store('nn-theme'); if (/^(paper|midnight|aurora)$/.test(saved || '')) applyTheme(saved);
     var h = location.hash.replace('#', '');
     if (h === 'outreach') setV('outreach', { force: true, noanim: true });
-    else { observe($('#vp-curation')); }
-    observe(document); netColor(); startNet(); startPointer(); onScroll(); updateSub();
-    // brand motion: big background words, split headings, scrubbed paragraphs, pinned roadmap
-    function bgw(sel, word, dir) { var s = $(sel); if (s) s.insertAdjacentHTML('afterbegin', '<div class="bgw" aria-hidden="true"><span class="bgword"' + (sel === '.vhead' ? ' id="vbg"' : '') + (dir ? ' data-dir="' + dir + '"' : '') + '>' + word + '</span></div>'); }
-    bgw('.vhead', 'CURATION'); bgw('#bridge', 'BRIDGE', 'r'); bgw('#clock', 'ONE CLOCK'); bgw('#about', 'ABOUT', 'r');
-    fxText(document); var vt0 = $('#vtitle'); splitWords(vt0, 'vh'); requestAnimationFrame(function () { vt0.classList.add('in'); });
-    observe(document); measurePin(); addEventListener('resize', function () { measurePin(); fxTick(); }); setTimeout(function () { measurePin(); fxTick(); }, 600);
-    fxPointer(); fxTick();
-    setTimeout(function () { var l = $('.loader'); if (l) { l.classList.add('done'); setTimeout(function () { l.remove(); }, 1300); } }, 900);
+    else { fxText($('#vp-curation')); observe($('#vp-curation')); }
+    var vt0 = $('#vtitle'); splitWords(vt0, 'vh'); requestAnimationFrame(function () { vt0.classList.add('in'); });
+    fxText($('#bridge')); fxText($('#clock')); fxText($('#about')); fxText($('#sources')); fxText($('#fork'));
+    observe(document); netColor(); startNet(); startGlow(); onScroll(); planetTick(); addEventListener('resize', planetTick); var pb = $('#planet'); pb.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }); updateSub(); typePrompt();
     document.body.classList.add('ready');
     window.__nn = { ready: true };
   }
