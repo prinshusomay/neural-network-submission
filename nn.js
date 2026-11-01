@@ -759,7 +759,7 @@
     window.__nn = { ready: true };
   }
   Promise.all(['site', 'sessions', 'partners', 'templates', 'sources'].map(function (n) {
-    return fetch(n + '.json').then(function (r) { if (!r.ok) throw new Error('Could not load ' + n + '.json'); return r.json(); });
+    return fetch(n + '.json?v=4').then(function (r) { if (!r.ok) throw new Error('Could not load ' + n + '.json'); return r.json(); });
   })).then(boot).catch(function (e) {
     document.body.insertAdjacentHTML('afterbegin', '<div style="padding:2rem;text-align:center;font-family:sans-serif;color:#fff;background:#400">This page could not load its data: ' + esc(e.message || e) + '. If you opened the file from a folder, use the GitHub Pages address or run <code>python3 -m http.server</code> in the folder.</div>');
   });
