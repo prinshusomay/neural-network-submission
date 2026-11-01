@@ -1,32 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="midnight" data-v="curation">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home | The Neural Network (applicant submission)</title>
-<meta name="description" content="Round 2 recruitment submission by Prinshu Somay for The Neural Network, the AI club at IIM Sirmaur. Not an official club site.">
-<link rel="stylesheet" href="style.css">
+<title>The Neural Network: Year Programme 2026-27 | Applicant submission by Prinshu Somay</title>
+<meta name="description" content="Round 2 recruitment submission by Prinshu Somay for The Neural Network, the AI club at IIM Sirmaur. One programme, two verticals: Curation and Research, and Outreach and External Relations. Not an official club site.">
+<meta name="theme-color" content="#070B14">
+<link rel="stylesheet" href="nn.css">
 </head>
-<body class="sec-home" data-root="">
-<a class="skip" href="#app">Skip to main content</a>
-<div class="statusbar" role="status">Applicant submission for Round 2 recruitment. Not an official club site.</div>
-<header class="site-header">
-<div class="wrap">
-<div class="brand"><a href="index.html">The Neural Network: Year Programme 2026-27</a><span>Applicant submission by Prinshu Somay</span></div>
-<nav class="mainnav" aria-label="Main"><ul><li><a href="index.html" aria-current="page">Home</a></li><li><a href="curation.html">Curation &amp; Research</a></li><li><a href="outreach.html">Outreach &amp; External Relations</a></li><li><a href="about.html">About</a></li></ul></nav>
-</div>
+<body>
+<a class="skip" href="#stage">Skip to the programme</a>
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="blobs" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+<div class="cursor" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
 
+<div class="status" role="status"><b>Applicant submission for Round 2 recruitment.</b> Not an official club site.</div>
+<header class="topbar">
+  <div class="wrap in">
+    <a class="brand" href="#top" aria-label="The Neural Network, back to top"><i class="mark">N</i><div><span>The Neural Network</span><small>Applicant submission</small></div></a>
+    <div class="switch" role="group" aria-label="Switch vertical">
+      <i class="ind" aria-hidden="true"></i>
+      <button type="button" data-v="curation" aria-pressed="true"><span class="full">Curation &amp; Research</span><span class="short">Curation</span></button>
+      <button type="button" data-v="outreach" aria-pressed="false"><span class="full">Outreach &amp; External Relations</span><span class="short">Outreach</span></button>
+    </div>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Colour theme">
+        <button type="button" role="radio" data-t="midnight" aria-checked="true" aria-label="Midnight theme" title="Midnight"></button>
+        <button type="button" role="radio" data-t="aurora" aria-checked="false" aria-label="Aurora theme" title="Aurora"></button>
+        <button type="button" role="radio" data-t="paper" aria-checked="false" aria-label="Paper theme" title="Paper"></button>
+      </div>
+    </div>
+  </div>
 </header>
-<div class="switch wrap" role="group" aria-label="Switch vertical"><a class="btn alt small" href="curation.html">Curation &amp; Research</a><a class="btn alt small" href="outreach.html">Outreach &amp; External Relations</a></div>
-<main class="wrap">
-<div id="app" data-page="home" tabindex="-1"><noscript><p>This page builds its content from JSON files with a little JavaScript. Please turn JavaScript on.</p></noscript><p>Loading</p></div>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="hname">
+    <span class="chip"><i></i><span id="chipText">Applicant, Round 2 recruitment. Not a member of the club.</span></span>
+    <h1 class="name" id="hname"><span class="row">The Neural</span><span class="row two">Network</span></h1>
+    <p class="tagline">From Zero to Shipped. A year programme in two verticals.</p>
+    <p class="heroP" id="heroP"></p>
+    <div class="cta">
+      <button type="button" class="btn" data-go="curation">Explore Curation &amp; Research <span class="arrow">→</span></button>
+      <button type="button" class="btn c2" data-go="outreach">Explore Outreach &amp; External Relations <span class="arrow">→</span></button>
+      <a class="btn ghost" href="#bridge">See how they connect</a>
+    </div>
+    <div class="scrollcue"><i></i> Scroll</div>
+  </section>
+  <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
+
+  <section class="fork wrap" id="fork" aria-labelledby="forkh">
+    <span class="eyebrow">The one fork</span>
+    <h2 class="h2" id="forkh">Two verticals. <em>One programme.</em></h2>
+    <p class="lead reveal">The rest of this page is a single story. Choose a side here, or use the switch at the top at any time. Everything below the fork changes colour and content. Everything after it is shared.</p>
+    <div class="forkgrid reveal" id="forkgrid"></div>
+    <p class="forknote">Hover to open a side. Click to enter it.</p>
+  </section>
+
+  <section class="stage" id="stage" aria-live="polite">
+    <div class="wrap vhead"><span class="eyebrow" id="veyebrow"></span><div class="big" id="vtitle"></div><p class="lead" id="vlead"></p></div>
+    <div class="wrap vpanels" id="vpanels"></div>
+  </section>
+
+  <section class="bridge sec wrap" id="bridge" data-io aria-labelledby="bridgeh"></section>
+  <section class="sec wrap" id="clock" aria-labelledby="clockh"></section>
+  <section class="sec wrap" id="about" aria-labelledby="abouth"></section>
+  <section class="sec tight wrap" id="sources" aria-labelledby="sourcesh"></section>
 </main>
-<footer class="site-footer">
-<div class="wrap">
-<p>Prepared by Prinshu Somay, BMS 2025-29, for Round 2 recruitment of The Neural Network, IIM Sirmaur. Applicant submission, not an official club site.</p>
-<p class="small"><a href="about-sources.html">Sources</a> | <a href="about.html">About this submission</a></p>
-</div>
+
+<footer>
+  <div class="wrap row">
+    <p id="footTxt"></p>
+    <p class="small"><a href="#top">Back to top</a> · <a href="#sources">Sources</a> · <a href="#about">About this submission</a></p>
+  </div>
 </footer>
-<script src="main.js"></script>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dlabel" aria-hidden="true">
+  <div class="dh"><span id="dlabel">Details</span><button type="button" class="x" id="dclose" aria-label="Close details">✕</button></div>
+  <div class="db" id="dbody"></div>
+</aside>
+<div class="tip" id="tip" role="tooltip"></div>
+<div class="toast" id="toast" role="status"></div>
+<noscript><p style="padding:2rem;text-align:center">This site builds its content from JSON files with JavaScript. Please turn JavaScript on.</p></noscript>
+<script src="nn.js"></script>
 </body>
 </html>
