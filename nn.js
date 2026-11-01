@@ -122,7 +122,7 @@
         });
       }, { threshold: .1, rootMargin: '0px 0px -8% 0px' });
     }
-    $$('.reveal,[data-io],.split,.vh', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
+    $$('.reveal,[data-io],.split,.vh,.shead,.vhead', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
   }
 
   /* ---------- drawer, tooltip, toast ---------- */
@@ -228,6 +228,50 @@
     pl.style.transform = 'translate(' + (x - S / 2).toFixed(1) + 'px,' + (y - S / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ') rotate(' + (scrollY * .08).toFixed(1) + 'deg)';
     pl.style.zIndex = t > .5 ? 55 : 5;
     var dl = $('.dockline'); if (dl) { dl.classList.toggle('on', t > .9); dl.style.right = (vw - dx) + 'px'; dl.style.top = top + 'px'; dl.style.bottom = (vh - top - span) + 'px'; }
+  }
+
+  /* ---------- extra life ---------- */
+  function starsInit() {
+    var s = $('#stars'); if (!s || reduce) return;
+    var h = '';
+    for (var i = 0; i < 34; i++) h += '<i style="left:' + (Math.random() * 100).toFixed(1) + '%;top:' + (Math.random() * 100).toFixed(1) + '%;--t:' + (3 + Math.random() * 5).toFixed(1) + 's;--dl:' + (-Math.random() * 6).toFixed(1) + 's"></i>';
+    s.innerHTML = h;
+  }
+  var mouse = { x: 0, y: 0 };
+  function depthInit() {
+    if (reduce) return;
+    addEventListener('pointermove', function (e) {
+      mouse.x = e.clientX / innerWidth - .5; mouse.y = e.clientY / innerHeight - .5;
+      var au = $('.aurora'); if (au) au.style.transform = 'translate3d(' + (mouse.x * -26).toFixed(1) + 'px,' + (mouse.y * -20).toFixed(1) + 'px,0)';
+      var pl = $('#planet'); if (pl) { pl.style.setProperty('--tx', (mouse.y * -10).toFixed(1) + 'deg'); var rs = $$('.ring', pl); rs.forEach(function (r, i) { r.style.translate = (mouse.x * (6 + i * 5)).toFixed(1) + 'px ' + (mouse.y * (4 + i * 4)).toFixed(1) + 'px'; }); }
+      var ls = $$('.name .l');
+      if (scrollY < innerHeight && ls.length) ls.forEach(function (l) {
+        var r = l.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), k = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / 220);
+        l.style.translate = '0 ' + (-k * 10).toFixed(1) + 'px';
+      });
+    }, { passive: true });
+    var pl2 = $('#planet'); if (pl2) pl2.addEventListener('click', function () { pl2.classList.remove('pulse'); void pl2.offsetWidth; pl2.classList.add('pulse'); setTimeout(function () { pl2.classList.remove('pulse'); }, 1200); });
+  }
+  function motifs() {
+    var C = '<svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><g class="spin"><circle cx="60" cy="60" r="50"/><circle class="d tw" cx="60" cy="10" r="3.2"/><circle class="d tw" cx="104" cy="82" r="2.6"/></g><g class="spin r"><circle cx="60" cy="60" r="32"/><circle class="d tw" cx="28" cy="78" r="3"/><circle class="d tw" cx="86" cy="36" r="2.4"/></g><line x1="60" y1="10" x2="28" y2="78"/><line x1="28" y1="78" x2="86" y2="36"/><line x1="86" y1="36" x2="104" y2="82"/><circle class="d" cx="60" cy="60" r="4"/></svg>';
+    var O = '<svg class="motif" viewBox="0 0 120 120" aria-hidden="true"><g class="spin"><ellipse cx="60" cy="60" rx="54" ry="22" transform="rotate(-24 60 60)"/><circle class="d" cx="108" cy="42" r="3.4"/></g><g class="spin r"><ellipse cx="60" cy="60" rx="40" ry="16" transform="rotate(30 60 60)"/><circle class="d" cx="22" cy="42" r="3"/></g><circle cx="60" cy="60" r="12"/><circle class="d" cx="60" cy="60" r="4"/><line x1="60" y1="60" x2="108" y2="42"/><line x1="60" y1="60" x2="22" y2="42"/></svg>';
+    var a = $('.pane.c'), b = $('.pane.o'); if (a) a.insertAdjacentHTML('afterbegin', C); if (b) b.insertAdjacentHTML('afterbegin', O);
+  }
+  function constellationLinks() {
+    var svg = $('#const svg'); if (!svg) return;
+    var nodes = $$('.node', svg);
+    nodes.forEach(function (n, i) {
+      n.addEventListener('pointerenter', function () {
+        var me = n.parentNode.getAttribute('transform').match(/-?[\d.]+/g), prev = nodes[i - 1], next = nodes[i + 1];
+        [prev, next].forEach(function (o) {
+          if (!o) return; var t = o.parentNode.getAttribute('transform').match(/-?[\d.]+/g);
+          var l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', me[0]); l.setAttribute('y1', me[1]); l.setAttribute('x2', t[0]); l.setAttribute('y2', t[1]); l.setAttribute('class', 'link-glow on'); l.dataset.tmp = '1';
+          svg.insertBefore(l, svg.firstChild.nextSibling);
+        });
+      });
+      n.addEventListener('pointerleave', function () { $$('line[data-tmp]', svg).forEach(function (l) { l.remove(); }); });
+    });
   }
 
   /* ===================================================== CURATION ===================================================== */
@@ -754,7 +798,7 @@
     else { fxText($('#vp-curation')); observe($('#vp-curation')); }
     var vt0 = $('#vtitle'); splitWords(vt0, 'vh'); requestAnimationFrame(function () { vt0.classList.add('in'); });
     fxText($('#bridge')); fxText($('#clock')); fxText($('#about')); fxText($('#sources')); fxText($('#fork'));
-    observe(document); netColor(); startNet(); startGlow(); onScroll(); planetTick(); addEventListener('resize', planetTick); var pb = $('#planet'); pb.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }); updateSub(); typePrompt();
+    observe(document); netColor(); startNet(); startGlow(); onScroll(); planetTick(); starsInit(); depthInit(); motifs(); constellationLinks(); addEventListener('resize', planetTick); var pb = $('#planet'); pb.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); }); updateSub(); typePrompt();
     document.body.classList.add('ready');
     window.__nn = { ready: true };
   }
