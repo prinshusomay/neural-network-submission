@@ -61,7 +61,7 @@
     }
     function frame() {
       ctx.clearRect(0, 0, W, H);
-      var paper = root.dataset.theme === 'paper', base = paper ? .28 : .5, i, j, p, q, dx, dy, d, a;
+      var paper = root.dataset.theme === 'day', base = paper ? .28 : .5, i, j, p, q, dx, dy, d, a;
       for (i = 0; i < pts.length; i++) {
         p = pts[i]; p.x += p.vx; p.y += p.vy;
         if (p.x < -20) p.x = W + 20; if (p.x > W + 20) p.x = -20; if (p.y < -20) p.y = H + 20; if (p.y > H + 20) p.y = -20;
@@ -113,6 +113,7 @@
       var ln = $('.lanes');
       if (ln) { var r = ln.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .75 - r.top) / r.height)); ln.style.setProperty('--lp', p.toFixed(3)); }
       document.querySelector('.blob.b2').style.transform = 'translateY(' + (scrollY * .06) + 'px)';
+      fxTick();
     });
   }
   addEventListener('scroll', onScroll, { passive: true });
@@ -138,7 +139,7 @@
         });
       }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
     }
-    $$('.reveal,[data-io]', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
+    $$('.reveal,[data-io],.split,.vh', scope || document).forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
   }
 
   /* ---------- drawer, tooltip, toast ---------- */
@@ -190,6 +191,94 @@
     if (t) showTip(t.getAttribute('data-tip'), e.clientX, e.clientY); else if (tip && tip.classList.contains('on')) hideTip();
   }, { passive: true });
 
+  /* ============ motion toolkit: split text, scroll scrub, big background words, pinned roadmap, parallax ============ */
+  function splitWords(el, cls) {
+    if (!el) return;
+    el.dataset.split = '1'; el.classList.add(cls || 'split');
+    var wi = 0, label = el.textContent;
+    function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (ch) {
+        if (ch.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(function (tok) {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var w = document.createElement('span'), s = document.createElement('span');
+            w.className = 'w'; w.setAttribute('aria-hidden', 'true'); s.textContent = tok; s.style.setProperty('--wi', wi++);
+            w.appendChild(s); frag.appendChild(w);
+          });
+          node.replaceChild(frag, ch);
+        } else if (ch.nodeType === 1) walk(ch);
+      });
+    }
+    walk(el); el.setAttribute('aria-label', label);
+  }
+  function scrubify(el) {
+    if (!el || el.dataset.scrub || el.children.length) return;
+    el.dataset.scrub = '1'; el.classList.add('scrub');
+    var words = [], txt = el.textContent; el.textContent = '';
+    txt.split(/\s+/).forEach(function (t) { if (!t) return; var s = document.createElement('span'); s.className = 'sw'; s.textContent = t + ' '; el.appendChild(s); words.push(s); });
+    el._w = words;
+  }
+  function fxTick() {
+    var vh = innerHeight, i;
+    $$('.scrub').forEach(function (el) {
+      if (!el.offsetParent) return;
+      var r = el.getBoundingClientRect(); if (r.bottom < -60 || r.top > vh + 60) return;
+      var p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.42 + r.height * 0.9))), n = el._w.length, k = Math.round(p * n * 1.04);
+      for (i = 0; i < n; i++) { var on = i < k; if (el._w[i]._on !== on) { el._w[i]._on = on; el._w[i].classList.toggle('lit', on); } }
+    });
+    $$('.bgword').forEach(function (el) {
+      var sec = el.closest('section,.vhead'); if (!sec || !sec.offsetParent) return;
+      var r = sec.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return;
+      var p = (vh - r.top) / (vh + r.height);
+      el.style.setProperty('--bx', (innerWidth * 0.08 - p * innerWidth * 0.62).toFixed(1) + 'px');
+    });
+    var pin = $('.hpin');
+    if (pin && pin.offsetParent && innerWidth > 900) {
+      var r2 = pin.getBoundingClientRect(), st = pin.firstElementChild, total = r2.height - st.offsetHeight, p2 = Math.min(1, Math.max(0, -(r2.top - 64) / Math.max(1, total)));
+      pin.style.setProperty('--hx', (-p2 * (pin._dist || 0)).toFixed(1) + 'px'); pin.style.setProperty('--hp', p2.toFixed(4));
+    }
+    if (scrollY < vh * 1.6) $$('.floaty').forEach(function (el) { var sp = parseFloat(el.dataset.speed || '.1'); el.style.transform = 'translate3d(0,' + (-scrollY * sp).toFixed(1) + 'px,0) rotate(' + (scrollY * sp * .25).toFixed(1) + 'deg)'; });
+  }
+  function measurePin() {
+    var pin = $('.hpin'); if (!pin) return;
+    if (innerWidth <= 900) { pin.style.removeProperty('--hh'); pin._dist = 0; return; }
+    var track = $('.htrack', pin), dist = Math.max(0, track.scrollWidth - innerWidth + 24);
+    pin._dist = dist; pin.style.setProperty('--hh', (dist + innerHeight - 64 + 140) + 'px');
+  }
+  function fxPointer() {
+    if (!fine || reduce) return;
+    var ring = document.createElement('div'), dot = document.createElement('div');
+    ring.className = 'cring'; dot.className = 'cdot'; document.body.appendChild(ring); document.body.appendChild(dot);
+    var rx = -100, ry = -100, tx = -100, ty = -100;
+    addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY; dot.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+      var t = e.target.closest && e.target.closest('a,button,.card,.node,.pn,input,textarea,summary,[role="button"],label');
+      document.body.classList.toggle('hover-int', !!t);
+    }, { passive: true });
+    (function loop() { rx += (tx - rx) * .17; ry += (ty - ry) * .17; ring.style.transform = 'translate(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px)'; requestAnimationFrame(loop); })();
+    document.addEventListener('pointermove', function (e) {
+      var b = e.target.closest && e.target.closest('.btn');
+      if (b) { var r = b.getBoundingClientRect(); b.classList.add('mag'); b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * .3).toFixed(1) + 'px)'; }
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) { var b = e.target.closest && e.target.closest('.btn'); if (b && !b.contains(e.relatedTarget)) b.style.transform = ''; });
+    /* hero title: letters swell and lift near the cursor */
+    var hero = $('.hero'), letters = $$('.name .l');
+    if (hero) hero.addEventListener('pointermove', function (e) {
+      letters.forEach(function (l) {
+        var r = l.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), k = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / 190);
+        l.style.fontVariationSettings = '"wght" ' + Math.round(560 + 240 * k) + ',"wdth" ' + Math.round(80 + 20 * k);
+        l.style.translate = '0 ' + (-k * 14).toFixed(1) + 'px';
+      });
+    }, { passive: true });
+    if (hero) hero.addEventListener('pointerleave', function () { letters.forEach(function (l) { l.style.fontVariationSettings = ''; l.style.translate = ''; }); });
+  }
+  function fxText(scope) {
+    $$('.h2', scope).forEach(function (h) { if (!h.dataset.split) splitWords(h); });
+    $$('.lead', scope).forEach(function (p) { if (!p.closest('.hero')) scrubify(p); });
+  }
+
   /* ===================================================== CURATION ===================================================== */
   function sessionTip(s) {
     return esc('<b>Session ' + s.n + ': ' + shortTitle(s.title) + '</b>' + s.type + (s.funKind ? ' (' + s.funKind + ')' : '') + ' · ' + lvlName(s.level) + ' · Month ' + s.month);
@@ -221,19 +310,19 @@
     }).join('') + '</div>';
   }
   function monthsHtml() {
-    var S = D.sessions, h = '<div class="months">';
+    var S = D.sessions, h = '<div class="hpin" id="hpin"><div class="hsticky"><div class="hhead"><span class="eyebrow">Scroll sideways through the year</span></div><div class="htrack">';
     for (var m = 1; m <= 12; m++) {
       var ss = S.filter(function (s) { return s.month === m; });
-      h += '<div class="card month tilt reveal" style="--d:' + (m % 6) + '"><h4>Month ' + m + '</h4><div class="term">' + esc(ss[0].term + ' ' + ss[0].termName) + '</div>' +
+      h += '<div class="card hcard"><div class="mo">' + (m < 10 ? '0' + m : m) + '</div><h4>Month ' + m + '</h4><div class="term">' + esc(ss[0].term + ' ' + ss[0].termName) + '</div>' +
         ss.map(function (s) { return '<button type="button" class="sess' + (s.fun ? ' play' : '') + '" data-n="' + s.n + '"><b>S' + s.n + '</b>' + esc(shortTitle(s.title)) + (s.fun ? ' ✦' : '') + '</button>'; }).join('') + '</div>';
     }
-    return h + '</div>';
+    return h + '</div><div class="hbar" aria-hidden="true"><i></i></div></div></div>';
   }
   function calendarShell() {
     return '<div class="filters"><input type="search" id="cq" placeholder="Search title, activity or tool" aria-label="Search sessions">' +
       '<div class="chips" id="cterm" role="group" aria-label="Filter by term">' + D.sessionsData.terms.map(function (t) { return '<button type="button" class="chip" aria-pressed="false" data-term="' + t.id + '">' + t.id + ' ' + esc(t.name) + '</button>'; }).join('') + '</div>' +
       '<div class="chips" id="ctype" role="group" aria-label="Filter by type">' + ['Learn', 'Hands-on', 'Build'].map(function (t) { return '<button type="button" class="chip" aria-pressed="false" data-type="' + t + '">' + t + '</button>'; }).join('') + '<button type="button" class="chip pl" aria-pressed="false" data-type="Play">Play sessions ✦</button></div></div>' +
-      '<p class="count" id="ccount" aria-live="polite"></p><div class="cal" id="calgrid"></div>';
+      '<p class="count" id="ccount" aria-live="polite"></p><div class="cal" id="calgrid"></div><p class="small muted" style="margin-top:1rem">' + esc(D.sessionsData.buildsNote || '') + '</p>';
   }
   function calendarInit() {
     var fq = '', fterm = '', ftype = '';
@@ -369,7 +458,7 @@
     var S = D.sessionsData;
     var h = '<nav class="sub" aria-label="Curation sections"><ul>' + [['c-year', 'Year'], ['c-const', 'Constellation'], ['c-months', 'Months'], ['c-cal', 'Calendar'], ['decks', 'Five decks'], ['c-play', 'Try it'], ['c-prin', 'Principles'], ['c-det', 'Full detail']].map(function (a) { return '<li><a href="#' + a[0] + '" data-sec="' + a[0] + '">' + a[1] + '</a></li>'; }).join('') + '</ul></nav>';
     h += '<section class="sec tight" id="c-year"><span class="eyebrow">What the vertical owns</span><h2 class="h2">Make AI <em>accessible</em> to someone who has never touched it.</h2><p class="lead reveal">' + esc(D.site.curationOverview.lead) + ' The design principle is simple: start from a problem the student already has, put something in their hands within ten to fifteen minutes, and teach them to check the output.</p>' + curNums() + '</section>';
-    h += '<section class="sec tight" id="c-const"><span class="eyebrow">The constellation</span><h2 class="h2">Twenty-four sessions, <em>one climb</em>.</h2><p class="lead reveal">Each dot is a session, placed by the level the document gives it and grouped by term. Yellow dots are the six play sessions. Hover for a summary, click for the details.</p><div class="card const reveal" data-io id="const">' + constellation() + '<div class="legend"><span><i></i>Learning or build session</span><span><i class="p"></i>Play session</span><span>Builder to Maker sits between the lines</span><span>Click or press Enter on a dot</span></div></div></section>';
+    h += '<section class="sec tight" id="c-const"><span class="eyebrow">The constellation</span><h2 class="h2">Twenty four sessions, <em>one climb</em>.</h2><p class="lead reveal">Each dot is a session, placed by the level the document gives it and grouped by term. Yellow dots are the six play sessions. Hover for a summary, click for the details.</p><div class="card const reveal" data-io id="const">' + constellation() + '<div class="legend"><span><i></i>Learning or build session</span><span><i class="p"></i>Play session</span><span>Builder to Maker sits between the lines</span><span>Click or press Enter on a dot</span></div></div></section>';
     h += '<section class="sec tight" id="c-months"><span class="eyebrow">The roadmap</span><h2 class="h2">Twelve months, <em>four terms</em>.</h2><p class="lead reveal">Two flagship sessions a month. Between them a light weekly layer keeps momentum: a one-page takeaway, a three-question recall quiz and a weekly "Did you know?". A set-up period of four weeks comes first, and a mid-year review follows Session 12.</p>' + monthsHtml() + '</section>';
     h += '<section class="sec tight" id="c-cal"><span class="eyebrow">The calendar</span><h2 class="h2">Find a <em>session</em>.</h2>' + calendarShell() + '</section>';
     h += '<section class="sec tight" id="decks"><span class="eyebrow">Five sessions in full</span><h2 class="h2">Sessions <em>1, 4, 12, 17 and 23</em>.</h2><p class="lead reveal">The four flagship run-sheets in my document plus Capstone Build Day. Each shows all thirteen fields. Where my document does not hold a field, it says so instead of guessing. Two of the five (4 and 12) are play sessions.</p><div id="decktabs">' + decks() + '</div></section>';
@@ -398,23 +487,36 @@
 
   /* ===================================================== OUTREACH ===================================================== */
   function partnerById(id) { return D.partners.filter(function (p) { return p.id === id; })[0]; }
+  function mailify(s) {
+    return esc(s).replace(/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g, '<a href="mailto:$1">$1</a>');
+  }
+  function urls(v) {
+    if (!v || v === 'none found') return v ? esc(v) : miss();
+    var arr = Array.isArray(v) ? v : String(v).split(/\s*;\s*/);
+    return arr.map(linkify).join('<br>');
+  }
+  function txtOrMiss(v) { return v ? esc(v) : miss(); }
+  function statusBadge(p) {
+    var s = p.contactStatus; if (!s) return '';
+    return '<span class="badge' + (/email/.test(s) ? ' mail' : '') + '">Contact: ' + esc(s) + '</span>';
+  }
   function partnerDrawer(id) {
     var p = partnerById(id), PD = D.partnersData;
     var tier = PD.tiers.filter(function (t) { return t.tier === String(p.tierNum); })[0];
     var vr = PD.value.filter(function (v) { return v.purpose === p.valueRow; })[0];
-    function f(k, v) { return '<dt>' + k + '</dt><dd>' + v + '</dd>'; }
-    var offer = vr ? '<p>' + esc(vr.offer) + '</p><p class="small muted">From the "' + esc(vr.purpose) + '" row of the value-exchange table. I mapped this partner to that row.</p>' : '<p>Credit the body in the recap; invite its members to Build Day and Demo Day; ask what it wants from the club (V2-07).</p>';
-    var h = (p.firstWave ? '<span class="badge first">First wave</span> ' : '') + '<span class="badge">Tier ' + esc(p.tier) + (tier ? ' · ' + esc(tier.name) : '') + '</span> <span class="badge">Template: ' + esc(p.template) + '</span>';
+    function f(k, v) { return '<dt>' + k + '</dt><dd class="contact">' + v + '</dd>'; }
+    var offer = vr ? '<p>' + esc(vr.offer) + '</p><p class="small muted">From the "' + esc(vr.purpose) + '" row of the value exchange table. I mapped this partner to that row.</p>' : '<p>Credit the body in the recap; invite its members to Build Day and Demo Day; ask what it wants from the club (V2-07).</p>';
+    var h = (p.firstWave ? '<span class="badge first">First wave</span> ' : '') + '<span class="badge">Tier ' + esc(p.tier) + (tier ? ' · ' + esc(tier.name) : '') + '</span> <span class="badge">Template: ' + esc(p.template) + '</span> ' + statusBadge(p);
     h += '<h3>' + esc(p.name) + '</h3><p class="muted">Partner ' + p.id + ' of 44 · ' + esc(p.type) + '</p>';
     if (p.disclose) h += '<div class="warn small"><b>Disclose.</b> I report a personal connection to this body. It must be stated in the first line of any email. The body has no relationship with the club today.</div>';
     if (p.flag) h += '<p class="small muted">' + esc(p.flag) + '</p>';
-    h += '<dl>' + f('1. Name', esc(p.name)) + f('2. Website', val(p.website)) + f('3. Description', '<p>' + esc(p.type) + '. The document gives no longer description.</p>') +
+    h += '<dl>' + f('1. Name', esc(p.name)) + f('2. Website', urls(p.website)) + f('3. Description', '<p>' + (p.description ? esc(p.description) : esc(p.type) + '.') + '</p>') +
       f('4. Why relevant (my view)', p.viewNote ? '<p>' + esc(p.viewNote) + '</p>' : '<p>' + miss() + '</p>') + f('5. Proposed collaboration', '<p>' + esc(p.purpose) + '</p>') +
       f('6. Partnership category', '<p>' + esc(p.type) + '. Access tier ' + esc(p.tier) + (tier ? ' (' + esc(tier.name) + '): ' + esc(tier.meaning) : '') + '. Template: ' + esc(p.template) + '.</p>') +
-      f('7. What they could contribute', '<p>' + esc(p.purpose) + '</p>') + f('8. What the club could offer', offer) + f('9. Contact person (if public)', val(p.contactPerson)) +
-      f('10. Verified email or phone', val([p.email, p.phone].filter(Boolean))) + f('11. LinkedIn or official contact page', val(p.contactPage)) + f('12. Source links', val(p.sources)) + '</dl>';
+      f('7. What they could contribute', '<p>' + esc(p.purpose) + '</p>') + f('8. What the club could offer', offer) + f('9. Contact person (if public)', txtOrMiss(p.contactPerson)) +
+      f('10. Verified email or phone', '<p>' + (p.email ? mailify(p.email) : miss()) + '</p><p>' + (p.phone ? esc(p.phone) : '') + '</p>') + f('11. LinkedIn or official contact page', urls(p.contactPage)) + f('12. Source links', urls(p.sources)) + '</dl>';
     var where = (p.named && p.named.length) ? 'Named in ' + p.named.join(', ') : (p.categoryInitiative ? 'Fits the category covered by ' + p.categoryInitiative + '; the document does not name this partner there' : 'No initiative names this partner');
-    h += '<p class="small muted" style="margin-top:1.4rem">Where it sits in the plan: ' + esc(where) + '.</p><p class="small muted">Nobody has been contacted. I claim no relationship with this organisation. Re-check the person\'s role and the route on the organisation\'s own page before any message.</p>';
+    h += '<p class="small muted" style="margin-top:1.4rem">Where it sits in the plan: ' + esc(where) + '.</p><p class="small muted">Contact details were copied on ' + esc(p.researchedOn || '1 November 2026') + ' from the pages in Source links. I did not contact this organisation and I claim no relationship with it. Re-check the person\'s role and the route on the organisation\'s own page before any message.</p>';
     return h;
   }
   function tierCounts() { var c = {}; D.partners.forEach(function (p) { c[p.tierNum] = (c[p.tierNum] || 0) + 1; }); return c; }
@@ -448,25 +550,27 @@
     if (window.__pdraw) window.__pdraw();
   }
   function partnerGridShell() {
-    return '<div class="filters"><input type="search" id="pq" placeholder="Search name, type or purpose" aria-label="Search partners"><div class="chips" id="ptier" role="group" aria-label="Filter by tier">' + D.partnersData.tiers.map(function (t) { return '<button type="button" class="chip" aria-pressed="false" data-tier="' + t.tier + '">Tier ' + t.tier + '</button>'; }).join('') + '<button type="button" class="chip fw" id="pfirst" aria-pressed="false">First wave only</button></div></div><p class="count" id="pcount" aria-live="polite"></p><div class="pgrid" id="pgrid"></div>' +
-      '<p class="small muted">Entries are as reported in my working notes and were not independently re-verified. Where one row groups several named people, the document groups them too. Contact routes are not in my document, so no email, phone or form is shown.</p>';
+    return '<div class="filters"><input type="search" id="pq" placeholder="Search name, type or purpose" aria-label="Search partners"><div class="chips" id="ptier" role="group" aria-label="Filter by tier">' + D.partnersData.tiers.map(function (t) { return '<button type="button" class="chip" aria-pressed="false" data-tier="' + t.tier + '">Tier ' + t.tier + '</button>'; }).join('') + '<button type="button" class="chip fw" id="pfirst" aria-pressed="false">First wave only</button></div><div class="chips" id="pcontact" role="group" aria-label="Filter by contact status">' + [['email', 'Email published'], ['form only', 'Form only'], ['phone only', 'Phone only'], ['none found', 'None found']].map(function (c) { return '<button type="button" class="chip" aria-pressed="false" data-c="' + c[0] + '">' + c[1] + '</button>'; }).join('') + '</div></div><p class="count" id="pcount" aria-live="polite"></p><div class="pgrid" id="pgrid"></div>' +
+      '<p class="small muted">Entries are as reported in my working notes and were not independently re-verified. Contact details and links were copied from official pages on 1 November 2026. I did not contact anyone. \"None found\" means I could not find a public route.</p>';
   }
   function partnersInit() {
-    var q = '', first = false;
+    var q = '', first = false, cstat = '';
     window.__pdraw = function () {
       var rows = D.partners.filter(function (p) {
         if (state.tier && String(p.tierNum) !== state.tier) return false;
         if (first && !p.firstWave) return false;
+        if (cstat && !(cstat === 'email' ? /email/.test(p.contactStatus || '') : p.contactStatus === cstat)) return false;
         if (q && (p.name + ' ' + p.type + ' ' + p.purpose + ' ' + p.template).toLowerCase().indexOf(q) < 0) return false;
         return true;
       });
       $('#pcount').textContent = 'Showing ' + rows.length + ' of 44 partner rows';
       $('#pgrid').innerHTML = rows.map(function (p) {
-        return '<button type="button" class="card pcard tilt' + (p.firstWave ? ' f' : '') + '" data-p="' + p.id + '"><span><span class="badge' + (p.firstWave ? ' first' : '') + '">' + (p.firstWave ? 'First wave · ' : '') + 'Tier ' + esc(p.tier) + '</span> <span class="badge">' + esc(p.template) + '</span></span><h4>' + p.id + '. ' + esc(p.name) + '</h4><p class="muted small">' + esc(p.type) + '</p><p>' + esc(p.purpose) + '</p></button>';
+        return '<button type="button" class="card pcard tilt' + (p.firstWave ? ' f' : '') + '" data-p="' + p.id + '"><span><span class="badge' + (p.firstWave ? ' first' : '') + '">' + (p.firstWave ? 'First wave · ' : '') + 'Tier ' + esc(p.tier) + '</span> <span class="badge">' + esc(p.template) + '</span> ' + statusBadge(p) + '</span><h4>' + p.id + '. ' + esc(p.name) + '</h4><p class="muted small">' + esc(p.type) + '</p><p>' + esc(p.purpose) + '</p></button>';
       }).join('') || '<p class="muted">No partner matches. Clear a filter.</p>';
     };
     $('#pq').addEventListener('input', function (e) { q = e.target.value.trim().toLowerCase(); window.__pdraw(); });
     $$('#ptier .chip[data-tier]').forEach(function (b) { b.addEventListener('click', function () { filterTier(b.dataset.tier); }); });
+    $$('#pcontact .chip').forEach(function (b) { b.addEventListener('click', function () { var on = b.getAttribute('aria-pressed') === 'true'; $$('#pcontact .chip').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); }); if (!on) b.setAttribute('aria-pressed', 'true'); cstat = on ? '' : b.dataset.c; window.__pdraw(); }); });
     $('#pfirst').addEventListener('click', function (e) { first = !first; e.currentTarget.setAttribute('aria-pressed', String(first)); window.__pdraw(); });
     window.__pdraw();
   }
@@ -516,10 +620,10 @@
     var h = '<nav class="sub" aria-label="Outreach sections"><ul>' + [['o-idea', 'The idea'], ['o-tiers', 'Tiers'], ['o-orbit', 'Orbit map'], ['o-first', 'First wave'], ['o-list', 'All 44'], ['o-mail', 'Email templates'], ['o-lad', 'Ladder'], ['o-det', 'Full detail']].map(function (a) { return '<li><a href="#' + a[0] + '" data-sec="' + a[0] + '">' + a[1] + '</a></li>'; }).join('') + '</ul></nav>';
     h += '<section class="sec tight" id="o-idea"><span class="eyebrow">What the vertical owns</span><h2 class="h2">Bring the outside <em>in</em>.</h2><p class="quote reveal">' + esc(PD.central[0]).replace(/^The central idea\.\s*/, '').replace('Earn the right to ask for recurring support only after the pilot works.', '<em>Earn the right to ask for recurring support only after the pilot works.</em>') + '</p><div class="grid g2" style="margin-top:1.6rem"><div class="card pad reveal"><h3 style="font-family:var(--serif);font-size:1.3rem">Why reachable partners, not famous ones</h3>' + ul(O.whyReachable) + '</div><div class="card pad reveal" style="--d:1"><h3 style="font-family:var(--serif);font-size:1.3rem">What the club can offer</h3>' + ul(O.offer) + '<h4 style="font-family:var(--serif);margin-top:1rem">What the club will not offer</h4><p>' + O.wontOffer.map(function (w) { return '<span class="badge">' + esc(w.replace(/\.$/, '')) + '</span> '; }).join('') + '</p></div></div></section>';
     h += '<section class="sec tight" id="o-tiers"><span class="eyebrow">The access ladder</span><h2 class="h2">Order by <em>speed of reply</em>, not prestige.</h2>' + ladderHtml() + '</section>';
-    h += '<section class="sec tight" id="o-orbit"><span class="eyebrow">The orbit map</span><h2 class="h2">Forty-four rows around <em>one club</em>.</h2><p class="lead reveal">Closest ring is Tier 1, furthest is Tier 5. Green rings are the first wave. Hover to read, click to open a profile.</p><div class="card orbitwrap reveal">' + orbit() + '<div class="legend"><span><i></i>Partner row</span><span><i class="f"></i>First wave (Tier 1)</span><span>The sweep is decoration</span></div></div></section>';
+    h += '<section class="sec tight" id="o-orbit"><span class="eyebrow">The orbit map</span><h2 class="h2">Forty four rows around <em>one club</em>.</h2><p class="lead reveal">Closest ring is Tier 1, furthest is Tier 5. Green rings are the first wave. Hover to read, click to open a profile.</p><div class="card orbitwrap reveal">' + orbit() + '<div class="legend"><span><i></i>Partner row</span><span><i class="f"></i>First wave (Tier 1)</span><span>The sweep is decoration</span></div></div></section>';
     h += '<section class="sec tight" id="o-first"><span class="eyebrow">First wave</span><h2 class="h2">Start where the doors are <em>already open</em>.</h2>' + firstWave() + '</section>';
-    h += '<section class="sec tight" id="o-list"><span class="eyebrow">Partner shortlist</span><h2 class="h2">All <em>forty-four</em> rows.</h2>' + partnerGridShell() + '</section>';
-    h += '<section class="sec tight" id="o-mail"><span class="eyebrow">Cold-email templates</span><h2 class="h2">Five letters, <em>five purposes</em>.</h2><p class="lead reveal">A request for money and a request for time are not the same letter. Each template has a subject, a body, a follow-up and a copy button.</p>' + templatesHtml() + '</section>';
+    h += '<section class="sec tight" id="o-list"><span class="eyebrow">Partner shortlist</span><h2 class="h2">All <em>forty four</em> rows.</h2>' + partnerGridShell() + '</section>';
+    h += '<section class="sec tight" id="o-mail"><span class="eyebrow">Cold email templates</span><h2 class="h2">Five letters, <em>five purposes</em>.</h2><p class="lead reveal">A request for money and a request for time are not the same letter. Each template has a subject, a body, a follow-up and a copy button.</p>' + templatesHtml() + '</section>';
     h += '<section class="sec tight" id="o-lad"><span class="eyebrow">The partnership ladder</span><h2 class="h2">Pilot first. <em>Then</em> earn more.</h2><div class="steps4">' + PD.ladder.map(function (s, i) { return '<div class="card reveal" style="--d:' + i + '"><h4>' + esc(s.stage) + '</h4><p>' + esc(s.looks) + '</p><p class="small"><b>Entry:</b> ' + esc(s.entry) + '</p></div>'; }).join('') + '</div></section>';
     h += '<section class="sec tight" id="o-det"><span class="eyebrow">Full detail</span><h2 class="h2">Everything in the <em>document</em>.</h2><p class="lead">All fifteen initiatives and the tables behind the outreach plan.</p>' + outDetails() + '</section>';
     return h;
@@ -539,7 +643,7 @@
   function bridgeHtml() {
     var I = D.partnersData.interlock;
     var h = '<span class="eyebrow">Where the two meet</span><h2 class="h2" id="bridgeh">Every session has a <em>partner</em> behind it.</h2><p class="lead reveal">Curation needs outside judges, mentors, problem statements and prizes that only Outreach can obtain. Outreach needs recaps, demos and proof of delivery that only Curation creates. The interlock below is my own arrangement ("added in synthesis"). The independence rule holds: the core 24 sessions never depend on an outside partner. If a partner declines, the session runs as written.</p>';
-    h += '<div class="bcols" id="bcols"><svg class="bsvg" id="bsvg" aria-hidden="true"><defs><linearGradient id="bg2" x1="0" x2="1"><stop offset="0" stop-color="#3DD6C6"/><stop offset="1" stop-color="#B79CFF"/></linearGradient></defs></svg><div class="bcol l"><h3>Curation moment</h3></div><div class="bcol r"><h3>Outreach contribution</h3></div>';
+    h += '<div class="bcols" id="bcols"><svg class="bsvg" id="bsvg" aria-hidden="true"><defs><linearGradient id="bg2" x1="0" x2="1"><stop offset="0" stop-color="#6C7BFF"/><stop offset="1" stop-color="#FF4FAE"/></linearGradient></defs></svg><div class="bcol l"><h3>Curation moment</h3></div><div class="bcol r"><h3>Outreach contribution</h3></div>';
     I.forEach(function (r, i) {
       h += '<div class="bi l reveal" data-r="' + i + '" style="--d:' + (i % 3) + '"><small>CURATION · ' + esc(codes(r.initiatives, 'V1') || 'V1') + '</small>' + esc(r.need) + '</div>' +
         '<div class="bi r reveal" data-r="' + i + '" style="--d:' + (i % 3) + '"><small>OUTREACH · ' + esc(codes(r.initiatives, 'V2') || 'V2') + ' · lead time ' + esc(r.lead) + '</small>' + esc(r.contribution) + '</div>';
@@ -558,7 +662,7 @@
       var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       p.setAttribute('d', 'M' + x1 + ',' + y1 + ' C' + mx + ',' + y1 + ' ' + mx + ',' + y2 + ' ' + x2 + ',' + y2); p.dataset.r = i; p.id = 'bp' + i; svg.appendChild(p);
       if (!reduce) {
-        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('r', 3.4); c.setAttribute('fill', i % 2 ? '#B79CFF' : '#3DD6C6'); c.setAttribute('opacity', '.9');
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('r', 3.4); c.setAttribute('fill', i % 2 ? '#FF4FAE' : '#1EE5FF'); c.setAttribute('opacity', '.9');
         var am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion'); am.setAttribute('dur', (5 + (i % 4)) + 's'); am.setAttribute('repeatCount', 'indefinite'); am.setAttribute('begin', (i * .4) + 's');
         var mp = document.createElementNS('http://www.w3.org/2000/svg', 'mpath'); mp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#bp' + i); mp.setAttribute('href', '#bp' + i);
         am.appendChild(mp); c.appendChild(am); svg.appendChild(c);
@@ -615,7 +719,7 @@
     });
     h.setAttribute('aria-label', 'The Neural Network');
     $('#heroP').textContent = D.site.home.purpose;
-    var T = [['24', 'sessions'], ['4', 'terms'], ['6', 'play sessions', 'g'], ['44', 'partner rows'], ['5', 'access tiers'], ['12', 'first-wave partners'], ['31', 'initiatives'], ['0', 'organisations contacted'], ['0', 'emails guessed']];
+    var T = [['24', 'sessions'], ['4', 'terms'], ['6', 'play sessions', 'g'], ['44', 'partner rows'], ['5', 'access tiers'], ['12', 'first wave partners'], ['31', 'initiatives'], ['0', 'organisations contacted'], ['0', 'emails guessed']];
     var one = T.map(function (t) { return '<span class="' + (t[2] || '') + '"><b>' + t[0] + '</b>' + t[1] + '</span>'; }).join('');
     $('#ticker').innerHTML = one + one;
   }
@@ -639,7 +743,8 @@
       state.v = v; root.dataset.v = v;
       $$('.vpanel').forEach(function (p) { p.hidden = p.dataset.v !== v; });
       $$('.switch button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === v)); });
-      $('#veyebrow').textContent = HEAD[v][0]; $('#vtitle').innerHTML = HEAD[v][1]; $('#vlead').textContent = HEAD[v][2];
+      $('#veyebrow').textContent = HEAD[v][0]; var vt = $('#vtitle'); vt.classList.remove('in', 'vh'); vt.dataset.split = ''; vt.innerHTML = HEAD[v][1]; splitWords(vt, 'vh'); requestAnimationFrame(function () { requestAnimationFrame(function () { vt.classList.add('in'); }); });
+      $('#vlead').textContent = HEAD[v][2]; var bw = $('#vbg'); if (bw) bw.textContent = v === 'curation' ? 'CURATION' : 'OUTREACH';
       var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = cssv('--bg');
       netColor(); observe($('#vp-' + v));
       try { history.replaceState(null, '', '#' + v); } catch (e) { /* ignore */ }
@@ -693,11 +798,18 @@
     addEventListener('scroll', function () { requestAnimationFrame(updateSub); }, { passive: true });
     addEventListener('resize', function () { drawBridge(); });
 
-    var saved = store('nn-theme'); if (saved && /^(midnight|aurora|paper)$/.test(saved)) applyTheme(saved);
+    var saved = store('nn-theme'); if (saved) { saved = { midnight: 'indigo', aurora: 'ink', paper: 'day' }[saved] || saved; if (/^(indigo|ink|day)$/.test(saved)) applyTheme(saved); }
     var h = location.hash.replace('#', '');
     if (h === 'outreach') setV('outreach', { force: true, noanim: true });
     else { observe($('#vp-curation')); }
     observe(document); netColor(); startNet(); startPointer(); onScroll(); updateSub();
+    // brand motion: big background words, split headings, scrubbed paragraphs, pinned roadmap
+    function bgw(sel, word, dir) { var s = $(sel); if (s) s.insertAdjacentHTML('afterbegin', '<div class="bgw" aria-hidden="true"><span class="bgword"' + (sel === '.vhead' ? ' id="vbg"' : '') + (dir ? ' data-dir="' + dir + '"' : '') + '>' + word + '</span></div>'); }
+    bgw('.vhead', 'CURATION'); bgw('#bridge', 'BRIDGE', 'r'); bgw('#clock', 'ONE CLOCK'); bgw('#about', 'ABOUT', 'r');
+    fxText(document); var vt0 = $('#vtitle'); splitWords(vt0, 'vh'); requestAnimationFrame(function () { vt0.classList.add('in'); });
+    observe(document); measurePin(); addEventListener('resize', function () { measurePin(); fxTick(); }); setTimeout(function () { measurePin(); fxTick(); }, 600);
+    fxPointer(); fxTick();
+    setTimeout(function () { var l = $('.loader'); if (l) { l.classList.add('done'); setTimeout(function () { l.remove(); }, 1300); } }, 900);
     document.body.classList.add('ready');
     window.__nn = { ready: true };
   }

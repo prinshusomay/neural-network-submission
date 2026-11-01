@@ -1,5 +1,5 @@
 {
- "note": "The consolidated document I built this site from contains no web links. So no link is shown here. Every entry below is a source the document names, as reported. Add the URL in data/sources.json once it is checked.",
+ "note": "Links were added on 1 November 2026 from pages I opened myself. Journal papers use their DOI links; the publishers blocked my automatic page checks, so I confirmed the DOI only for Fiorella and Mayer. Sources with no link are ones I could not find or confirm.",
  "groups": [
   {
    "name": "Evidence base behind the format choices (V1-07)",
@@ -7,37 +7,37 @@
     {
      "title": "Freeman et al., 2014",
      "used": "Active learning",
-     "url": null
+     "url": "https://doi.org/10.1073/pnas.1319030111"
     },
     {
      "title": "Dunlosky et al., 2013",
      "used": "Spaced practice and self-testing",
-     "url": null
+     "url": "https://doi.org/10.1177/1529100612453266"
     },
     {
      "title": "Fiorella and Mayer, 2013",
      "used": "Learning by teaching",
-     "url": null
+     "url": "https://doi.org/10.1016/j.cedpsych.2013.06.001"
     },
     {
      "title": "Digital Education Council, 2024",
      "used": "Student AI use survey",
-     "url": null
+     "url": "https://www.digitaleducationcouncil.com/post/digital-education-council-global-ai-student-survey-2024"
     },
     {
      "title": "Long and Magerko, 2020",
      "used": "AI literacy competencies",
-     "url": null
+     "url": "https://doi.org/10.1145/3313831.3376727"
     },
     {
      "title": "Kapur, 2016",
      "used": "Productive failure",
-     "url": null
+     "url": "https://doi.org/10.1080/00461520.2016.1155457"
     },
     {
      "title": "Dell'Acqua and others",
      "used": "The \"jagged frontier\" field experiment with consultants",
-     "url": null
+     "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=64700"
     },
     {
      "title": "India's data protection law and its 2025 Rules",
@@ -52,27 +52,27 @@
     {
      "title": "IIM Sirmaur clubs and committees pages",
      "used": "Descriptions of campus bodies (V2-07). Read on 1 November 2026 per the document; some pages carry old dates.",
-     "url": null
+     "url": "https://www.iimsirmaur.ac.in/en/student-committees"
     },
     {
      "title": "Unstop: host-with-Unstop route and Igniters Club programme",
      "used": "Platform route (V2-09)",
-     "url": null
+     "url": "https://unstop.com/blog/fun-ways-to-score-epic-unstop-merch/amp"
     },
     {
      "title": "Sarvam AI: Campus and Champions programmes",
      "used": "Campus session; Champions City Lead track only after evidence (V2-09)",
-     "url": null
+     "url": "https://www.sarvam.ai/sarvam-champions"
     },
     {
      "title": "StockGro: campus partnership page",
      "used": "Campus event with synthetic data (V2-09)",
-     "url": null
+     "url": "https://www.stockgro.club/partnership/"
     },
     {
      "title": "Krutrim: past cloud credit offers",
      "used": "Credits (V2-09)",
-     "url": null
+     "url": "https://www.olakrutrim.com/support"
     },
     {
      "title": "Mu Sigma: Mureka contest",
@@ -82,12 +82,82 @@
     {
      "title": "Futurense: AI Clinic and Leadership Council",
      "used": "Enterprise problem statements (V2-05)",
-     "url": null
+     "url": "https://futurense.com/iim-sirmaur/iim-sirmaur-mba-for-working-professionals"
     },
     {
      "title": "Partner contact research, dated 31 October 2026",
-     "used": "Contact routes (V2-01). Some routes came from 2024 notices and need re-checking.",
+     "used": "My research notes dated 31 October 2026. The public pages I re-read on 1 November 2026 are listed above.",
      "url": null
+    },
+    {
+     "title": "IIM Sirmaur student clubs page",
+     "used": "Descriptions of Quizzar, Datonics, Finserve and Markaizen (read 1 November 2026)",
+     "url": "https://iimsirmaur.ac.in/hi/node/262"
+    },
+    {
+     "title": "Sarvam Campus page",
+     "used": "Campus tour for universities",
+     "url": "https://www.sarvam.ai/sarvam-campus"
+    },
+    {
+     "title": "Mu Sigma: academic partnerships page",
+     "used": "Academic partnerships (the Mureka contest page itself was not found)",
+     "url": "https://www.mu-sigma.com/our-people/academic-partnerships/"
+    },
+    {
+     "title": "ICAI AI Committee contact page",
+     "used": "Committee contact (Section 3.6.2, row 2)",
+     "url": "https://www.icai.org/post/contactus-ai-committee"
+    },
+    {
+     "title": "BCAS contact page",
+     "used": "Society contact (row 3)",
+     "url": "https://bcasonline.org/contact-us/"
+    },
+    {
+     "title": "GDG Chandigarh chapter page",
+     "used": "Chapter contact (row 14)",
+     "url": "https://gdg.community.dev/gdg-chandigarh/"
+    },
+    {
+     "title": "IIT Mandi iHub contact",
+     "used": "iHub contact (row 23)",
+     "url": "https://chci.iitmandi.ac.in/contact.php"
+    },
+    {
+     "title": "IIM Sirmaur student clubs page",
+     "used": "Descriptions of Quizzar, Datonics, Finserve and Markaizen (read 1 November 2026)",
+     "url": "https://iimsirmaur.ac.in/hi/node/262"
+    },
+    {
+     "title": "Sarvam Campus page",
+     "used": "Campus tour for universities",
+     "url": "https://www.sarvam.ai/sarvam-campus"
+    },
+    {
+     "title": "Mu Sigma: academic partnerships page",
+     "used": "Academic partnerships (the Mureka contest page itself was not found)",
+     "url": "https://www.mu-sigma.com/our-people/academic-partnerships/"
+    },
+    {
+     "title": "ICAI AI Committee contact page",
+     "used": "Committee contact (Section 3.6.2, row 2)",
+     "url": "https://www.icai.org/post/contactus-ai-committee"
+    },
+    {
+     "title": "BCAS contact page",
+     "used": "Society contact (row 3)",
+     "url": "https://bcasonline.org/contact-us/"
+    },
+    {
+     "title": "GDG Chandigarh chapter page",
+     "used": "Chapter contact (row 14)",
+     "url": "https://gdg.community.dev/gdg-chandigarh/"
+    },
+    {
+     "title": "IIT Mandi iHub contact",
+     "used": "iHub contact (row 23)",
+     "url": "https://chci.iitmandi.ac.in/contact.php"
     }
    ]
   },
@@ -96,13 +166,13 @@
    "items": [
     {
      "title": "Public Kaggle dataset (IPL)",
-     "used": "Optional bank session: IPL prediction challenge (V1-09)",
-     "url": null
+     "used": "Optional bank session: IPL prediction challenge (V1-09). The document does not name the dataset; this is a public IPL dataset on Kaggle used as an example.",
+     "url": "https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020"
     },
     {
      "title": "NIRF and placement data",
      "used": "Example messy file for Session 7",
-     "url": null
+     "url": "https://www.nirfindia.org"
     },
     {
      "title": "The college's academic-integrity policy",
