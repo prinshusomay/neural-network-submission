@@ -11,7 +11,7 @@
 <link rel="preload" href="https://prinshusomay.github.io/assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="https://prinshusomay.github.io/assets/fonts/libre-franklin-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="nn11.css?v=11">
+<link rel="stylesheet" href="nn12.css?v=12">
 </head>
 <body>
 <a class="skip" href="#stage">Skip to the programme</a>
@@ -52,20 +52,24 @@
 
 <main id="top">
   <section class="hero wrap" aria-labelledby="hname">
-    <canvas id="aw-cv" class="aw-cv" aria-hidden="true"></canvas>
-    <div class="awaken" id="awaken">
-      <div class="aw-halo" aria-hidden="true"></div>
-      <svg id="aw-svg" class="aw-svg" aria-hidden="true"></svg>
-      <div class="aw-slot" id="slot" aria-hidden="true"></div>
-    </div>
-    <div class="aw-brand">
+    <div class="hero-pl" id="slot" aria-hidden="true"></div>
+    <span class="kicker">IIM Sirmaur, AI club, Round 2 recruitment</span>
+    <div class="titlewrap">
+      <svg class="torb back" viewBox="0 0 1000 300" aria-hidden="true"><defs><linearGradient id="tg1" x1="0" x2="1"><stop offset="0" stop-color="var(--t3)" stop-opacity="0"/><stop offset=".25" stop-color="var(--t2)"/><stop offset=".75" stop-color="var(--t1)"/><stop offset="1" stop-color="var(--t1)" stop-opacity="0"/></linearGradient></defs><ellipse cx="500" cy="150" rx="490" ry="74" fill="none" stroke="url(#tg1)" stroke-width="1.6"/><ellipse cx="500" cy="150" rx="430" ry="56" fill="none" stroke="url(#tg1)" stroke-opacity=".45" stroke-width="1" stroke-dasharray="3 7"/><circle r="5" fill="var(--t2)"><animateMotion dur="11s" repeatCount="indefinite" path="M10,150 A490,74 0 1,1 990,150 A490,74 0 1,1 10,150"/></circle><circle r="3" fill="var(--t3)"><animateMotion dur="17s" repeatCount="indefinite" begin="-6s" path="M70,150 A430,56 0 1,0 930,150 A430,56 0 1,0 70,150"/></circle></svg>
       <h1 class="name" id="hname"><span class="pre"><i></i>THE<i></i></span><span class="row big">NEURAL</span><span class="row ol">NETWORK</span></h1>
-      <p class="aw-sub">IIM SIRMAUR <i>|</i> ARTIFICIAL INTELLIGENCE CLUB</p>
-      <div class="aw-nav">
-        <button type="button" class="awb" data-go="curation"><span>01</span>Curation &amp; Research</button>
-        <button type="button" class="awb" data-go="outreach"><span>02</span>Outreach &amp; External Relations</button>
+      <svg class="torb front" viewBox="0 0 1000 300" aria-hidden="true"><path d="M10,150 A490,74 0 0 0 990,150" fill="none" stroke="url(#tg1)" stroke-width="2.2"/></svg>
+    </div>
+    <p class="tagline">From Zero to Shipped. A year programme in two verticals.</p>
+    <div class="prompt" aria-label="Summary">
+      <div class="line"><b>&gt;</b><span id="typed"></span><span class="caret" aria-hidden="true"></span></div>
+      <div class="bar">
+        <button type="button" class="pill" data-go="curation">Curation &amp; Research</button>
+        <button type="button" class="pill" data-go="outreach">Outreach &amp; External Relations</button>
+        <a class="pill" href="#bridge">How they connect</a>
+        <span class="grow"></span>
+        <span class="live"><i></i> Applicant, not a member</span>
+        <button type="button" class="round" data-go-fork aria-label="Scroll to the fork">↓</button>
       </div>
-      <a class="aw-more" href="#bridge">How the two connect</a>
     </div>
   </section>
   <div class="tickerwrap" aria-hidden="true" id="tk"><div class="ticker" id="ticker"></div></div>
@@ -105,6 +109,6 @@
 <div class="tip" id="tip" role="tooltip"></div>
 <div class="toast" id="toast" role="status"></div>
 <noscript><p style="padding:2rem;text-align:center">This site builds its content from JSON files with JavaScript. Please turn JavaScript on.</p></noscript>
-<script src="nn11.js?v=11"></script>
+<script src="nn12.js?v=12"></script>
 </body>
 </html>
